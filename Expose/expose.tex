@@ -46,14 +46,14 @@ In \cite{PJ2015} und \cite{SP2011} werden diese Formatverstöße als Hintergrund
 
 \section{Problemstellung}
 Code, der nach den oben beschriebenen Regeln geschrieben wurde, ist laut \cite{PJ2015} leichter verständlich und dadurch auch leichter erlernbar und veränderbar.
-Um die Teammitglieder dazu zu bringen, sich an diese Regeln zu halten, gibt es zwei Möglichkeiten.
-Zum einen kann im Reviewprozess des Projekts ein automatischer Test eingebaut werden, der dafür sorgt, dass grundsätzlich funktionierender Code dann nicht angenommen wird, wenn er gegen festlegte Regeln verstößt, wenn er also beispielsweise gegen Stylingrichtlinien verstößt oder es potentiell unsichere Variablenzugriffe gibt.
-Zum anderen können die Teammitglieder durch Belohnungen dazu motiviert werden, von sich aus dafür zu sorgen, dass sie die festgelegten Regeln einhalten und dies auch selbst überprüfen. 
+Um die Teammitglieder dazu zu bringen, sich an die vereinbarten Regeln zu halten, gibt es zwei Möglichkeiten.
+Zum einen kann im Reviewprozess des Projekts ein automatischer Test eingebaut werden, der dafür sorgt, dass grundsätzlich funktionierender Code dann nicht angenommen wird, wenn er gegen festgelegte Regeln verstößt, wenn er also beispielsweise Stylingrichtlinien nicht einhält oder es potentiell unsichere Variablenzugriffe gibt.
+Zum anderen können die Teammitglieder durch Belohnungen dazu motiviert werden, von sich aus die festgelegten Regeln einzuhalten und dies auch selbst zu überprüfen. 
 Um eine solche Motivation zu erreichen, kann Gamification verwendet werden.
 Hierbei werden Methoden genutzt, die aus Computerspielen bekannt sind.
 Hierzu gehören beispielsweise Levels, Badges oder Leader Boards, die das Team oder das einzelne Teammitglied erreichen kann. 
 
-Beide Verfahren führen dazu, dass die Teammitglieder diese Programmierrichtlinien mit der Zeit von sich aus einhalten, ohne immer darauf hingewiesen werden zu müssen, entweder, weil sie gelernt haben, dass der eingereichte Code sonst aus Formgründen abgelehnt wird oder weil sie für besseren Code beispielsweise mehr Erfahrungspunkte bekommen.
+Beide Verfahren führen dazu, dass die Teammitglieder die vereinbarten Programmierrichtlinien mit der Zeit von sich aus einhalten, ohne immer darauf hingewiesen werden zu müssen, entweder, weil sie gelernt haben, dass der eingereichte Code sonst aus Formgründen abgelehnt wird oder weil sie für besseren Code beispielsweise mehr Erfahrungspunkte bekommen.
 Es entsteht also ein Lerneffekt, der bewirkt, dass die Teilnehmer auch in Zukunft qualitativ hochwertigen Code einreichen.
 In beiden Fällen wird die eigene Motivation, guten Code zu schreiben, durch eine extrinsische Motivation verstärkt.
 Im Rahmen dieser Arbeit liegt der Fokus auf der Motivation durch Gamification.
@@ -67,7 +67,7 @@ Abschließend wird ein Feldversuch durchgeführt, um festzustellen, in wie weit 
 
 \section{Vorgehensweise}
 Zunächst werden die Grundlagen dieser Arbeit vorgestellt.
-Dazu gehört die Erläuterung, was Gamification ist und in wie weit Gamification-Elemente in dieser Arbeit Verwendung finden.
+Es wird erläutert, was Gamification ist und welche Gamification-Elemente in dieser Arbeit Verwendung finden werden.
 Daneben wird im Rahmen der Vorstellung verwandter Arbeiten darauf eingegangen, welche Implementierungen und Implementierungsansätze es bereits für Gamification-Elemente in Zusammenhang mit der Code-Qualität gibt.
 Außerdem wird die Codeanalyseplattform coderadar vorgestellt, die als Basis für die im Rahmen dieser Arbeit erfolgende Implementierung dienen wird.
 
@@ -77,7 +77,7 @@ Entsprechend diesen Metriken wird der konkrete Code dann untersucht.
 Anhand des Ergebnisses dieser Untersuchung werden anschließend die Punkte verteilt, auf denen später Levels oder Leader Boards beruhen.
 Des Weiteren werden die Spielmechanismen, die Spielregeln und das Spielziel erläutert.
 Außerdem wird eine Balancierungsmatrix ausgearbeitet, die für eine gleichmäßig gewichtete Punkteverteilung für unterschiedliche Aktionen sorgt.
-Diese Balancierungsmatrix sorgt beispielsweise dafür, dass umfangreiche Änderungen verhältnismäßig mehr Punkte bringen als weniger umfangreiche Änderungen.
+Sie bewirkt beispielsweise, dass umfangreiche Änderungen verhältnismäßig mehr Punkte bringen als weniger umfangreiche Änderungen.
 
 Danach wird auf die Implementierung eingegangen.
 Zunächst werden dafür die Anforderungen erhoben und eine Definition of Done, also die Definition, wann das Projekt fertig ist, erstellt.

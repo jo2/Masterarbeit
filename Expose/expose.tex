@@ -38,7 +38,6 @@ Bereits durch das Erfüllen gewisser Qualitätsstandards lässt sich jedoch der 
 
 Qualitativ hochwertige Software zeichnet sich nach \cite{ISO-25010} dadurch aus, dass sie stabil ist und gut gewartet, analysiert, erlernt und verändert werden kann.
 Software, die diese Anforderungen erfüllt, beinhaltet Code, der nach bestimmten Richtlinien gebildet wird.
-Voraussetzung ist jedoch, dass sich alle Entwickler eines Teams an diese vorher festgelegten und für die gesamte Projektlaufzeit geltenden Richtlinien halten.
 Zu diesen Regeln gehört beispielsweise, dass Code auf einer Ebene einheitlich eingerückt wird, dass öffnende geschweifte Klammern in der gleichen Zeile stehen wie der Code, der die Klammer erfordert, dass Variablennamen sprechend sind und nicht nur aus einem Buchstaben bestehen oder dass Parameter auf ihre Gültigkeit überprüft werden, bevor mit ihnen gearbeitet wird.
 
 Die Einhaltung solcher Regeln scheint auf den ersten Blick nur von geringer Bedeutung zu sein, allerdings lenken beispielsweise Unstimmigkeiten in der Formatierung beim Lesen des Codes ab und sie erschweren es, sich auf den eigentlichen Code zu konzentrieren.
@@ -49,19 +48,20 @@ Code, der nach den oben beschriebenen Regeln geschrieben wurde, ist laut \cite{P
 Um die Teammitglieder dazu zu bringen, sich an die vereinbarten Regeln zu halten, gibt es zwei Möglichkeiten.
 Zum einen kann im Reviewprozess des Projekts ein automatischer Test eingebaut werden, der dafür sorgt, dass grundsätzlich funktionierender Code dann nicht angenommen wird, wenn er gegen festgelegte Regeln verstößt, wenn er also beispielsweise Stylingrichtlinien nicht einhält oder es potentiell unsichere Variablenzugriffe gibt.
 Zum anderen können die Teammitglieder durch Belohnungen dazu motiviert werden, von sich aus die festgelegten Regeln einzuhalten und dies auch selbst zu überprüfen. 
-Um eine solche Motivation zu erreichen, kann Gamification verwendet werden.
-Hierbei werden Methoden genutzt, die aus Computerspielen bekannt sind.
+Es stellt sich nun die Frage, ob eine solche Motivation in durch Gamification erreicht werden kann.
+Bei Gamification werden Methoden genutzt, die aus Computerspielen bekannt sind.
 Dazu gehören beispielsweise Levels, Badges oder Leader Boards, die das Team oder ein einzelnes Teammitglied erreichen kann. 
 
 Das Ablehnen von eingereichtem Code auf Grund von Verstößen gegen Richtlinien führt dazu, dass die Teammitglieder die vereinbarten Programmierrichtlinien mit der Zeit von sich aus einhalten, ohne immer darauf hingewiesen werden zu müssen.
 Es ergibt sich also ein Lerneffekt, der bewirkt, dass die Teilnehmer auch in Zukunft qualitativ hochwertigen Code einreichen.
-Im Rahmen dieser Arbeit soll untersucht werden, in wie weit die ausgewählten Gamification-Elementen zu einer extrinsischen Motivation und somit qualitativ hochwertigem Code beitragen.
+Im Rahmen dieser Arbeit soll untersucht werden, ob beziehungsweise in wie weit auszuwählende Gamification-Elemente ebenfalls die Motivation erhöhen, qualitativ hochwertigeren Code einzureichen.
+Neben qualitativ hochwertigerem Code könnte so durch einen gewissen "Spaßfaktor" auch eine höhere Zufriedenheit der Teammitglieder und somit eventuell auch eine intrinsische Motivation zum Schreiben von qualitativ hochwertigerem Code erreicht werden.
 
 \section{Zielsetzung}
 Ziel dieser Arbeit ist die Erweiterung der Codeanalyseplattform coderadar um Gamification-Elemente zur Steigerung der Code-Qualität.
-Dazu werden zunächst ausgewählte Gamification-Elemente in coderadar implementiert.
+Dazu werden zunächst Gamification-Elemente ausgewählt und in coderadar implementiert.
 Anschließend wird eine Balancierungsmatrix für eine gleichmäßige Verteilung der Punkte, auf denen Levels, Leader Boards und ähnliches basieren, erarbeitet.
-Abschließend wird ein Feldversuch durchgeführt, um festzustellen, in wie weit die vorgestellten Maßnahmen die Softwarequalität nachhaltig verbessern konnten.
+Abschließend wird ein Feldversuch durchgeführt, um festzustellen, ob und in wie weit die vorgestellten Maßnahmen die Softwarequalität nachhaltig verbessern konnten.
 
 \section{Vorgehensweise}
 Zunächst werden die Grundlagen dieser Arbeit vorgestellt.
@@ -76,7 +76,6 @@ Anhand des Ergebnisses dieser Untersuchung werden anschließend die Punkte verte
 Die Verteilung dieser Punkte erfolgt mit Hilfe einer Balancierungsmatrix, die für eine gleichmäßig gewichtete Punkteverteilung für unterschiedliche Aktionen sorgt.
 Diese Balancierungsmatrix wird ebenfalls an dieser Stelle definiert.
 Des Weiteren werden die Spielmechanismen, die Spielregeln und das Spielziel beschrieben.
-Sie bewirkt beispielsweise, dass umfangreiche Änderungen verhältnismäßig mehr Punkte bringen als weniger umfangreiche Änderungen.
 
 Danach wird auf die Implementierung eingegangen.
 Zunächst werden die Anforderungen an die Implementierung erhoben und eine Definition of Done, also die Definition, wann das Projekt fertig ist, erstellt.
@@ -86,8 +85,7 @@ Es folgt die eigentliche Implementierung.
 Anschließend wird die Evaluierung durchgeführt.
 Dazu wird zunächst ein Projekt zur Untersuchung in coderadar eingecheckt, und anhand der ausgewählten Metriken wird dessen Code-Qualität bewertet.
 Der hier ermittelte Wert soll als Grundlage für die Messung der künftigen Bewertungsänderungen dienen.
-Über eine gewisse Zeit wird das Projekt dann im Rahmen eines Feldversuchs verfolgt und es wird beobachtet, in wie weit sich die Bewertung des untersuchten Projektes verändert.
-Die Messung dieser Veränderung erfolgt, wie auch schon die Messung der ersten Bewertung, anhand der ausgewählten Metriken.
+Über eine gewisse Zeit wird das Projekt dann im Rahmen eines Feldversuchs verfolgt und es wird anhand der ausgewählten Metriken ermittelt, in wie weit sich die Bewertung des untersuchten Projektes verändert.
 Zusätzlich dazu sollen die Projektteammitglieder zu ihrer Arbeit mit den Gamification-Elementen in coderadar befragt werden.
 
 Abschließend wird das Ergebnis der Arbeit zusammengefasst.

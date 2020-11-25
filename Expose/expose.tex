@@ -37,22 +37,22 @@ Denn der Wartungsaufwand im Übrigen ist vielfach kaum zu verringern, weil sich 
 Bereits durch das Erfüllen gewisser Qualitätsstandards lässt sich jedoch der für das Verstehen des Codes notwendige Aufwand reduzieren.
 
 Qualitativ hochwertige Software zeichnet sich nach \cite{ISO-25010} dadurch aus, dass sie stabil ist und gut gewartet, analysiert, erlernt und verändert werden kann.
-Software, die diese Anforderungen erfüllt, beinhaltet Code, der nach bestimmten Richtlinien gebildet wird.
-Zu diesen Regeln gehört beispielsweise, dass Code auf einer Ebene einheitlich eingerückt wird, dass öffnende geschweifte Klammern in der gleichen Zeile stehen wie der Code, der die Klammer erfordert, dass Variablennamen sprechend sind und nicht nur aus einem Buchstaben bestehen oder dass Parameter auf ihre Gültigkeit überprüft werden, bevor mit ihnen gearbeitet wird.
+Software, die diese Anforderungen erfüllt, beinhaltet Code, der bestimmten Richtlinien entspricht.
+Zu diesen Richtlinien gehört beispielsweise, dass Code auf einer Ebene einheitlich eingerückt wird, dass öffnende geschweifte Klammern in der gleichen Zeile stehen wie der Code, der die Klammer erfordert, dass Variablennamen sprechend sind und nicht nur aus einem Buchstaben bestehen oder dass Parameter auf ihre Gültigkeit überprüft werden, bevor mit ihnen gearbeitet wird.
 
 Die Einhaltung solcher Regeln scheint auf den ersten Blick nur von geringer Bedeutung zu sein, allerdings lenken beispielsweise Unstimmigkeiten in der Formatierung beim Lesen des Codes ab und sie erschweren es, sich auf den eigentlichen Code zu konzentrieren.
 In \cite{PJ2015} und \cite{SP2011} werden diese Formatverstöße als Hintergrundrauschen beschrieben, das vom eigentlichen Code ablenkt. 
 
 \section{Problemstellung}
 Code, der nach den oben beschriebenen Regeln geschrieben wurde, ist laut \cite{PJ2015} leichter verständlich und dadurch auch leichter erlernbar und veränderbar.
-Um die Teammitglieder dazu zu bringen, sich an die vereinbarten Regeln zu halten, gibt es zwei Möglichkeiten.
+Um die Mitglieder des Entwicklungsteams dazu zu bringen, sich an die vereinbarten Regeln zu halten, gibt es zwei Möglichkeiten.
 Zum einen kann im Reviewprozess des Projekts ein automatischer Test eingebaut werden, der dafür sorgt, dass grundsätzlich funktionierender Code dann nicht angenommen wird, wenn er gegen festgelegte Regeln verstößt, wenn er also beispielsweise Stylingrichtlinien nicht einhält oder es potentiell unsichere Variablenzugriffe gibt.
 Zum anderen können die Teammitglieder durch Belohnungen dazu motiviert werden, von sich aus die festgelegten Regeln einzuhalten und dies auch selbst zu überprüfen. 
 Es stellt sich nun die Frage, ob eine solche Motivation durch Gamification erreicht werden kann.
 Bei Gamification werden Methoden genutzt, die aus Computerspielen bekannt sind.
 Dazu gehören beispielsweise Levels, Badges oder Leader Boards, die das Team oder ein einzelnes Teammitglied erreichen kann. 
 
-Die oben beschriebene Ablehnung von eingereichtem Code auf Grund von Verstößen gegen Richtlinien führt dazu, dass die Teammitglieder die vereinbarten Programmierrichtlinien mit der Zeit von sich aus einhalten, ohne immer darauf hingewiesen werden zu müssen.
+Die oben beschriebene Ablehnung von eingereichtem Code auf Grund von Verstößen gegen Richtlinien führt zwar dazu, dass die Teammitglieder die vereinbarten Programmierrichtlinien mit der Zeit von sich aus einhalten, ohne immer darauf hingewiesen werden zu müssen.
 Es ergibt sich also ein Lerneffekt, der bewirkt, dass die Teilnehmer auch in Zukunft qualitativ hochwertigen Code einreichen.
 Im Rahmen dieser Arbeit soll untersucht werden, ob beziehungsweise in wie weit auszuwählende Gamification-Elemente ebenfalls die Motivation erhöhen, qualitativ hochwertigeren Code einzureichen.
 Neben qualitativ hochwertigem Code könnte so durch einen gewissen \glqq Spaßfaktor\grqq{} auch eine höhere Zufriedenheit der Teammitglieder erreicht werden.
@@ -71,8 +71,8 @@ Außerdem wird die Codeanalyseplattform coderadar vorgestellt, die als Basis fü
 
 Im Anschluss daran wird die Vorbereitungen für die Implementierung erläutert.
 Dazu gehört zunächst die Auswahl der Metriken, anhand derer die Codequalität bewertet werden soll, und die Auswahl der Gamification-Elemente.
-Entsprechend der ausgewählten Metriken wird der konkrete Code dann untersucht.
-Anhand des Ergebnisses dieser Untersuchung werden anschließend die Punkte verteilt, auf denen später die Gamification-Elemente beruhen.
+Entsprechend der ausgewählten Metriken wird der Code später untersucht.
+Anhand der Ergebnisse dieser Untersuchung werden später die Punkte verteilt, auf denen dann die Gamification-Elemente beruhen.
 Die Verteilung dieser Punkte erfolgt mit Hilfe einer Balancierungsmatrix, die für eine gleichmäßig gewichtete Punkteverteilung für unterschiedliche Aktionen sorgt.
 Diese Balancierungsmatrix wird ebenfalls an dieser Stelle definiert.
 Des Weiteren werden die Spielmechanismen, die Spielregeln und das Spielziel beschrieben.
@@ -83,7 +83,7 @@ Auf Basis dieser Anforderungen werden dann die erforderlichen Änderungen an der
 Es folgt die eigentliche Implementierung.
 
 Anschließend wird die Evaluierung durchgeführt.
-Dazu wird zunächst ein Projekt zur Untersuchung in coderadar eingecheckt, und anhand der ausgewählten Metriken wird dessen Code-Qualität bewertet.
+Dazu wird zunächst ein Projekt zur Untersuchung in coderadar eingecheckt und anhand der ausgewählten Metriken wird dessen Code-Qualität bewertet.
 Der hier ermittelte Wert soll als Grundlage für die Messung der künftigen Bewertungsänderungen dienen.
 Über eine gewisse Zeit wird das Projekt dann im Rahmen eines Feldversuchs verfolgt und es wird anhand der ausgewählten Metriken ermittelt, in wie weit sich die Bewertung des untersuchten Projektes verändert.
 Zusätzlich dazu sollen die Projektteammitglieder zu ihrer Arbeit mit den Gamification-Elementen in coderadar befragt werden.
@@ -91,7 +91,7 @@ Zusätzlich dazu sollen die Projektteammitglieder zu ihrer Arbeit mit den Gamifi
 Abschließend wird das Ergebnis der Arbeit zusammengefasst.
 Als Grundlage für dieses Fazit dienen dabei zum einen die Beobachtungen über die Veränderung der Code-Qualität und zum anderen die Ergebnisse aus der Befragung der Projektteammitglieder.
 Außerdem wird reflektiert, welche Herausforderungen es bei der Implementierung und bei der Durchführung des Feldversuchs gab.
-Zum Schluss wird ein Ausblick auf die weitere Arbeit gegeben.
+Zum Schluss wird ein Ausblick auf die weitere mögliche Arbeit mit den Gamification-Elementen in coderadar gegeben.
 
 \pagebreak
 

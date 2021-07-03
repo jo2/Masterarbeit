@@ -812,14 +812,68 @@ Daher wird die Code-Qualität kontinuierlich betrachtet und wenn möglich sollen
 
 \chapter{Entwurf des Lösungsansatzes}
 \label{Entwurf}
-
+In diesem Kapitel wird ein Lösungsansatz zur nachhaltigen Steigerung der Codequalität entworfen.
+Dazu wird zunächst in Abschnitt \ref{Architektur} die Architektur von coderadar mit der Integration des Lösungsansatzes beschrieben.
+In Abschnitt \ref{Metrikmatrix} wird dann auf Basis der Metriken aus \ref{Auswahl_Kriterien} ein Matrix zur Gewichtung der gesammelten Metriken erstellt.
+Anschließend wird in Abschnitt \ref{Gamification_Elemente} der Einsatz von Gamification-Elementen ausgearbeitet.
 
 \section{Architektur}
 \label{Architektur}
 
+% TODO Codeanalyse nach hier verschieben? Mit Marius besprechen.
+Um die weiteren geforderten Metriken erfassen zu können, werden weitere Maßnahmen zu Codeanalyse benötigt.
+Dies geschieht in coderadar durch die Ergänzung eines weiteren Analyse-Plugins.
+Dazu wird ein neues Untermodul im Modul \textit{coderadar-plugins} angelegt.
+Zentraler Aspekt dieses Moduls ist die Klasse \textit{SonarSourceCodeFileAnalyzer}, welches das Interface \textit{SourceCodeFileAnalyzerPlugin} implementiert.
+In coderadar wird via Java Reflection über alle Klassen iteriert, die das \textit{SourceCodeFileAnalyzerPlugin}-Interface implementieren.
+Für jede Klasse wird dann die \textit{analyze()}-Methode aufgerufen.
+Um die Metriken von SonarQube zu bekommen, wird hier entsprechend ein neues Modul geschrieben, welches eine entsprechende Analyse durchführt.
+
+Darüber hinaus muss jede Analyse vor- und nachbereitet werden.
+Zur Vorbereitung gehört das Anlegen des SonarQube-Projekts, das Checkout des zu analysierenden Commits sowie die Analyse ansich.
+Zur Nachbereitung gehört das Entfernen des SonarQube-Projekts sowie die Punkteberechnung auf Basis der Metrikwerte und der noch zu erarbeitenden Metrikmatrix.
+Die Berechneten Punkte müssen dann dem Autor des Commits gutgeschrieben und sein Level muss angepasst werden.
+
+% TODO noch nicht vollständig
 
 \section{Metrikmatrix}
 \label{Metrikmatrix}
+Um aus der Menge an Metriken, die coderadar mit der in dieser Arbeit entwickelten Erweiterung für jeden Commit sammelt, eine Summe an Punkten zu ermitteln, müssen die Ergebnisse der Metriken zusammengefasst werden.
+Da beispielsweise Vulnerabilities einen deutlich stärkeren Einfluss auf die Qualität des Codes haben, müssen die einzelnen Ergebnisse der Metriken gewichtet werden.
+Zur gewichteten Zusammenfassung der Metriken wird an dieser Stelle eine Metrikmatrix verwendet.
+Si multipliziert die Gewichtung der jeweiligen Metrik mit ihrem Wert und erhält in Summe eine Punktzahl für einen Commit.
+Im Folgenden ist diese Metrikmatrix in Tabellenform dargestellt:
+
+\begin{table}[!htb]
+	\begin{minipage}{.33\linewidth}
+		\centering
+		\begin{tabular}{|c|c|}
+			\hline
+			Metrik & Gewichtung  \\ \hline
+			Test & Test \\ \hline
+			Test & Test \\ \hline
+		\end{tabular}
+	\end{minipage}%
+	\begin{minipage}{.33\linewidth}
+		\centering
+		\begin{tabular}{|c|c|}
+			\hline
+			Metrik & Gewichtung  \\ \hline
+			Test & Test \\ \hline
+			Test & Test \\ \hline
+		\end{tabular}
+	\end{minipage}%
+	\begin{minipage}{.33\linewidth}
+		\centering
+		\begin{tabular}{|c|c|}
+			\hline
+			Metrik & Gewichtung  \\ \hline
+			Test & Test \\ \hline
+			Test & Test \\ \hline
+		\end{tabular}
+	\end{minipage} 
+	\caption{Metrikmatrix mit der Gewichtung der einzelnen Metriken}
+\end{table}
 
 
 \section{Gamification-Elemente}

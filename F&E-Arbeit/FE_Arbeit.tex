@@ -824,7 +824,7 @@ Anschließend wird in Abschnitt \ref{Gamification_Elemente} der Einsatz von Gami
 Um die weiteren geforderten Metriken erfassen zu können, werden weitere Maßnahmen zu Codeanalyse benötigt.
 Dies geschieht in coderadar durch die Ergänzung eines weiteren Analyse-Plugins.
 Dazu wird ein neues Untermodul im Modul \textit{coderadar-plugins} angelegt.
-Zentraler Aspekt dieses Moduls ist die Klasse \textit{SonarSourceCodeFileAnalyzer}, welches das Interface \textit{SourceCodeFileAnalyzerPlugin} implementiert.
+Zentraler Aspekt dieses Moduls ist die Klasse \textit{SonarScannerSourceCodeFileAnalyzerPlugin}, welches das Interface \textit{SourceCodeFileAnalyzerPlugin} implementiert.
 In coderadar wird via Java Reflection über alle Klassen iteriert, die das \textit{SourceCodeFileAnalyzerPlugin}-Interface implementieren.
 Für jede Klasse wird dann die \textit{analyze()}-Methode aufgerufen.
 Um die Metriken von SonarQube zu bekommen, wird hier entsprechend ein neues Modul geschrieben, welches eine entsprechende Analyse durchführt.
@@ -833,6 +833,29 @@ Darüber hinaus muss jede Analyse vor- und nachbereitet werden.
 Zur Vorbereitung gehört das Anlegen des SonarQube-Projekts, das Checkout des zu analysierenden Commits sowie die Analyse ansich.
 Zur Nachbereitung gehört das Entfernen des SonarQube-Projekts sowie die Punkteberechnung auf Basis der Metrikwerte und der noch zu erarbeitenden Metrikmatrix.
 Die Berechneten Punkte müssen dann dem Autor des Commits gutgeschrieben und sein Level muss angepasst werden.
+
+Die Vor- und Nachbereitung ist jeweils ein Prozess, der von der Dateianalyse getrennt zu betrachten ist, da er nicht je Datei, sondern je Commit durchgeführt werden soll.
+Aus diesem Grund wird die Vorbereitung innerhalb der Konfiguration des \textit{SonarScannerSourceCodeFileAnalyzerPlugin} durchgeführt.
+Um aus Sicht des \textit{coderadar-core}-Moduls eine Unabhängigkeit zu den einzelnen Plugins herzustellen, wird an dieser Stelle in der \textit{coderadar-plugin-api} ein neues Interface \textit{WrappedAnalyzingProcess} eingeführt.
+Dieses Interface schreibt jeweils eine Methode zur Vor- und Nachbereitung der Analyse vor, \textit{prepareAnalysis()} und \textit{postprocessAnalysis()}.
+Im Analyseprozess wird dann zunächst über alle Implementierungen des \textit{WrappedAnalyzingProcess} iteriert und für jede Instanz wird die Methode \textit{prepareAnalysis()} aufgerufen.
+Anschließend findet die Analyse des Commits, gefolgt von dem Aufruf der Methode \textit{postprocessAnalysis()} für alle Implementierungen des \textit{WrappedAnalyzingProcess}-Interface.
+
+Des weiteren müssen gemäß den Anforderungen aus \ref{Anforderungen} Anpassungen in der Benutzerschnittstelle im Modul \textit{coderadar-ui} vorgenommen werden.
+Um die benötigten Daten zu speichern und bereitzustellen, müssen entsprechende Anpassungen in der \acs{REST}-Schnittstelle und dem Datenbankadapter, \textit{coderadar-rest} beziehungsweise \textit{coderadar-graph}, vorgenommen werden.
+Für die im Rahmen dieser Arbeit implementierten Erweiterungen müssen darüber hinaus Tests geschrieben werden.
+Diese teilen sich auf in Unit-Tests, die im jeweiligen Modul, und Integrationstests, welche im Modul \textit{coderadar-test} implementiert werden.
+
+Entsprechend der in diesem Absatz beschriebenen Änderungen wird coderadar wie in folgendem Komponentendiagramm beschrieben aufgebaut sein.
+Orange eingefärbte Module wurden dabei geändert, grüne Module wurde hinzugefügt.
+
+\begin{figure}[htb]
+	\begin{center}
+		\includegraphics[width=\linewidth]{images/coderadar_components}
+		\caption{Die Struktur der Komponenten in coderadar nach den Erweiterungen aus dieser Arbeit.}
+		\label{component_diagram}
+	\end{center}
+\end{figure}
 
 % TODO noch nicht vollständig
 

@@ -982,19 +982,130 @@ Daher wird die Code-Qualität kontinuierlich betrachtet und wenn möglich sollen
 
 \chapter{Entwurf des Lösungsansatzes}
 \label{Entwurf}
-
+In diesem Kapitel wird ein Lösungsansatz zur nachhaltigen Steigerung der Codequalität entworfen.
+Dazu wird zunächst in Abschnitt \ref{Architektur} die Architektur von coderadar mit der Integration des Lösungsansatzes beschrieben.
+In Abschnitt \ref{Metrikmatrix} wird dann auf Basis der Metriken aus \ref{Auswahl_Kriterien} ein Matrix zur Gewichtung der gesammelten Metriken erstellt.
+Anschließend wird in Abschnitt \ref{Gamification_Elemente} der Einsatz von Gamification-Elementen ausgearbeitet.
 
 \section{Architektur}
 \label{Architektur}
 
+% TODO Codeanalyse nach hier verschieben? Mit Marius besprechen.
+Um die weiteren geforderten Metriken erfassen zu können, werden weitere Maßnahmen zu Codeanalyse benötigt.
+Dies geschieht in coderadar durch die Ergänzung eines weiteren Analyse-Plugins.
+Dazu wird ein neues Untermodul im Modul \textit{coderadar-plugins} angelegt.
+Zentraler Aspekt dieses Moduls ist die Klasse \textit{SonarScannerSourceCodeFileAnalyzerPlugin}, welches das Interface \textit{SourceCodeFileAnalyzerPlugin} implementiert.
+In coderadar wird via Java Reflection über alle Klassen iteriert, die das \textit{SourceCodeFileAnalyzerPlugin}-Interface implementieren.
+Für jede Klasse wird dann die \textit{analyze()}-Methode aufgerufen.
+Um die Metriken von SonarQube zu bekommen, wird hier entsprechend ein neues Modul geschrieben, welches eine entsprechende Analyse durchführt.
+
+Darüber hinaus muss jede Analyse vor- und nachbereitet werden.
+Zur Vorbereitung gehört das Anlegen des SonarQube-Projekts, das Checkout des zu analysierenden Commits sowie die Analyse ansich.
+Zur Nachbereitung gehört das Entfernen des SonarQube-Projekts sowie die Punkteberechnung auf Basis der Metrikwerte und der noch zu erarbeitenden Metrikmatrix.
+Die Berechneten Punkte müssen dann dem Autor des Commits gutgeschrieben und sein Level muss angepasst werden.
+
+Die Vor- und Nachbereitung ist jeweils ein Prozess, der von der Dateianalyse getrennt zu betrachten ist, da er nicht je Datei, sondern je Commit durchgeführt werden soll.
+Aus diesem Grund wird die Vorbereitung innerhalb der Konfiguration des \textit{SonarScannerSourceCodeFileAnalyzerPlugin} durchgeführt.
+Um aus Sicht des \textit{coderadar-core}-Moduls eine Unabhängigkeit zu den einzelnen Plugins herzustellen, wird an dieser Stelle in der \textit{coderadar-plugin-api} ein neues Interface \textit{WrappedAnalyzingProcess} eingeführt.
+Dieses Interface schreibt jeweils eine Methode zur Vor- und Nachbereitung der Analyse vor, \textit{prepareAnalysis()} und \textit{postprocessAnalysis()}.
+Im Analyseprozess wird dann zunächst über alle Implementierungen des \textit{WrappedAnalyzingProcess} iteriert und für jede Instanz wird die Methode \textit{prepareAnalysis()} aufgerufen.
+Anschließend findet die Analyse des Commits, gefolgt von dem Aufruf der Methode \textit{postprocessAnalysis()} für alle Implementierungen des \textit{WrappedAnalyzingProcess}-Interface.
+
+Des weiteren müssen gemäß den Anforderungen aus \ref{Anforderungen} Anpassungen in der Benutzerschnittstelle im Modul \textit{coderadar-ui} vorgenommen werden.
+Um die benötigten Daten zu speichern und bereitzustellen, müssen entsprechende Anpassungen in der \acs{REST}-Schnittstelle und dem Datenbankadapter, \textit{coderadar-rest} beziehungsweise \textit{coderadar-graph}, vorgenommen werden.
+Für die im Rahmen dieser Arbeit implementierten Erweiterungen müssen darüber hinaus Tests geschrieben werden.
+Diese teilen sich auf in Unit-Tests, die im jeweiligen Modul, und Integrationstests, welche im Modul \textit{coderadar-test} implementiert werden.
+
+Entsprechend der in diesem Absatz beschriebenen Änderungen wird coderadar wie im Komponentendiagramm in Abbildung \ref{component_diagram} beschrieben aufgebaut sein.
+Orange eingefärbte Module werden dabei geändert, grün gefärbte Module werden hinzugefügt.
+
+\begin{figure}[H]
+	\begin{center}
+		\includegraphics[width=\linewidth]{images/coderadar_components}
+		\caption{Die Struktur der Komponenten in coderadar nach den Erweiterungen aus dieser Arbeit.}
+		\label{component_diagram}
+	\end{center}
+\end{figure}
 
 \section{Metrikmatrix}
 \label{Metrikmatrix}
+Um aus der Menge an Metriken, die coderadar mit der in dieser Arbeit entwickelten Erweiterung für jeden Commit sammelt, eine Summe an Punkten zu ermitteln, müssen die Ergebnisse der Metriken zusammengefasst werden.
+Da beispielsweise Vulnerabilities einen deutlich stärkeren Einfluss auf die Qualität des Codes haben, müssen die einzelnen Ergebnisse der Metriken gewichtet werden.
+Zur gewichteten Zusammenfassung der Metriken wird an dieser Stelle eine Metrikmatrix verwendet.
+Sie multipliziert die Gewichtung der jeweiligen Metrik mit ihrem Wert und erhält in Summe eine Punktzahl für einen Commit.
 
+Eine weitere Aufgabe der Metrikmatrix ist die Ausbalancierung der Punkte, die ein Autor für einen Commit erhalten kann.
+Es darf nicht möglich sein, durch das wiederholte Ausführen bestimmter, trivialer Aktionen übermäßig viele Punkte zu erhalten, da sonst die Vergleichbarkeit zu anderen Autoren und Projektteams nicht mehr gegeben ist.
+Diese Balancierung wird ebenfalls über die Gewichtung vorgenommen.
+
+Im Folgenden ist diese Metrikmatrix in Tabellenform dargestellt:
+
+\begin{table}[!htb]
+	\label{metric_matrix}
+	\begin{minipage}{.33\linewidth}
+		\centering
+		\begin{tabular}{|c|c|}
+			\hline
+			Metrik & Gewichtung  \\ \hline
+			Test & Test \\ \hline
+			Test & Test \\ \hline
+		\end{tabular}
+	\end{minipage}%
+	\begin{minipage}{.33\linewidth}
+		\centering
+		\begin{tabular}{|c|c|}
+			\hline
+			Metrik & Gewichtung  \\ \hline
+			Test & Test \\ \hline
+			Test & Test \\ \hline
+		\end{tabular}
+	\end{minipage}%
+	\begin{minipage}{.33\linewidth}
+		\centering
+		\begin{tabular}{|c|c|}
+			\hline
+			Metrik & Gewichtung  \\ \hline
+			Test & Test \\ \hline
+			Test & Test \\ \hline
+		\end{tabular}
+	\end{minipage} 
+	\caption{Metrikmatrix mit der Gewichtung der einzelnen Metriken}
+\end{table}
+
+Anhand der in Tabelle \ref{metric_matrix} dargestellten Gewichtsverteilung über die Metriken wird nach der Analyse die Anzahl an Punkten berechnet, die der Autor des Commits bekommt.
+Anhand der erhaltenen Punkte wird dann das aktuelle Level des Autors bei Bedarf angepasst.
 
 \section{Gamification-Elemente}
 \label{Gamification_Elemente}
+Um den Punkte- und Levelstand der einzelnen Autoren aber auch der jeweiligen Projektteams darzustellen, werden verschiedene Gamification-Elemente benötigt.
+Im folgenden werden auf Basis der bisherigen Benutzerschnittstelle Prototypen für die Erweiterungen erstellt.
+Bei der Konzeptionierung der Prototypen wird besonders auf die beabsichtigte Wirkung der jeweiligen Elemente eingegangen.
 
+\subsection{Punkte}
+\label{coderadar_Punkte}
+Ein Autor erhält wie bereits erwähnt für das Einreichen eines Commits Punkte.
+Dadurch ist es möglich, positive Handlungen beziehungsweise qualitativ hochwertigen Code direkt mit vielen Punkten zu belohnen und qualitativ schlechten Code mit wenig oder keinen Punkten zu bestrafen.
+Die Anzahl an Punkten ermöglicht überdies einen einfachen Vergleich zwischen verschiedenen Autoren oder zwischen verschiedenen Zeitpunkten der Betrachtung des Profils eines Autors.
+Die Punkte dienen somit auch als Basis für einige der anderen Gamification-Elemente, auf die im Laufe dieses Abschnitts eingegangen wird.
+Der Nutzer bekommt seinen aktuellen Punktestand in Form eines Fortschrittsbalken zum nächsten Level angezeigt.
+
+\subsection{Level}
+\label{coderadar_Level}
+Level dienen als zusätzliche Motivation für den Nutzer, möglichst viele Punkte zu erhalten.
+So können mit höherem Level bestimmte optische Zusatzfunktionen freigeschaltet werden.
+Der Fortschritt im aktuellen Level wird in den Ansichten, in denen der verfügbare Platz dies zulässt, beispielsweise nicht in der City-View oder der Dependency-Map, an prominenter Stelle mittels eines Fortschrittsbalkens dargestellt.
+An dieser Stelle sind folgende Funktionen mit dem entsprechend benötigten Level geplant.
+
+\begin{center}
+	\begin{tabular}{|p{12cm}|p{1cm}|}
+		\hline
+		Zusatzfunktion & Level \\ \hline
+		Das persönliche Profilbild kann angepasst werden & x \\ \hline
+		Der Fortschrittsbalken für das Level kann alternativ auch den Fortschritt auf ein anderes Ziel hin darstellen & x \\ \hline
+		Das Farbschema der Benutzeroberfläche kann angepasst werden & x \\ \hline
+		Die Auswahl an Badges, die anderen Nutzern angezeigt werden, kann personalisiert werden & x \\ \hline
+	\end{tabular}
+\end{center}
 
 \chapter{Umsetzung}
 \label{Umsetzung}

@@ -7,34 +7,36 @@
 \BOOKMARK [2][-]{subsection.2.1.1}{Definition und Einordnung}{section.2.1}% 7
 \BOOKMARK [2][-]{subsection.2.1.2}{Spielermotivation}{section.2.1}% 8
 \BOOKMARK [2][-]{subsection.2.1.3}{Gamification-Elemente}{section.2.1}% 9
-\BOOKMARK [1][-]{section.2.2}{Codeanalyse}{chapter.2}% 10
-\BOOKMARK [1][-]{section.2.3}{Kriterien f\374r qualitativ hochwertigen Code}{chapter.2}% 11
-\BOOKMARK [2][-]{subsection.2.3.1}{Funktionale Vollst\344ndigkeit}{section.2.3}% 12
-\BOOKMARK [2][-]{subsection.2.3.2}{Nutzbarkeit}{section.2.3}% 13
-\BOOKMARK [2][-]{subsection.2.3.3}{Performanz}{section.2.3}% 14
-\BOOKMARK [2][-]{subsection.2.3.4}{Kompatibilit\344t}{section.2.3}% 15
-\BOOKMARK [2][-]{subsection.2.3.5}{Zuverl\344ssigkeit}{section.2.3}% 16
-\BOOKMARK [2][-]{subsection.2.3.6}{Sicherheit}{section.2.3}% 17
-\BOOKMARK [2][-]{subsection.2.3.7}{Wartbarkeit}{section.2.3}% 18
-\BOOKMARK [2][-]{subsection.2.3.8}{Portierbarkeit}{section.2.3}% 19
-\BOOKMARK [2][-]{subsection.2.3.9}{Auswahl der Qualit\344tskriterien}{section.2.3}% 20
-\BOOKMARK [0][-]{chapter.3}{Projektkontext}{}% 21
-\BOOKMARK [1][-]{section.3.1}{Problembeschreibung}{chapter.3}% 22
-\BOOKMARK [1][-]{section.3.2}{Kontext coderadar}{chapter.3}% 23
-\BOOKMARK [1][-]{section.3.3}{Anforderungen}{chapter.3}% 24
-\BOOKMARK [1][-]{section.3.4}{Wissenschaftliche Einordnung}{chapter.3}% 25
-\BOOKMARK [0][-]{chapter.4}{Entwurf des L\366sungsansatzes}{}% 26
-\BOOKMARK [1][-]{section.4.1}{Architektur}{chapter.4}% 27
-\BOOKMARK [1][-]{section.4.2}{Metrikmatrix}{chapter.4}% 28
-\BOOKMARK [1][-]{section.4.3}{Gamification-Elemente}{chapter.4}% 29
-\BOOKMARK [0][-]{chapter.5}{Umsetzung}{}% 30
-\BOOKMARK [1][-]{section.5.1}{Programmierung}{chapter.5}% 31
-\BOOKMARK [0][-]{chapter.6}{Abschluss}{}% 32
-\BOOKMARK [1][-]{section.6.1}{Verifizierung der Anforderungen}{chapter.6}% 33
-\BOOKMARK [1][-]{section.6.2}{Fazit}{chapter.6}% 34
-\BOOKMARK [0][-]{chapter*.45}{Anhang}{}% 35
-\BOOKMARK [0][-]{section*.46}{Abk\374rzungsverzeichnis}{}% 36
-\BOOKMARK [0][-]{section*.48}{Abbildungsverzeichnis}{}% 37
-\BOOKMARK [0][-]{section*.49}{Tabellenverzeichnis}{}% 38
-\BOOKMARK [0][-]{chapter*.50}{Quellcodeverzeichnis}{}% 39
-\BOOKMARK [0][-]{chapter*.51}{Literaturverzeichnis}{}% 40
+\BOOKMARK [1][-]{section.2.2}{Kriterien f\374r qualitativ hochwertigen Code}{chapter.2}% 10
+\BOOKMARK [2][-]{subsection.2.2.1}{Funktionale Vollst\344ndigkeit}{section.2.2}% 11
+\BOOKMARK [2][-]{subsection.2.2.2}{Nutzbarkeit}{section.2.2}% 12
+\BOOKMARK [2][-]{subsection.2.2.3}{Performanz}{section.2.2}% 13
+\BOOKMARK [2][-]{subsection.2.2.4}{Kompatibilit\344t}{section.2.2}% 14
+\BOOKMARK [2][-]{subsection.2.2.5}{Zuverl\344ssigkeit}{section.2.2}% 15
+\BOOKMARK [2][-]{subsection.2.2.6}{Sicherheit}{section.2.2}% 16
+\BOOKMARK [2][-]{subsection.2.2.7}{Wartbarkeit}{section.2.2}% 17
+\BOOKMARK [2][-]{subsection.2.2.8}{Portierbarkeit}{section.2.2}% 18
+\BOOKMARK [2][-]{subsection.2.2.9}{Auswahl der Qualit\344tskriterien}{section.2.2}% 19
+\BOOKMARK [1][-]{section.2.3}{Codeanalyse}{chapter.2}% 20
+\BOOKMARK [2][-]{subsection.2.3.1}{Analyseprozess}{section.2.3}% 21
+\BOOKMARK [2][-]{subsection.2.3.2}{Herausforderungen}{section.2.3}% 22
+\BOOKMARK [0][-]{chapter.3}{Projektkontext}{}% 23
+\BOOKMARK [1][-]{section.3.1}{Problembeschreibung}{chapter.3}% 24
+\BOOKMARK [1][-]{section.3.2}{Kontext coderadar}{chapter.3}% 25
+\BOOKMARK [1][-]{section.3.3}{Anforderungen}{chapter.3}% 26
+\BOOKMARK [1][-]{section.3.4}{Wissenschaftliche Einordnung}{chapter.3}% 27
+\BOOKMARK [0][-]{chapter.4}{Entwurf des L\366sungsansatzes}{}% 28
+\BOOKMARK [1][-]{section.4.1}{Architektur}{chapter.4}% 29
+\BOOKMARK [1][-]{section.4.2}{Metrikmatrix}{chapter.4}% 30
+\BOOKMARK [1][-]{section.4.3}{Gamification-Elemente}{chapter.4}% 31
+\BOOKMARK [0][-]{chapter.5}{Umsetzung}{}% 32
+\BOOKMARK [1][-]{section.5.1}{Programmierung}{chapter.5}% 33
+\BOOKMARK [0][-]{chapter.6}{Abschluss}{}% 34
+\BOOKMARK [1][-]{section.6.1}{Verifizierung der Anforderungen}{chapter.6}% 35
+\BOOKMARK [1][-]{section.6.2}{Fazit}{chapter.6}% 36
+\BOOKMARK [0][-]{chapter*.48}{Anhang}{}% 37
+\BOOKMARK [0][-]{section*.49}{Abk\374rzungsverzeichnis}{}% 38
+\BOOKMARK [0][-]{section*.51}{Abbildungsverzeichnis}{}% 39
+\BOOKMARK [0][-]{section*.52}{Tabellenverzeichnis}{}% 40
+\BOOKMARK [0][-]{chapter*.53}{Quellcodeverzeichnis}{}% 41
+\BOOKMARK [0][-]{chapter*.54}{Literaturverzeichnis}{}% 42

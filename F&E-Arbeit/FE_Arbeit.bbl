@@ -21,6 +21,20 @@
 \newblock \url{http://dx.doi.org/10.1007/978-3-8274-2247-7_3}. --
 \newblock ISBN 978--3--8274--2247--7
 
+\bibitem[Blo14]{OB2021}
+\textsc{Blog}, Oracle:
+\newblock \emph{Upgrading major Java versions}.
+\newblock
+  \url{https://blogs.oracle.com/java-platform-group/upgrading-major-java-versions},
+  2014. --
+\newblock [Online; Zugriff am 01.07.2021 10:45]
+
+\bibitem[Che21]{Ch2021}
+\textsc{Checkstyle}:
+\newblock \emph{Standard Checks}.
+\newblock \url{https://checkstyle.sourceforge.io/checks.html}, 2021. --
+\newblock [Online; Zugriff am 30.06.2021 20:21]
+
 \bibitem[DDKN11]{DD2011}
 \textsc{Deterding}, Sebastian ; \textsc{Dixon}, Dan ; \textsc{Khaled}, Rilla  ;
   \textsc{Nacke}, Lennart:
@@ -83,6 +97,20 @@
 \emph{SonarQuest - Mit Gamification zu besserer Softwarequalität}.
 \newblock \url{https://www.viadee.de/loesungen/java/sonarquest}, 2018. --
 \newblock [Online; Zugriff am 16.05.2021 16:06]
+
+\bibitem[Son21a]{SC2021}
+\textsc{SonarSource}:
+\newblock \emph{SonarCloud}.
+\newblock \url{https://sonarcloud.io/}, 2021. --
+\newblock [Online; Zugriff am 30.06.2021 20:51]
+
+\bibitem[Son21b]{So2021}
+\textsc{SonarSource}:
+\newblock \emph{SonarQube Metric Definitions}.
+\newblock
+  \url{https://docs.sonarqube.org/latest/user-guide/metric-definitions/}, 2021.
+  --
+\newblock [Online; Zugriff am 30.06.2021 20:21]
 
 \bibitem[Spi11]{SP2011}
 \textsc{Spinellis}, Diomidis:

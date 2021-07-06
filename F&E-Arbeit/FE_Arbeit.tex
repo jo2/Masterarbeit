@@ -407,12 +407,6 @@ Dies führt dazu, dass der Einsatz von Leaderboards kritisch zu sehen ist.
 Durch die Verwendung von Team-Leaderboards können diese negativen Effekte allerdings etwas reduziert werden, da sie den Fokus auf die Teamleistung legen.
 Zum einen wird dadurch kein einzelner Spieler bloßgestellt und zum anderen hat das Team ein gemeinsames Ziel auf das es hinarbeiten kann, wodurch sich laut \cite{SH2014} die Verbundenheit im Team erhöht. 
 
-\section{Codeanalyse}
-\label{Codeanalyse}
-% TODO Auswahl und Beschreibung der Werkzeuge zur Codeanalyse
-
-% TODO Beschreibung der Metriken von Checkstyle und SonarQube
-
 \section{Kriterien für qualitativ hochwertigen Code}
 \label{Kriterien_guter_Code}
 Ein zentraler Aspekt dieser Arbeit ist die Messung von Code-Qualität.
@@ -444,7 +438,6 @@ Anschließend müssten die Aufrufe und Implementierungen von Schnittstellen unte
 Java bietet allerdings verschiedene Möglichkeiten, um Schnittstellen zu anderer Software aufzurufen.
 Dies kann über \acf{REST}- beziehungsweise \acf{SOAP}-Anfragen, für die es verschiedene Implementierungen gibt, als auch über das Importieren dieser anderen Software als Abhängigkeit geschehen.
 Die Entwicklung der Muster zur Erkennung dieser Aufrufe und Implementierungen geht dabei über den zeitlichen Rahmen dieser Arbeit hinaus.
-
 Auch zur Koexistenz neben anderen Systemen lassen sich nur schwer Aussagen tätigen, da das Programm hierzu im laufenden Betrieb untersucht werden muss.
 
 \subsection{Zuverlässigkeit}
@@ -534,24 +527,98 @@ Daher wird dieser Aspekt im Rahmen dieser Arbeit vernachlässigt.
 \label{Auswahl_Kriterien}
 Wie oben beschrieben, eignen sich nicht alle Aspekte aus \cite{ISO-25010} zur Bewertung der Codequalität innerhalb der Codeanalyse.
 In diesem Abschnitt werden die Aspekte vorgestellt, die im Rahmen dieser Arbeit als Kriterien für qualitativ hochwertige Software verwendet werden sollen.
+Die im folgenden aufgelisteten Metriken stammen aus \cite{Ch2021} und \cite{So2021}.
 
-\paragraph{Reifegrad}
-Der Reifegrad des Programms wird im Rahmen dieser Arbeit anhand der Testabdeckung gemessen.
+\paragraph{Zuverlässigkeit}
+Die Zuverlässigkeit des Programms wird im Rahmen dieser Arbeit unter anderem anhand der Testabdeckung gemessen.
 Der oben beschriebene Fall, dass einige Tests die Funktionsweise des zu testenden Codes nicht korrekt prüfen, wird hier nicht berücksichtigt.
 Es wird davon ausgegangen, dass die geschriebenen Tests zur Überprüfung der Funktionsweise geeignet sind.
-Die von SonarQube gefundenen Bugs und Code-Smells und der entsprechend geschätzte Aufwand zur Behebung dieser fließen ebenfalls in die Bewertung des Reifegrads mit ein.
+Die gefundenen Bugs und Code-Smells und der entsprechend geschätzte Aufwand zur Behebung dieser fließen ebenfalls in die Bewertung der Zuverlässigkeit mit ein.
 
-\paragraph{\acs{OWASP}-Top-Ten}
-Im Rahmen der Analyse der Sicherheit des Programms wird eine Analyse auf mögliche Schwachstellen aus den \acs{OWASP}-Top-Ten durchgeführt.
+Metriken, die für die Messung der Zuverlässigkeit verwendet werden, sind folgenden:
+\begin{itemize}
+	\item $test\_success\_density$\\
+	Die $test\_success\_density$ gibt den Anteil erfolgreicher Tests in einer Software an.
+	Je mehr Tests fehlschlagen, desto unzuverlässiger ist Programm 
+	\item $uncovered\_lines$\\
+	$uncovered\_lines$ gibt an, wie viele Programmzeilen nicht im Rahmen von Tests ausgeführt werden.
+	Sollte diese Zeilen einen Fehler beinhalten, kann dieser nicht durch Tests gefunden werden.
+	\item $line\_coverage$\\
+	Die $line\_coverage$ beschreibt den Anteil an Zeilen, die durch Tests abgedeckt sind.
+	\item $coverage$\\
+	$coverage$ beschreibt eine Mischung aus Zeilenüberdeckung und Bedingungsüberdeckung und gibt so noch besser Aufschluss darüber, welcher Code durch Tests abgedeckt ist.
+	\item $effort\_to\_reach\_maintainability\_rating\_a$ % TODO existiert die Metrik?
+	\item $code\_smells$\\
+	$code\_smells$ sind potentielle Problemstellen im Code.
+	An diesen Stellen ist der Code verwirrend oder schwer zu verstehen und zu warten.
+	Sie müssen nicht zwangsweise zu Fehlern führen, sind aber Stellen, auf die der Entwickler besonderes Augenmerk richten sollte, da sie zu unvorhergesehenem verhalten führen können.
+	\item $bugs$\\
+	$bugs$ sind Fehler im Programmcode, die einer direkten Behebung bedürfen.
+	Diese Fehler führen dazu, dass das Programm abstürzt oder falsche Aktionen ausführt.
+	\item $reliability\_rating$\\
+	Das $reliability\_rating$ bezieht sich auf sich auf die Anzahl und die Schwere der gefundenen Bugs.
+	Die Schwere geht dabei von \textit{BLOCKER}, ein Problem welches sofort behoben werden muss, da es zum Absturz des Systems führen kann, bis \textit{MINOR}, was Qualitätsmängel beschreibt, die die Entwicklerproduktivität beeinflussen.
+	Zu ersterem gehören unter anderem Speicherlecks, zu letzterem gehören beispielsweise zu lange Zielen, die das Lesen des Codes erschweren.
+	\item $violations$\\
+	In den $violations$ werden alle Arten von Problemstellen unabhängig von ihrer Schwere zusammengefasst.
+	\item $lines\_to\_cover$\\
+	$lines\_to\_cover$ beschreibt die Anzahl an Code-Zeilen, die durch Tests abgedeckt werden müssen.
+	\item $sqale\_rating$\\
+	Das $sqale\_rating$ beschreibt die Zeit die anteilig zur gesamten Entwicklungszeit, die notwendig ist, um technische Schulden im Projekt auszugleichen.
+\end{itemize}
+
+\paragraph{Sicherheitsschwachstellen}
+Im Rahmen der Analyse der Sicherheit des Programms wird eine Analyse auf mögliche Schwachstellen durchgeführt.
+Zu diesen Schwachstellen gehören unter anderem Aspekte aus den \acs{OWASP}-Top-Ten, kommunikationsspezifische Schwachstellen wie offene Cross-Origin-Einstellungen, Sicherheitslücken aus der \acf{CWE} oder sprachspezifische Schwachstellen wie Code-Injektion bei dynamischer Code-Ausführung.
+
+Cross-Origin-Einstellungen sorgen dafür, dass Anfragen an einen Server nur von bestimmten Adressen aus erlaubt sind.
+Dadurch kann beispielsweise verhindert werden, dass ein Dienst auf Daten aus dem Speicher des Browsers zugreift und so Anfragen im Namen des Nutzers stellt.
+
+Die \acs{CWE} ist eine Auflistung bekannter Sicherheitslücken in Systemen, Frameworks und Sprachen.
+Für viele dieser Sicherheitslücken existieren bereits Lösungen, für andere müssen eigene Lösungen implementiert werden.
+
+Bei der dynamischen Ausführung von Code kann zur Zeit der Kompilierung nicht gewährleistet werden, welche Art von Objekt verwendet wird, dies steht erst zur Ausführungszeit fest.
+Ein Angreifer könnte an dieser Stelle nun ein manipuliertes Objekt injizieren und so die Funktion der Software beeinflussen.
+
 Sollten entsprechende Schwachstellen vorhanden sein, senkt dies die Codequalität an dieser Stelle deutlich.
+
+Zur Bewertung werden hier die gefundenen \textit{vulnerabilities} verwendet.
+Eine \textit{vulnerability} bezeichnet dabei eine Stelle im Code, die eine Möglichkeit für einen Angriff bietet.
 
 \paragraph{Wiederverwendbarkeit}
 Zur Bewertung der Wiederverwendbarkeit von Code innerhalb des Programms wird die Anzahl von doppeltem Code bewertet.
 Doppelter Code deutet darauf hin, dass Funktionen innerhalb des Programms hätten zusammengefasst werden können, wodurch potentiell weniger Fehlerquellen bestehen und die Komplexität reduziert werden kann.
+Auch die Dokumentation von Methoden, die potentiell wiederverwendet werden können, trägt einen Teil dazu bei, dass besagte Wiederverwendung stattfindet.
+
+Die Wiederverwendbarkeit wird im Rahmen dieser Arbeit mit folgenden Metriken gemessen:
+
+\begin{itemize}
+	\item $duplicated\_lines\_density$\\
+	Die $duplicated\_lines\_density$ beschreibt den Anteil von sich wiederholenden Code-Zeilen im Vergleich zum gesamten Code.
+	Je öfter, gleicher oder ähnlicher Code erneut geschrieben wurde, desto schlechter sind Teile des Programms wiederverwendbar.
+	\item $public\_undocumented\_api$ % TODO existiert diese Metrik
+	\item $MissingJavadocMethod$
+	Damit Code wiederverwendet wird, muss schnell und einfach erkennbar sein, welche Funktion ein bestimmter Teil des Codes erfüllt.
+	Dies kann durch eine passende Dokumentation des Codes, der potentiell wiederverwendet werden kann, erleichtert werden.
+	$MissingJavadocMethod$ misst, wie oft diese Dokumentation nicht vorhanden ist. 
+\end{itemize}
 
 \paragraph{Analysierbarkeit}
 Die Analysierbarkeit ergibt sich im Rahmen dieser Arbeit aus dem Grad der Einhaltung von Stilrichtlinien und Konventionen.
 Es wird davon ausgegangen, dass nonkonformer Code schwerer zu lesen, zu verstehen und entsprechend zu analysieren ist.
+Die Komplexität des Codes und die Dokumentation spielen hier ebenfalls eine Rolle.
+
+Um die Analysierbarkeit bewerten zu können, werden folgende Metriken herangezogen:
+
+\begin{itemize}
+	\item $cognitive\_complexity$\\
+	Die $cognitive\_complexity$ beschreibt die Komplexität einer Methode.
+	Die Berechnung ist an die McCabe-Metrik angelehnt, der Wert ergibt sich aus der Anzahl gewisser Schlüsselwörter innerhalb einer Methode.
+	\item $MissingJavadocMethod$
+	\item $MethodName, ClassName, usw.$
+	Durch diese Metriken wird überprüft, dass Namen für Bezeichner, beispielsweise Methodennamen oder Klassennamen, einem gewissen Schema entsprechen.
+	Es kann zwar nicht validiert werden, dass der Name des Bezeichners der Funktion des selbigen entspricht, allerdings erleichtert dieses Schema generell die Lesbarkeit.
+\end{itemize}
 
 \paragraph{Komplexität}
 Die Komplexität kann mit der McCabe-Metrik gemessen werden.
@@ -565,13 +632,116 @@ Die Metrik berechnet für eine Methode einen Komplexitätswert, welcher wie folg
 \end{itemize}
 
 Ein hoher Wert hat entsprechend einen negativen Effekt auf die Analysierbarkeit.
+Neben der McCabe-Metrik werden auch noch andere Komplexitätsmetriken verwendet.
+
+Um die Komplexität zu messen, gibt es mehrere Möglichkeiten:
+
+\begin{itemize}
+	\item $ognitive\_complexity$
+	\item $BooleanExpressionComplexity$\\
+	Die $BooleanExpressionComplexity$ bezieht sich auf die Komplexität boolescher Ausdrücke.
+	Durch Verschachtlungen von Negationen, Und- und Oder-Ausdrücken können diese teils sehr komplex werden.
+	Da diese Ausdrücke häufig in \textit{if}- oder \textit{switch}-Abfragen für die Entscheidung verwendet werden, welcher Zweig eines Programms durchlaufen werden soll, ist es wichtig, dass sie gut zu verstehen sind.
+	\item $ClassFanOutComplexity$\\
+	Die $ClassFanOutComplexity$ beschreibt die Anzahl an Abhängigkeiten einer Klasse oder eines Interface.
+	Jede Abhängig kann dazu führen, dass mehr Code ausgeführt wird, der potentiell zum Verständnis der aktuellen Funktion notwendig ist.
+	Je mehr Abhängigkeiten eine Klasse oder ein Interface hat, desto höher ist also auch die Komplexität.
+	\item $CyclomaticComplexity$\\
+	Die $CyclomaticComplexity$ misst die McCabe-Komplexität.
+	\item $NPathComplexity$\\
+	Die $NPathComplexity$ ist eine Erweiterung der $CyclomaticComplexity$, bei der stärker auf die Kombination boolescher Ausdrücke eingegangen wurde.
+	\item $JavaNCSS$\\
+	$JavaNCSS$ beschreibt die Anzahl an Anweisungen innerhalb einer Klasse oder Methode.
+	Je mehr Anweisungen vorhanden sind, desto höher ist die Komplexität.
+\end{itemize}
 
 \paragraph{Wissensmonopole}
 Wie oben beschrieben, sorgen Wissensmonopole dafür, dass Codeverständnis gegebenenfalls neu erarbeitet werden muss.
 Grade im Zusammenhang mit komplexem Code ist dies ein Problem.
+Durch die Verwendung von Kommentaren und weiterer Dokumentation kann Wissensmonopolen ein Stück weit entgegengewirkt werden.
 Wissensmonopole in komplexem Code haben dementsprechend einen negativen Einfluss auf die Analysierbarkeit.
 
-% TODO Machbarkeit Sonarplugin für Analyse des Projektes für aktuellen Commit prüfen, Enthält Testabdeckung, Sicherheitswarnungen, Warnungen zum Ressourcenverbrauch
+\section{Codeanalyse}
+\label{Codeanalyse}
+In diesem Abschnitt wird genauer auf die Codeanalyse eingegangen.
+Dazu wird zunächst in Abschnitt \ref{Analyseprozess} der Analyseprozess innerhalb von coderadar beschrieben.
+Anschließend wird in Abschnitt \ref{Herausforderungen} auf besondere Herausforderungen bei der Erweiterung des bisherigen Analyseprozesses eingegangen.
+
+\subsection{Analyseprozess}
+\label{Analyseprozess}
+Die Codeanalyse in coderadar erfolgt jeweils Commit- und Dateiweise.
+Für jeden Commit werden die Dateien geladen, die geändert wurden.
+Diese Dateien werden dann in die konfigurierten Analyse-Plugins gegeben.
+Die Plugins implementieren dabei jeweils eine Analysemethode, die als Parameter den Pfad zur Datei und den Dateiinhalt bekommt.
+Diese Methode gibt die Metriken für die Datei mit den jeweils berechneten Werten und den Fundorten für die Makel im Quellcode, die zu Abwertungen geführt haben.
+Um die Bewertungen für einen Commit zu ermitteln, werden für die Metrikwerte für alle geänderten Dateien in diesem Commit zusammengerechnet.
+Dadurch, dass diese Analyse für jeden Commit durchgeführt wird, entsteht auch eine Historie über die Commits.
+
+
+\subsection{Herausforderungen}
+\label{Herausforderungen}
+Um einige der in Abschnitt \ref{Kriterien_guter_Code} geforderten Metriken messen zu können, muss die bisher durchgeführte Analyse erweitert werden.
+Ein zur Messung dieser Metriken geeignetes Werkzeug ist beispielsweise SonarQube\footnote{\url{https://www.sonarqube.org/}}.
+SonarQube bietet mit dem SonarScanner\footnote{\url{https://docs.sonarqube.org/latest/analysis/scan/sonarscanner/}} \acf{CLI} ein Werkzeug für die Kommandozeile, um Projekte zu analysieren.
+Das Ergebnis dieser Analyse wird anschließend an einen SonarQube-Server geschickt und kann dort entweder über die Benutzeroberfläche oder eine \acs{REST}-Schnittstelle eingesehen werden. 
+An dieser Stelle wird SonarQube verwendet, da es zum einen weit verbreitet ist.
+Laut \cite{SC2021} wurden allein in der \glqq as a Service\grqq{}-Version SonarCloud\footnote{\url{https://sonarcloud.io/}}, die ausschließlich für Open-Source-Software genutzt werden kann, bereits über 180.000 Projekte analysiert.
+Dazu kommen noch von Firmen und Privatpersonen bereitgestellte Instanzen, die für Closed-Source-Software benötigt werden.
+Zum anderen wird SonarQube als Standard bei der adesso SE verwendet wird.
+An dieser Stelle orientiert sich diese Arbeit am Vorgehen der adesso SE, da im Rahmen der Masterarbeit, die auf dieser Arbeit aufbauen wird, bei der adesso SE ein Feldversuch zur Evaluierung der in dieser Arbeit vorgenommenen Implementierung durchgeführt werden soll.
+
+An dieser Stelle bestehen aber auch einige Probleme.
+Zum einen hält SonarQube, abgesehen von einer manuell vorzunehmenden Versionierung, nur die aktuellen Analyseergebnisse vor.
+Um Analyseergebnisse von älteren Commits zu erhalten, muss für den jeweiligen Commit entweder eine Version angelegt werden oder das Projekt muss auf diesen Commit gesetzt werden.
+Um an dieser Stelle auch parallele Analysen zu ermöglichen, werden jeweils neue Projekte für die einzelnen Commits angelegt, die über den Commit-Hash eindeutig identifiziert werden.
+
+Eine weitere Herausforderung besteht darin, aus der einzelnen Datei, die in coderadar für die Analyse zur Verfügung steht, den kompletten Projektstand zu bekommen.
+Hierfür muss das komplette Projekt an dem zu analysierenden Commit ausgecheckt werden.
+coderadar bietet hier die Möglichkeit, die Analyse-Plugins zu konfigurieren.
+Hier kann zu Beginn jeder Analyse der entsprechende Commit ausgecheckt werden.
+
+Um nun die SonarQube-Analyse durchzuführen, werden allerdings die kompilierten Dateien benötigt.
+Um das Projekt kompilieren zu können, sind zunächst einige Informationen über die Projektstruktur notwendig.
+Projekte verwenden teilweise Build-Management-Werkzeuge wie Gradle\footnote{\url{https://gradle.org/}} oder Maven\footnote{\url{https://maven.apache.org/}}.
+Durch diese Werkzeuge können Abhängigkeiten, die über die \acf{JRE} hinaus gehen, automatisch aufgelöst werden.
+Können diese Abhängigkeiten nicht aufgelöst werden, kann auch das Projekt nicht kompiliert werden.
+Entsprechend können auch Tests fehlschlagen und die Metriken falsche Werte zurückgeben.
+Um herauszufinden, ob und wenn ja, welches Build-Management-Werkzeug verwendet wird, kann nach bestimmten Dateien im Projektverzeichnis gesucht werden
+Gradle zeichnet sich an dieser Stelle durch eine Datei \textit{build.gradle} aus, bei Maven existiert eine \textit{pom.xml}.
+Ist eine dieser Dateien im Projektverzeichnis vorhanden, können die entsprechenden Befehle zum Kompilieren des jeweiligen Build-Management-Werkzeugs verwendet werden.
+Sind keine dieser Dateien vorhanden, wird der klassische Java-Befehl zum Kompilieren von Dateien verwendet.
+
+An dieser Stelle treten ebenfalls einige Herausforderungen auf.
+Mit der Zeit werden Versionen von Abhängigkeiten, des Build-Management-Werkzeugs oder von Java geändert.
+Damit das Projekt weiterhin zuverlässig kompiliert werden kann, muss auf diese Versionsänderungen reagiert werden können.
+Haben sich Abhängigkeiten so stark verändert, dass die im Build-Management-Werkzeug angegebene Version nicht mehr verfügbar ist, kann das Projekt auch nicht mehr kompiliert werden.
+An der Stelle können dann keine Metriken über SonarQube bezogen werden.
+Generell kann auf neuere Versionen in den Abhängigkeiten nicht reagiert werden, da in den Abhängigkeiten teilweise benötigte Funktionen geändert werden oder wegfallen, sodass die ursprüngliche Funktionalität der Software nicht mehr gegeben ist.
+Darüber hinaus würden solche Änderungen Änderungen in der \textit{build.gradle} oder der \textit{pom.xml} erfordern und somit die Software verändern, was im Rahmen dieses Projekts nicht passieren soll.
+
+Der Anpassung der Version des Build-Management-Werkzeugs kann im Beispiel von Gradle damit begegnet werden, dass ein Gradle Wrapper\footnote{\url{https://docs.gradle.org/current/userguide/gradle_wrapper.html}} verwendet wird.
+Dieser zieht die Versionsnummer für Gradle fest, lädt diese herunter und konfiguriert sie.
+Dadurch muss nicht jede benötigte Gradle-Version manuell heruntergeladen werden.
+Teilweise kann es hier auch passieren, dass die Java-Version, die von Gradle verwendet wird, eine andere ist, als die, die im Projekt verwendet wird.
+Dies führt dazu, dass beispielsweise die Java-Version 7 ausgelesen wird, Gradle aber die Version 8 benötigt.
+Da laut \cite{OB2021} Java 8 Rückwärtskompatibel zu Java 6 und 7 ist, wird an dieser Stelle immer Java 8 verwendet wenn eine dieser drei Versionen ausgelesen wurde.
+
+Eine Änderung in der Java-Version kann in einem Gradle-Projekt darüber erkannt werden, dass sich bestimmte Eigenschaften in der \textit{build.gradle} ändern.
+Hier muss entsprechend eine Version der jeweiligen \acs{JRE} installiert sein, damit das Projekt mit der korrekten Version kompiliert werden kann.
+Um die Java-Version entsprechend zu setzen, müssen die Umgebungsvariablen \textit{$JAVA\_HOME$} und \textit{$PATH$} angepasst werden.
+
+Im Anschluss an das Kompilieren des Projekts wird die SonarQube-Analyse gestartet.
+Das SonarScanner \acs{CLI} stellt die Analyseergebnisse nicht in Form einer Datei zur Verfügung, sondern lädt diese auf einen SonarQube-Server hoch.
+Dieser Server muss neben der Datenbank für coderadar und coderadar selbst deployt werden.
+Die Analyseergebnisse können dann, wie oben bereits erwähnt, über eine \acs{REST}-Schnittstelle abgefragt werden.
+Damit das Anfragen der Analyseergebnisse möglich ist, muss im SonarQube-Server zunächst ein Projekt für diesen Commit angelegt werden.
+Dies ist auch über die \acs{REST}-Schnittstelle möglich und muss zu Beginn einer jeden Analyse gemacht werden.
+Im Anschluss an die Analyse kann das jeweilig konfigurierte Projekt dann wieder entfernt werden, um Ressourcen zu schonen.
+
+Damit nicht für jede Datei, die im zu untersuchenden Commit geändert wurde, eine Anfrage gestellt werden muss, wird zu Beginn eine große Anfrage an den SonarQube-Server gestellt.
+Die Ergebnisse dieser Anfrage werden dann nach dem jeweiligen Dateipfad aufgeschlüsselt gespeichert.
+In der Analyse der jeweiligen Datei wird dann auf diese zwischengespeicherten Daten zugegriffen.
+So muss nicht für jede zu analysierende Datei eine Anfrage via \acs{REST} gestellt werden, und die Analyse einer Datei ist performanter.
 
 
 \chapter{Projektkontext}
@@ -878,10 +1048,13 @@ Daher wird die Code-Qualität kontinuierlich betrachtet und wenn möglich sollen
 \cleardoublepage\phantomsection\addcontentsline{toc}{chapter}{Abkürzungsverzeichnis}
 \chapter*{Abkürzungsverzeichnis}
 \begin{acronym}
-	\acro{LOC}{Lines of Code} % 316
-	\acro{OWASP}{Open Web Application Security Project} % 481
 	\acro{REST}{Representational State Transfer} % 439
 	\acro{SOAP}{Simple Object Access Protocol} % 439
+	\acro{OWASP}{Open Web Application Security Project} % 480
+	\acro{CWE}{Common Weakness Enumeration} % 572
+	\acro{CLI}{Command Line Interface} % 685		
+	\acro{JRE}{Java Runtime Environment} % 706
+	\acro{LOC}{Lines of Code} % 769
 \end{acronym}
 
 \newpage{}

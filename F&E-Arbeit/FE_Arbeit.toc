@@ -21,59 +21,61 @@
 \contentsline {paragraph}{\nonumberline Quests}{8}{section*.13}
 \contentsline {paragraph}{\nonumberline Avatare und Profile}{9}{section*.14}
 \contentsline {paragraph}{\nonumberline Leaderboards}{9}{section*.15}
-\contentsline {section}{\numberline {2.2}Codeanalyse}{9}{section.2.2}
-\contentsline {section}{\numberline {2.3}Kriterien f\IeC {\"u}r qualitativ hochwertigen Code}{9}{section.2.3}
-\contentsline {subsection}{\numberline {2.3.1}Funktionale Vollst\IeC {\"a}ndigkeit}{9}{subsection.2.3.1}
-\contentsline {subsection}{\numberline {2.3.2}Nutzbarkeit}{10}{subsection.2.3.2}
-\contentsline {subsection}{\numberline {2.3.3}Performanz}{10}{subsection.2.3.3}
-\contentsline {subsection}{\numberline {2.3.4}Kompatibilit\IeC {\"a}t}{10}{subsection.2.3.4}
-\contentsline {subsection}{\numberline {2.3.5}Zuverl\IeC {\"a}ssigkeit}{11}{subsection.2.3.5}
-\contentsline {subsection}{\numberline {2.3.6}Sicherheit}{12}{subsection.2.3.6}
-\contentsline {subsection}{\numberline {2.3.7}Wartbarkeit}{12}{subsection.2.3.7}
-\contentsline {subsection}{\numberline {2.3.8}Portierbarkeit}{13}{subsection.2.3.8}
-\contentsline {subsection}{\numberline {2.3.9}Auswahl der Qualit\IeC {\"a}tskriterien}{14}{subsection.2.3.9}
-\contentsline {paragraph}{\nonumberline Reifegrad}{14}{section*.19}
-\contentsline {paragraph}{\nonumberline \acs {OWASP}-Top-Ten}{15}{section*.20}
-\contentsline {paragraph}{\nonumberline Wiederverwendbarkeit}{15}{section*.21}
-\contentsline {paragraph}{\nonumberline Analysierbarkeit}{15}{section*.22}
-\contentsline {paragraph}{\nonumberline Komplexit\IeC {\"a}t}{15}{section*.23}
-\contentsline {paragraph}{\nonumberline Wissensmonopole}{16}{section*.24}
-\contentsline {chapter}{\numberline {3}Projektkontext}{17}{chapter.3}
-\contentsline {section}{\numberline {3.1}Problembeschreibung}{17}{section.3.1}
-\contentsline {section}{\numberline {3.2}Kontext coderadar}{18}{section.3.2}
-\contentsline {section}{\numberline {3.3}Anforderungen}{20}{section.3.3}
-\contentsline {paragraph}{\nonumberline A.1}{21}{section*.26}
-\contentsline {paragraph}{\nonumberline A.2}{21}{section*.27}
-\contentsline {paragraph}{\nonumberline A.3}{21}{section*.28}
-\contentsline {paragraph}{\nonumberline A.4}{21}{section*.29}
-\contentsline {paragraph}{\nonumberline A.5}{21}{section*.30}
-\contentsline {paragraph}{\nonumberline A.6}{21}{section*.31}
-\contentsline {paragraph}{\nonumberline A.7}{21}{section*.32}
-\contentsline {paragraph}{\nonumberline B.1}{22}{section*.33}
-\contentsline {paragraph}{\nonumberline B.2}{22}{section*.34}
-\contentsline {paragraph}{\nonumberline B.3}{22}{section*.35}
-\contentsline {paragraph}{\nonumberline B.4}{22}{section*.36}
-\contentsline {paragraph}{\nonumberline B.5}{22}{section*.37}
-\contentsline {paragraph}{\nonumberline B.6}{22}{section*.38}
-\contentsline {paragraph}{\nonumberline F.1}{23}{section*.39}
-\contentsline {paragraph}{\nonumberline F.2}{23}{section*.40}
-\contentsline {paragraph}{\nonumberline F.3}{23}{section*.41}
-\contentsline {paragraph}{\nonumberline F.4}{23}{section*.42}
-\contentsline {paragraph}{\nonumberline F.5}{23}{section*.43}
-\contentsline {paragraph}{\nonumberline F.6}{23}{section*.44}
-\contentsline {section}{\numberline {3.4}Wissenschaftliche Einordnung}{24}{section.3.4}
-\contentsline {chapter}{\numberline {4}Entwurf des L\IeC {\"o}sungsansatzes}{27}{chapter.4}
-\contentsline {section}{\numberline {4.1}Architektur}{27}{section.4.1}
-\contentsline {section}{\numberline {4.2}Metrikmatrix}{27}{section.4.2}
-\contentsline {section}{\numberline {4.3}Gamification-Elemente}{27}{section.4.3}
-\contentsline {chapter}{\numberline {5}Umsetzung}{28}{chapter.5}
-\contentsline {section}{\numberline {5.1}Programmierung}{28}{section.5.1}
-\contentsline {chapter}{\numberline {6}Abschluss}{29}{chapter.6}
-\contentsline {section}{\numberline {6.1}Verifizierung der Anforderungen}{29}{section.6.1}
-\contentsline {section}{\numberline {6.2}Fazit}{29}{section.6.2}
-\contentsline {chapter}{\nonumberline Anhang}{30}{chapter*.45}
-\contentsline {chapter}{Abk\IeC {\"u}rzungsverzeichnis}{33}{section*.46}
-\contentsline {chapter}{Abbildungsverzeichnis}{34}{section*.48}
-\contentsline {chapter}{Tabellenverzeichnis}{35}{section*.49}
-\contentsline {chapter}{\nonumberline Quellcodeverzeichnis}{36}{chapter*.50}
-\contentsline {chapter}{\nonumberline Literaturverzeichnis}{37}{chapter*.51}
+\contentsline {section}{\numberline {2.2}Kriterien f\IeC {\"u}r qualitativ hochwertigen Code}{9}{section.2.2}
+\contentsline {subsection}{\numberline {2.2.1}Funktionale Vollst\IeC {\"a}ndigkeit}{9}{subsection.2.2.1}
+\contentsline {subsection}{\numberline {2.2.2}Nutzbarkeit}{10}{subsection.2.2.2}
+\contentsline {subsection}{\numberline {2.2.3}Performanz}{10}{subsection.2.2.3}
+\contentsline {subsection}{\numberline {2.2.4}Kompatibilit\IeC {\"a}t}{10}{subsection.2.2.4}
+\contentsline {subsection}{\numberline {2.2.5}Zuverl\IeC {\"a}ssigkeit}{11}{subsection.2.2.5}
+\contentsline {subsection}{\numberline {2.2.6}Sicherheit}{11}{subsection.2.2.6}
+\contentsline {subsection}{\numberline {2.2.7}Wartbarkeit}{12}{subsection.2.2.7}
+\contentsline {subsection}{\numberline {2.2.8}Portierbarkeit}{13}{subsection.2.2.8}
+\contentsline {subsection}{\numberline {2.2.9}Auswahl der Qualit\IeC {\"a}tskriterien}{14}{subsection.2.2.9}
+\contentsline {paragraph}{\nonumberline Zuverl\IeC {\"a}ssigkeit}{14}{section*.19}
+\contentsline {paragraph}{\nonumberline Sicherheitsschwachstellen}{16}{section*.20}
+\contentsline {paragraph}{\nonumberline Wiederverwendbarkeit}{17}{section*.22}
+\contentsline {paragraph}{\nonumberline Analysierbarkeit}{18}{section*.23}
+\contentsline {paragraph}{\nonumberline Komplexit\IeC {\"a}t}{18}{section*.24}
+\contentsline {paragraph}{\nonumberline Wissensmonopole}{19}{section*.25}
+\contentsline {section}{\numberline {2.3}Codeanalyse}{20}{section.2.3}
+\contentsline {subsection}{\numberline {2.3.1}Analyseprozess}{20}{subsection.2.3.1}
+\contentsline {subsection}{\numberline {2.3.2}Herausforderungen}{20}{subsection.2.3.2}
+\contentsline {chapter}{\numberline {3}Projektkontext}{24}{chapter.3}
+\contentsline {section}{\numberline {3.1}Problembeschreibung}{24}{section.3.1}
+\contentsline {section}{\numberline {3.2}Kontext coderadar}{25}{section.3.2}
+\contentsline {section}{\numberline {3.3}Anforderungen}{27}{section.3.3}
+\contentsline {paragraph}{\nonumberline A.1}{28}{section*.29}
+\contentsline {paragraph}{\nonumberline A.2}{28}{section*.30}
+\contentsline {paragraph}{\nonumberline A.3}{28}{section*.31}
+\contentsline {paragraph}{\nonumberline A.4}{28}{section*.32}
+\contentsline {paragraph}{\nonumberline A.5}{28}{section*.33}
+\contentsline {paragraph}{\nonumberline A.6}{28}{section*.34}
+\contentsline {paragraph}{\nonumberline A.7}{28}{section*.35}
+\contentsline {paragraph}{\nonumberline B.1}{29}{section*.36}
+\contentsline {paragraph}{\nonumberline B.2}{29}{section*.37}
+\contentsline {paragraph}{\nonumberline B.3}{29}{section*.38}
+\contentsline {paragraph}{\nonumberline B.4}{29}{section*.39}
+\contentsline {paragraph}{\nonumberline B.5}{29}{section*.40}
+\contentsline {paragraph}{\nonumberline B.6}{29}{section*.41}
+\contentsline {paragraph}{\nonumberline F.1}{30}{section*.42}
+\contentsline {paragraph}{\nonumberline F.2}{30}{section*.43}
+\contentsline {paragraph}{\nonumberline F.3}{30}{section*.44}
+\contentsline {paragraph}{\nonumberline F.4}{30}{section*.45}
+\contentsline {paragraph}{\nonumberline F.5}{30}{section*.46}
+\contentsline {paragraph}{\nonumberline F.6}{30}{section*.47}
+\contentsline {section}{\numberline {3.4}Wissenschaftliche Einordnung}{31}{section.3.4}
+\contentsline {chapter}{\numberline {4}Entwurf des L\IeC {\"o}sungsansatzes}{34}{chapter.4}
+\contentsline {section}{\numberline {4.1}Architektur}{34}{section.4.1}
+\contentsline {section}{\numberline {4.2}Metrikmatrix}{34}{section.4.2}
+\contentsline {section}{\numberline {4.3}Gamification-Elemente}{34}{section.4.3}
+\contentsline {chapter}{\numberline {5}Umsetzung}{35}{chapter.5}
+\contentsline {section}{\numberline {5.1}Programmierung}{35}{section.5.1}
+\contentsline {chapter}{\numberline {6}Abschluss}{36}{chapter.6}
+\contentsline {section}{\numberline {6.1}Verifizierung der Anforderungen}{36}{section.6.1}
+\contentsline {section}{\numberline {6.2}Fazit}{36}{section.6.2}
+\contentsline {chapter}{\nonumberline Anhang}{37}{chapter*.48}
+\contentsline {chapter}{Abk\IeC {\"u}rzungsverzeichnis}{40}{section*.49}
+\contentsline {chapter}{Abbildungsverzeichnis}{41}{section*.51}
+\contentsline {chapter}{Tabellenverzeichnis}{42}{section*.52}
+\contentsline {chapter}{\nonumberline Quellcodeverzeichnis}{43}{chapter*.53}
+\contentsline {chapter}{\nonumberline Literaturverzeichnis}{44}{chapter*.54}

@@ -17,26 +17,28 @@
 \BOOKMARK [2][-]{subsection.2.2.7}{Wartbarkeit}{section.2.2}% 17
 \BOOKMARK [2][-]{subsection.2.2.8}{Portierbarkeit}{section.2.2}% 18
 \BOOKMARK [2][-]{subsection.2.2.9}{Auswahl der Qualit\344tskriterien}{section.2.2}% 19
-\BOOKMARK [1][-]{section.2.3}{Codeanalyse}{chapter.2}% 20
-\BOOKMARK [2][-]{subsection.2.3.1}{Analyseprozess}{section.2.3}% 21
-\BOOKMARK [2][-]{subsection.2.3.2}{Herausforderungen}{section.2.3}% 22
-\BOOKMARK [0][-]{chapter.3}{Projektkontext}{}% 23
-\BOOKMARK [1][-]{section.3.1}{Problembeschreibung}{chapter.3}% 24
-\BOOKMARK [1][-]{section.3.2}{Kontext coderadar}{chapter.3}% 25
-\BOOKMARK [1][-]{section.3.3}{Anforderungen}{chapter.3}% 26
-\BOOKMARK [1][-]{section.3.4}{Wissenschaftliche Einordnung}{chapter.3}% 27
-\BOOKMARK [0][-]{chapter.4}{Entwurf des L\366sungsansatzes}{}% 28
-\BOOKMARK [1][-]{section.4.1}{Architektur}{chapter.4}% 29
-\BOOKMARK [1][-]{section.4.2}{Metrikmatrix}{chapter.4}% 30
-\BOOKMARK [1][-]{section.4.3}{Gamification-Elemente}{chapter.4}% 31
-\BOOKMARK [0][-]{chapter.5}{Umsetzung}{}% 32
-\BOOKMARK [1][-]{section.5.1}{Programmierung}{chapter.5}% 33
-\BOOKMARK [0][-]{chapter.6}{Abschluss}{}% 34
-\BOOKMARK [1][-]{section.6.1}{Verifizierung der Anforderungen}{chapter.6}% 35
-\BOOKMARK [1][-]{section.6.2}{Fazit}{chapter.6}% 36
-\BOOKMARK [0][-]{chapter*.48}{Anhang}{}% 37
-\BOOKMARK [0][-]{section*.49}{Abk\374rzungsverzeichnis}{}% 38
-\BOOKMARK [0][-]{section*.51}{Abbildungsverzeichnis}{}% 39
-\BOOKMARK [0][-]{section*.52}{Tabellenverzeichnis}{}% 40
-\BOOKMARK [0][-]{chapter*.53}{Quellcodeverzeichnis}{}% 41
-\BOOKMARK [0][-]{chapter*.54}{Literaturverzeichnis}{}% 42
+\BOOKMARK [0][-]{chapter.3}{Projektkontext}{}% 20
+\BOOKMARK [1][-]{section.3.1}{Problembeschreibung}{chapter.3}% 21
+\BOOKMARK [1][-]{section.3.2}{Kontext coderadar}{chapter.3}% 22
+\BOOKMARK [1][-]{section.3.3}{Anforderungen}{chapter.3}% 23
+\BOOKMARK [1][-]{section.3.4}{Wissenschaftliche Einordnung}{chapter.3}% 24
+\BOOKMARK [0][-]{chapter.4}{Entwurf des L\366sungsansatzes}{}% 25
+\BOOKMARK [1][-]{section.4.1}{Codeanalyse}{chapter.4}% 26
+\BOOKMARK [2][-]{subsection.4.1.1}{Analyseprozess}{section.4.1}% 27
+\BOOKMARK [2][-]{subsection.4.1.2}{Herausforderungen}{section.4.1}% 28
+\BOOKMARK [1][-]{section.4.2}{Architektur}{chapter.4}% 29
+\BOOKMARK [1][-]{section.4.3}{Metrikmatrix}{chapter.4}% 30
+\BOOKMARK [1][-]{section.4.4}{Gamification-Elemente}{chapter.4}% 31
+\BOOKMARK [2][-]{subsection.4.4.1}{Punkte}{section.4.4}% 32
+\BOOKMARK [2][-]{subsection.4.4.2}{Level}{section.4.4}% 33
+\BOOKMARK [0][-]{chapter.5}{Umsetzung}{}% 34
+\BOOKMARK [1][-]{section.5.1}{Programmierung}{chapter.5}% 35
+\BOOKMARK [0][-]{chapter.6}{Abschluss}{}% 36
+\BOOKMARK [1][-]{section.6.1}{Verifizierung der Anforderungen}{chapter.6}% 37
+\BOOKMARK [1][-]{section.6.2}{Fazit}{chapter.6}% 38
+\BOOKMARK [0][-]{chapter*.51}{Anhang}{}% 39
+\BOOKMARK [0][-]{section*.52}{Abk\374rzungsverzeichnis}{}% 40
+\BOOKMARK [0][-]{section*.54}{Abbildungsverzeichnis}{}% 41
+\BOOKMARK [0][-]{section*.55}{Tabellenverzeichnis}{}% 42
+\BOOKMARK [0][-]{chapter*.56}{Quellcodeverzeichnis}{}% 43
+\BOOKMARK [0][-]{chapter*.57}{Literaturverzeichnis}{}% 44

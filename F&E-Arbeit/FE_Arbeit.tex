@@ -44,6 +44,7 @@
 \usepackage{acronym}
 \usepackage{multicol}
 \usepackage{url}
+\usepackage{longtable}
 
 % Einbindung und Konfiguration von nomencl für Nomenklaturen
 \usepackage{nomencl}
@@ -235,7 +236,7 @@ Um die Mitglieder des Entwicklungsteams dazu zu bringen, sich an die vereinbarte
 Zum einen kann im Reviewprozess des Projekts ein automatischer Test eingebaut werden, der dafür sorgt, dass grundsätzlich funktionierender Code dann nicht angenommen wird, wenn er gegen festgelegte Regeln verstößt, wenn er also beispielsweise Stylingrichtlinien nicht einhält oder es potentiell unsichere Variablenzugriffe gibt.
 Zum anderen können die Teammitglieder durch Belohnungen dazu motiviert werden, von sich aus die festgelegten Regeln einzuhalten und dies auch selbst zu überprüfen. 
 Es stellt sich nun die Frage, ob eine solche Motivation durch Gamification erreicht werden kann.
-Bei Gamification werden Methoden genutzt, die aus Computerspielen bekannt sind.
+Bei Gamification werden Methoden genutzt, die aus Spielen bekannt sind.
 Dazu gehören beispielsweise Levels, Badges oder Leader Boards, die das Team oder ein einzelnes Teammitglied erreichen kann. 
 
 Die oben beschriebene Ablehnung von eingereichtem Code auf Grund von Verstößen gegen Richtlinien führt dazu, dass die Teammitglieder die vereinbarten Programmierrichtlinien mit der Zeit von sich aus einhalten, ohne immer darauf hingewiesen werden zu müssen.
@@ -246,18 +247,19 @@ Neben qualitativ hochwertigem Code könnte so durch einen gewissen \glqq Spaßfa
 \section{Zielsetzung}
 \label{Zielsetzung}
 Ziel dieser Arbeit ist die Erweiterung der Codeanalyseplattform coderadar \footnote{\url{https://github.com/adessoAG/coderadar}} um Gamification-Elemente zur Steigerung der Code-Qualität.
-Dazu werden zunächst Gamification-Elemente ausgewählt und in coderadar implementiert.
-Anschließend wird eine Balancierungsmatrix für eine gleichmäßige Verteilung der Punkte, auf denen Levels, Leader Boards und ähnliches basieren, erarbeitet.
+Dazu werden zunächst Analysemechanismen zur Bewertung des Codes ausgewählt.
+Anschließend werden Gamification-Elemente ausgewählt und in coderadar implementiert.
+Mit einer Balancierungsmatrix wird dann die Bewertung des Codes gewichtet und in eine absolute Punktzahl umgerechnet.
+Auf dieser Punktzahl basieren dann Levels, Leader Boards und ähnliches.
 Ein Feldversuch zur Feststellung, in wie weit die implementierten Maßnahmen die Softwarequalität nachhaltig verbessern können, soll im Rahmen der F\&E-Arbeit nicht stattfinden.
 Dies geschieht erst im Rahmen der Masterthesis.
 		
 \section{Vorgehensweise}
 \label{Vorgehensweise}
 Zunächst werden in Kapitel \ref{Technische_Grundlagen} die technischen Grundlagen für diese Arbeit vorgestellt.
-Dazu gehört zunächst die Definition von Gamification in Abschnitt \ref{Gamification}.
+Dazu gehört zunächst die Definition von Gamification im Rahmen dieser Arbeit in Abschnitt \ref{Gamification}.
 Im Anschluss daran wird in Abschnitt \ref{Kriterien_guter_Code} beschrieben, was qualitativ gute Software genau ausmacht.
 Dazu wird ausgeführt, welche Qualitätsmetriken es für Software gibt und wie ihre Werte zu verstehen sind.
-Danach wird in Abschnitt \ref{Codeanalyse} vorgestellt, mit welchen Methoden die Werte für diese Metriken gemessen werden können.
 
 In Kapitel \ref{Projektkontext} wird dann die Problemstellung analysiert.
 Dazu wird zunächst in Abschnitt \ref{Problembeschreibung} das grundlegende Problem beschrieben.
@@ -266,9 +268,11 @@ Auf Basis dieser Ergebnisse werden dann Anforderungen an eine Software herausgea
 Abschließend erfolgt dann die wissenschaftliche Einordnung der Arbeit in Abschnitt \ref{Wissenschaftliche_Einordnung}.
 
 Anschließend erfolgt in Kapitel \ref{Entwurf} der Entwurf eines Lösungsansatzes für das oben beschriebene Problem.
-Dabei wird zunächst in Abschnitt \ref{Architektur} auf Basis der bestehenden coderadar-Architektur eine sinnvolle Möglichkeit zur Ergänzung der Gamification erarbeitet.
+Dazu wird zunächst in Abschnitt \ref{Codeanalyse} vorgestellt, wie der Code analysiert werden kann.
+Ein besonderes Augenmerk wird dabei auf mögliche Herausforderungen während der Analyse gelegt.
+Anschließend wird in Abschnitt \ref{Architektur} auf Basis der bestehenden coderadar-Architektur eine sinnvolle Möglichkeit zur Ergänzung der Analyse und Gamification erarbeitet.
 Danach wird in Abschnitt \ref{Metrikmatrix} eine Matrix erarbeitet, in der erläutert wird, in welchem Umfang welche Metrik in die Berechnung eines Scores für die Güte der Software einfließt.
-Des Weiteren wird erarbeitet, wie welche Gamification-Elemente im User-Interface verwendet werden können, um den berechneten Score darzustellen und Motivation zur Verbesserung dieses Scores zu liefern.
+Des Weiteren wird in Abschnitt \ref{Gamification_Elemente} erarbeitet, wie welche Gamification-Elemente im User-Interface verwendet werden können, um den berechneten Score darzustellen und Motivation zur Verbesserung dieses Scores zu liefern.
 
 Kapitel \ref{Umsetzung} beschäftigt sich dann mit der programmatischen Umsetzung des beschriebenen Lösungsansatzes. 
 
@@ -282,7 +286,6 @@ Zum Schluss wird ein Ausblick auf die weitere Arbeit mit der erarbeiteten Gamifi
 Dieses Kapitel geht auf die technischen Grundlagen der Arbeit ein.
 Dazu gehört zunächst die Erläuterung von Gamification und Gamification-Elementen in Abschnitt \ref{Gamification}.
 Danach werden in Abschnitt \ref{Kriterien_guter_Code} grundlegende Kriterien für qualitativ hochwertige Software aufgestellt.
-Anschließend wird in Abschnitt \ref{Codeanalyse} vorgestellt, wie die Codeanalyse in coderadar durchgeführt wird.
 
 \section{Gamification}
 \label{Gamification}
@@ -309,12 +312,12 @@ Entsprechend würde ein Spieler, der qualitativ hochwertigeren Code einreicht, m
 	\end{center}
 \end{figure}
 
-Der Begriff Gamification ist dabei von dem Wort \glqq Gaming \grqq{} abgeleitet.
+Der Begriff Gamification ist von dem Wort \glqq Gaming \grqq{} abgeleitet.
 Gaming bezieht sich dabei auf ein seriöses Spielen.
 Dies steht dabei dem \glqq Playing \grqq{} gegenüber (vgl. Abbildung \ref{gamification_einordnung}).
 Playing beschreibt nach \cite{Wa2003} ein Spielen in einer offenen Welt, die Oft nur durch die Kreativität der Spieler beschränkt ist.
 Der Aufbau der Spielwelt, beispielsweise mit Spielzeugen wie Lego, ist dabei ein zentraler Aspekt.
-Gaming unterscheidet sich\cite{DD2011} von Playing dadurch, dass das Gaming einem Regelwerk unterliegt, welches die Teilnehmer beim Erreichen eines gesetzten Ziels einschränkt und somit eine Herausforderung unterliegt.
+Gaming unterscheidet sich\cite{DD2011} von Playing dadurch, dass das Gaming einem Regelwerk unterliegt, welches die Teilnehmer beim Erreichen eines gesetzten Ziels einschränkt und somit eine Herausforderung darstellt.
 Am Beispiel Schach verdeutlicht, liegt das Ziel darin, den gegnerischen König zu schlagen, ohne dass der eigene König geschlagen wird.
 Einschränkend gilt hierbei, dass die Spieler immer abwechselnd ziehen und die Figuren in ihrer Beweglichkeit eingeschränkt sind.
 Zusätzlich gibt es teilweise noch eine zeitliche Einschränkung, sodass für alle Züge zusammen in Summe nur eine gewisse Zeit zur Verfügung steht.
@@ -327,17 +330,17 @@ Die Möglichkeiten, dieses Ziel zu erreichen, werden dadurch eingeschränkt, das
 \label{Spielermotivation}
 Motivation ist laut \cite{SH2014} ein psychologischer Prozess, der ein zielgerichtetes Handeln initiieren oder verstärken kann.
 Für die Effektivität von Gamification ist entscheidend, dass beim Spieler Motivation generiert wird, das gesetzte Ziel zu erreichen.
-Dazu kann das Fördern von Motivation aus verschiedenen Perspektiven betrachtet werden, entsprechend gibt es verschiedene Arten auf die Motivation gefördert werden kann.
+Dazu kann das Fördern von Motivation aus verschiedenen Perspektiven betrachtet werden, entsprechend gibt es verschiedene Arten, auf die Motivation gefördert werden kann.
 
 \paragraph{Bedürfnisse des Spielers}
 Spieler haben laut \cite{SH2014} verschiedene Bedürfnisse, die sie erfüllen wollen.
 Diese sind dabei abhängig von der Ausprägung unterschiedlicher Charakterzüge eines Spielers.
-Generell gibt es das Bedürfnis nach Erfolg, nach Einfluss und Statussymbolen und nach Zusammengehörigkeit.
+Generell gibt es das Bedürfnis nach Erfolg, Einfluss und Statussymbolen und nach Zusammengehörigkeit.
 Dadurch, dass einem Spieler ein Erfolg oder eine Gruppenzugehörigkeit in Aussicht gestellt wird, hat der Spieler nun die Möglichkeit diese Bedürfnisse zu erfüllen und er wird versuchen, die notwendigen Anforderungen zu erfüllen.
 
 \paragraph{Positive und negative Eindrücke}
 Aus der Betrachtung der verhaltensorientierten Perspektive geht laut \cite{SH2014} hervor, dass positive und negative Eindrücke oder Erfahrungen zukünftiges Verhalten beeinflussen.
-Entsprechend kann durch positives und negatives Feedback oder Belohnungen zukünftiges Verhalten gesteuert werden.
+Entsprechend kann durch positives und negatives Feedback oder Belohnungen und Bestrafungen zukünftiges Verhalten gesteuert werden.
 
 \paragraph{Erfüllung von Erwartungen}
 Laut \cite{SH2014} ist Motivation aus der kognitiven Perspektive abhängig von den gestellten Erwartungen.
@@ -349,13 +352,13 @@ Selbstverwirklichung ergibt sich nach \cite{SH2014} aus den Bedürfnissen nach A
 Die Erfüllung dieser Bedürfnisse fördert laut \cite{SH2014} die intrinsische Motivation des Spielers.
 
 \paragraph{Nutzerinteressen}
-Aus der Interessensperspektive berücksichtigt laut \cite{SH2014} individuelle Vorlieben und inhaltliche Aspekte.
+Die Interessensperspektive berücksichtigt laut \cite{SH2014} individuelle Vorlieben und inhaltliche Aspekte.
 Motivation ergibt sich demnach aus der Beziehung des Spielers zu der Aufgabe oder dem Kontext.
 Idealerweise kann dies laut \cite{SH2014} zu einem vollständigen Eintauchen in die Aufgabe führen, dem sogenannten \glqq Flow \grqq{}.
-\cite{Zi2011} erklärt Flow als einen Zustand, in dem der Anspruch einer Aufgabe den Fähigkeiten des Spielers entspricht.
-Übersteigen die Fähigkeiten den Anspruch, langweilt sich der Spieler und er ist weniger motiviert. Übersteigt der Anspruch die Fähigkeiten hingegen, gerät der Spieler unter Leistungsdruck und er sorgt sich um die Erfüllung der Aufgabe, was laut \cite{As2000} bis hin zu Angstzuständen führen kann.
+\cite{Zi2011} erklärt Flow als einen Zustand, in dem der Anspruch einer Aufgabe den Fähigkeiten des Spielers exakt entspricht.
+Übersteigen die Fähigkeiten den Anspruch der Aufgabe, langweilt sich der Spieler und er ist weniger motiviert. Übersteigt der Anspruch die Fähigkeiten hingegen, gerät der Spieler unter Leistungsdruck und er sorgt sich um die Erfüllung der Aufgabe, was laut \cite{As2000} bis hin zu Angstzuständen führen kann.
 Auch dadurch sinkt die Motivation des Spielers.
-Das Erreichen der Flow-Zone, in der die Fähigkeiten den Ansprüchen entsprechen, erfordert demnach ein genaues Abstimmung dieser beiden Aspekte.
+Das Erreichen der Flow-Zone, in der die Fähigkeiten des Spielers den Ansprüchen der Aufgabe entsprechen, erfordert demnach eine genaue Abstimmung dieser beiden Aspekte.
 
 \paragraph{Emotionales Empfinden}
 Auch über die emotionale Ebene lässt sich laut \cite{SH2014} Motivation generieren.
@@ -364,8 +367,8 @@ Demnach lässt sich Motivation durch die Verminderung negativer Emotionen wie An
 
 \subsection{Gamification-Elemente}
 \label{Elemente}
-Wichtig dabei ist, dass der Spieler ein Feedback zu seinem aktuellen Fortschritt bekommt.
-Am Beispiel Schach ist dies die Stellung der Figuren und somit die Feldhoheit.
+Um in einem Spiel die Motivation des Spielers zu steigern, ist wichtig, dass er ein Feedback zu seinem aktuellen Fortschritt bekommt.
+Am Beispiel Schach geschieht dies die Stellung der Figuren und somit die Feldhoheit.
 Am Beispiel der Gamification von Joggen könnte dies ein Abbild der Gesamtdistanz und ein entsprechender Positionsmarker mit der aktuell zurückgelegten Distanz sein.
 Wie oben beschrieben, werden für diese Darstellung Elemente aus dem Gamedesign verwendet.
 Im Folgenden werden einige Elemente beispielhaft vorgestellt und ihr Nutzen erläutert.
@@ -388,7 +391,7 @@ Sie gelten dabei individuell für einen Spieler und zeigen die Erreichbarkeit de
 \paragraph{Leistungsdiagramme}
 Leistungsdiagramme setzten einen individuellen Score in Relation zu anderen Scores.
 Diese anderen Scores können von anderen Spielern oder anderen Zeitpunkten stammen.
-Stammen sie von anderen Spielern, zeigt das Diagramm, wie der Spieler sich im Vergleich zu den anderen Spielern im Bezug auf ein Ziel hin entwickelt.
+Stammen sie von anderen Spielern, zeigt das Diagramm, wie der Spieler sich im Vergleich zu anderen Spielern im Bezug auf ein Ziel hin entwickelt.
 Betrachtet das Diagramm hingegen unterschiedliche Zeitpunkte des selben Spielers, liegt der Fokus auf der Verbesserung der Fähigkeiten des Spielers und fördert das Meistern dieser (vgl. \cite{SH2014}). 
 
 \paragraph{Quests}
@@ -405,20 +408,21 @@ Leaderboards oder Bestenlisten stellen den Erfolg der Spieler an der Spitze dar.
 Spieler, die nicht an der Spitze stehen, könnten allerdings demotiviert werden, da ihre schlechteren Leistungen veröffentlicht werden (vgl. \cite{SH2014}).
 Dies führt dazu, dass der Einsatz von Leaderboards kritisch zu sehen ist.
 Durch die Verwendung von Team-Leaderboards können diese negativen Effekte allerdings etwas reduziert werden, da sie den Fokus auf die Teamleistung legen.
-Zum einen wird dadurch kein einzelner Spieler bloßgestellt und zum anderen hat das Team ein gemeinsames Ziel auf das es hinarbeiten kann, wodurch sich laut \cite{SH2014} die Verbundenheit im Team erhöht. 
+Zum einen wird dadurch kein einzelner Spieler \glqq bloßgestellt \grqq{} und zum anderen hat das Team ein gemeinsames Ziel auf das es hinarbeiten kann, wodurch sich laut \cite{SH2014} die Verbundenheit im Team erhöht. 
 
 \section{Kriterien für qualitativ hochwertigen Code}
 \label{Kriterien_guter_Code}
-Ein zentraler Aspekt dieser Arbeit ist die Messung von Code-Qualität.
+Ein zentraler Aspekt dieser Arbeit ist die Messung von Codequalität.
 Dazu muss zunächst definiert werden, was im Rahmen dieser Arbeit unter qualitativ hochwertigem Code verstanden wird.
-Laut \cite{ISO-25010} sind das folgenden Aspekte.
-Einige dieser Aspekte lassen sich nicht ohne Kenntnis über den Projektkontext oder oder die Ausführung des Programms im laufenden Betrieb bewerten.
+Laut \cite{ISO-25010} sind das die im folgenden aufgelisteten Aspekte.
+Einige dieser Aspekte lassen sich jedoch nicht ohne Kenntnis über den Projektkontext oder ohne die Ausführung des Programms im laufenden Betrieb bewerten.
 
 \subsection{Funktionale Vollständigkeit}
 Die funktionale Vollständigkeit beispielsweise ist immer von den Anforderungen innerhalb des Projekts abhängig.
 Ohne Kenntnisse über diese Anforderungen lassen sich auch keine Aussagen über den Erfüllungsgrad dieser Anforderungen und somit über die funktionale Vollständigkeit treffen.
 Darüber hinaus ist die Überprüfung von Semantik innerhalb der Software nur sehr schwer möglich, da dafür Intelligenz notwendig ist, die ein Computerprogramm nicht liefern kann.
 Des weiteren ist es nicht möglich, zu prüfen, ob ein Programm fehlerfrei ist, es lässt sich lediglich validieren, dass ein Programm für eine gegebene Liste an Eingaben die gewünschten Ausgaben erzeugt (vgl. \cite{Di1972}).
+Entsprechend wird in dieser Arbeit die funktionale Vollständigkeit als Kriterium für die Codequalität nicht berücksichtigt.
 
 \subsection{Nutzbarkeit}
 Die Aspekte Nutzbarkeit, Erlernbarkeit und Barrierefreiheit beziehen sich auf die Benutzeroberfläche des Programms.
@@ -443,7 +447,7 @@ Auch zur Koexistenz neben anderen Systemen lassen sich nur schwer Aussagen täti
 \subsection{Zuverlässigkeit}
 Die Zuverlässigkeit von Software lässt sich durch Codeanalysen gut bewerten.
 Zum einen kann unter dem Aspekt des Reifegrads des Programms die Testabdeckung untersucht werden.
-Durch eine hohe Testabdeckung kann erreicht werden, dass die Methoden das machen, was sie sollen.
+Durch eine hohe Testabdeckung kann erreicht werden, dass verifiziert wird, dass die Methoden das machen, was sie sollen.
 Dabei muss aber auch darauf geachtet werden, dass die Tests dazu geeignet sind, den Code zu testen.
 Es ist auch möglich, eine hohe Testabdeckung zu erreichen, ohne dass die Funktionsweise tatsächlich geprüft wurde.
 Die Testabdeckung besitzt dementsprechend nur eingeschränkte Aussagekraft zur Zuverlässigkeit der Software.
@@ -456,6 +460,7 @@ Es müsste also gezeigt werden, dass das Programm fehlerfrei ist, was nach \cite
 Auch die Toleranz gegenüber Fehlern außerhalb des Programms, beispielsweise Netzwerkfehler, Stromausfälle oder Speicherfehler, sind ein Aspekt der Fehlertoleranz.
 Innerhalb einiger Frameworks gibt es hierfür teilweise Maßnahmen, Spring\footnote{\url{https://spring.io/}} bietet hier beispielsweise den Cirquit Breaker\footnote{\url{https://spring.io/projects/spring-cloud-circuitbreaker}}.
 Es könnte in den Fällen, in denen solche Frameworks verwendet wurden, eine Validierung stattfinden, dieser Sonderfall ist aber zu speziell als dass er in dieser Arbeit berücksichtigt werden soll.
+Entsprechend wird der Aspekt der Fehlertoleranz im Rahmen dieser Arbeit für die Zuverlässigkeit nicht berücksichtigt.
 
 Die Wiederherstellbarkeit ist ein weiterer Bereich innerhalb der Zuverlässigkeit.
 Sie wird allerdings hauptsächlich vom System auf dem das Programm ausgeführt wird beeinflusst.
@@ -470,9 +475,8 @@ Dies gilt auch für die Validierung, ob vor jedem Zugriff eine Authentifizierung
 Die Nachverfolgbarkeit von Aktionen innerhalb des Programms ist ein weiterer Aspekt der Sicherheit.
 Hierzu gehört zum einen, das belegt werden kann, dass eine Aktion oder ein Ereignis stattgefunden hat und zum anderen wer diese Aktion ausgeführt hat.
 Im Programm können hierzu beispielsweise Log-Ausgaben verwendet werden.
-Um mit Hilfe von Mustererkennung im Code zu validieren, dass entsprechende Ausgaben getätigt werden, müssten 
-diese Muster zur Erkennung von Befehlen zum Ausführen von Log-Ausgaben entwickelt werden, was den zeitlichen Rahmen dieser Arbeit überschreitet.
-Im laufenden Betrieb können diese Log-Ausgaben zwar gelesen werden, allerdings ist der laufende Betrieb innerhalb der Codeanalyse nicht möglich.
+Um mit Hilfe von Mustererkennung im Code zu validieren, dass entsprechende Ausgaben getätigt werden, müssten zunächst Muster zur Erkennung von Befehlen zum Ausführen von Log-Ausgaben entwickelt werden, was den zeitlichen Rahmen dieser Arbeit überschreitet.
+Im laufenden Betrieb können diese Log-Ausgaben zwar gelesen werden, allerdings ist deine Simulation des laufenden Betriebs innerhalb der Codeanalyse nicht möglich.
 Darüber hinaus müsste erkennbar sein, wo die Grenzen zwischen den einzelnen Aktionen sind, sodass bewertet werden kann, ob eine Log-Ausgabe für eine Aktion getätigt wird.
 Aufgrund des semantischen Aufbaus der einzelnen Aktionskontexte und der Vielzahl an Implementierungsmöglichkeiten zum Ausgeben von Log-Informationen ist die Analyse hier sehr komplex und wird im Rahmen dieser Arbeit nicht berücksichtigt.
 
@@ -480,6 +484,7 @@ Ein Möglichkeit, die Sicherheit eines Programms innerhalb einer Codeanalyse zu 
 Hierzu kann eine \acf{OWASP}-Top-Ten-Analyse verwendet werden. 
 Die \acs{OWASP}-Top-Ten ist eine Liste mit den zehn kritischsten Sicherheitsbedenken für Web-Applikationen (vgl. \cite{Ow2020}).
 Dadurch können potentielle Sicherheitslücken innerhalb des Programms aufgedeckt werden.
+Neben der \acs{OWASP}-Top-Ten gibt es weitere Indizes für Sicherheitslücken oder Problemstellen in Software, die ebenfalls verwendet werden können.
 
 \subsection{Wartbarkeit}
 Die Wartbarkeit beschreibt laut \cite{ISO-25010} die Effektivität und Effizienz mit der Modifikationen oder Korrekturen umsetzen lassen.
@@ -505,14 +510,14 @@ Sollte es dazu kommen, dass dieses Teammitglied nun beispielsweise auf Grund von
 Die Portierbarkeit beschreibt, wie gut sich ein Programm von einem System auf ein anderes transferieren lässt.
 Die Systeme können sich dabei beispielsweise in der verbauten Hardware, der Laufzeitumgebung oder der Prozessorarchitektur unterscheiden.
 Da es sich bei dem Code, den coderadar analysieren kann, um Java-Code handelt, sind die Programme automatisch weitestgehend unabhängig vom Betriebssystem, da es für unterschiedliche Betriebssysteme unterschiedliche Ausführungsumgebungen gibt.
-Für Unterschiede wie unterschiedliche Separatoren in Dateipfaden bietet Java ebenfalls Lösungen.
+Für Unterschiede in Betriebssystemen wie unterschiedliche Separatoren in Dateipfaden bietet Java ebenfalls Lösungen.
 Die verbaute Hardware spielt an der Stelle für das Programm lediglich leistungstechnisch eine Rolle, da die Laufzeitumgebung von Java die Hardwarestruktur entsprechend abstrahiert.
 
 Ein weiter Aspekt in der Portierbarkeit ist die Installierbarkeit.
 Sie beschreibt den Grad der Effektivität und Effizienz, mit dem das Programm installiert beziehungsweise deinstalliert werden kann.
 Dies ist immer vom Programm selber und seinen Abhängigkeiten abhängig.
 Es gibt verschiedene Möglichkeiten, ein Java-Programm auszuliefern.
-Zentral ist dabei aber immer ein Java-Archiv, welches per Konsole ausgeführt werden kann.
+Zentral ist dabei aber immer ein Java-Archiv, welches über die Konsole ausgeführt werden kann.
 Entsprechend muss eine Java-Laufzeitumgebung installiert sein, damit das Programm ausgeführt werden kann.
 Dieses Archiv kann beispielsweise innerhalb eines Docker\footnote{\url{https://www.docker.com/}} Images verpackt werden, was zusätzlich noch eine Installation von Docker erfordert.
 Alternativ kann das Java-Archiv auf einen Web-Applikationsserver deployt werden, was wiederum die Installation eines solchen Applikationsservers erfordert.
@@ -539,7 +544,7 @@ Metriken, die für die Messung der Zuverlässigkeit verwendet werden, sind folge
 \begin{itemize}
 	\item $test\_success\_density$\\
 	Die $test\_success\_density$ gibt den Anteil erfolgreicher Tests in einer Software an.
-	Je mehr Tests fehlschlagen, desto unzuverlässiger ist Programm 
+	Je mehr Tests fehlschlagen, desto unzuverlässiger ist der Code.
 	\item $uncovered\_lines$\\
 	$uncovered\_lines$ gibt an, wie viele Programmzeilen nicht im Rahmen von Tests ausgeführt werden.
 	Sollte diese Zeilen einen Fehler beinhalten, kann dieser nicht durch Tests gefunden werden.
@@ -556,7 +561,7 @@ Metriken, die für die Messung der Zuverlässigkeit verwendet werden, sind folge
 	$bugs$ sind Fehler im Programmcode, die einer direkten Behebung bedürfen.
 	Diese Fehler führen dazu, dass das Programm abstürzt oder falsche Aktionen ausführt.
 	\item $reliability\_rating$\\
-	Das $reliability\_rating$ bezieht sich auf sich auf die Anzahl und die Schwere der gefundenen Bugs.
+	Das $reliability\_rating$ bezieht sich auf die Anzahl und die Schwere der gefundenen Probleme.
 	Die Schwere geht dabei von \textit{BLOCKER}, ein Problem welches sofort behoben werden muss, da es zum Absturz des Systems führen kann, bis \textit{MINOR}, was Qualitätsmängel beschreibt, die die Entwicklerproduktivität beeinflussen.
 	Zu ersterem gehören unter anderem Speicherlecks, zu letzterem gehören beispielsweise zu lange Zielen, die das Lesen des Codes erschweren.
 	\item $violations$\\
@@ -572,7 +577,7 @@ Im Rahmen der Analyse der Sicherheit des Programms wird eine Analyse auf möglic
 Zu diesen Schwachstellen gehören unter anderem Aspekte aus den \acs{OWASP}-Top-Ten, kommunikationsspezifische Schwachstellen wie offene Cross-Origin-Einstellungen, Sicherheitslücken aus der \acf{CWE} oder sprachspezifische Schwachstellen wie Code-Injektion bei dynamischer Code-Ausführung.
 
 Cross-Origin-Einstellungen sorgen dafür, dass Anfragen an einen Server nur von bestimmten Adressen aus erlaubt sind.
-Dadurch kann beispielsweise verhindert werden, dass ein Dienst auf Daten aus dem Speicher des Browsers zugreift und so Anfragen im Namen des Nutzers stellt.
+Dadurch kann beispielsweise verhindert werden, dass ein dritter Dienst auf Daten aus dem Speicher des Browsers zugreift und so Anfragen im Namen des Nutzers stellt.
 
 Die \acs{CWE} ist eine Auflistung bekannter Sicherheitslücken in Systemen, Frameworks und Sprachen.
 Für viele dieser Sicherheitslücken existieren bereits Lösungen, für andere müssen eigene Lösungen implementiert werden.
@@ -608,20 +613,16 @@ Die Analysierbarkeit ergibt sich im Rahmen dieser Arbeit aus dem Grad der Einhal
 Es wird davon ausgegangen, dass nonkonformer Code schwerer zu lesen, zu verstehen und entsprechend zu analysieren ist.
 Die Komplexität des Codes und die Dokumentation spielen hier ebenfalls eine Rolle.
 
-Um die Analysierbarkeit bewerten zu können, werden folgende Metriken herangezogen:
-
-\begin{itemize}
-	\item $cognitive\_complexity$\\
-	Die $cognitive\_complexity$ beschreibt die Komplexität einer Methode.
-	Die Berechnung ist an die McCabe-Metrik angelehnt, der Wert ergibt sich aus der Anzahl gewisser Schlüsselwörter innerhalb einer Methode.
-	\item $MissingJavadocMethod$
-	\item $MethodName, ClassName, usw.$
-	Durch diese Metriken wird überprüft, dass Namen für Bezeichner, beispielsweise Methodennamen oder Klassennamen, einem gewissen Schema entsprechen.
-	Es kann zwar nicht validiert werden, dass der Name des Bezeichners der Funktion des selbigen entspricht, allerdings erleichtert dieses Schema generell die Lesbarkeit.
-\end{itemize}
+Um die Analysierbarkeit bewerten zu können, wird unter anderem die \textit{$cognitive\_complexity$} herangezogen. 
+Die \textit{$cognitive\_complexity$} beschreibt die Komplexität einer Methode.
+Die Berechnung ist an die McCabe-Metrik angelehnt, der Wert ergibt sich aus der Anzahl gewisser Schlüsselwörter innerhalb einer Methode.
+Darüber hinaus werden viele der von Checkstyle bereitgestellten Metriken verwendet, die sich mit der Einhaltung von Stylingrichtlinien befassen.
+Dazu gehören beispielsweise \textit{$MissingJavadocMethod$}, \textit{$MethodName$} oder \textit{$ClassName$}.
+Letztere überprüfen, dass Namen für Bezeichner, beispielsweise Methodennamen oder Klassennamen, einem gewissen Schema entsprechen.
+Es kann zwar nicht validiert werden, dass der Name des Bezeichners der Funktion des selbigen entspricht, allerdings erleichtert dieses Schema generell die Lesbarkeit.
 
 \paragraph{Komplexität}
-Die Komplexität kann mit der McCabe-Metrik gemessen werden.
+Die Komplexität eines Codeblocks oder einer Funktion kann mit der McCabe-Metrik gemessen werden.
 Die Metrik berechnet für eine Methode einen Komplexitätswert, welcher wie folgt zu interpretieren ist:
 
 \begin{itemize}
@@ -661,89 +662,6 @@ Grade im Zusammenhang mit komplexem Code ist dies ein Problem.
 Durch die Verwendung von Kommentaren und weiterer Dokumentation kann Wissensmonopolen ein Stück weit entgegengewirkt werden.
 Wissensmonopole in komplexem Code haben dementsprechend einen negativen Einfluss auf die Analysierbarkeit.
 
-\section{Codeanalyse}
-\label{Codeanalyse}
-In diesem Abschnitt wird genauer auf die Codeanalyse eingegangen.
-Dazu wird zunächst in Abschnitt \ref{Analyseprozess} der Analyseprozess innerhalb von coderadar beschrieben.
-Anschließend wird in Abschnitt \ref{Herausforderungen} auf besondere Herausforderungen bei der Erweiterung des bisherigen Analyseprozesses eingegangen.
-
-\subsection{Analyseprozess}
-\label{Analyseprozess}
-Die Codeanalyse in coderadar erfolgt jeweils Commit- und Dateiweise.
-Für jeden Commit werden die Dateien geladen, die geändert wurden.
-Diese Dateien werden dann in die konfigurierten Analyse-Plugins gegeben.
-Die Plugins implementieren dabei jeweils eine Analysemethode, die als Parameter den Pfad zur Datei und den Dateiinhalt bekommt.
-Diese Methode gibt die Metriken für die Datei mit den jeweils berechneten Werten und den Fundorten für die Makel im Quellcode, die zu Abwertungen geführt haben.
-Um die Bewertungen für einen Commit zu ermitteln, werden für die Metrikwerte für alle geänderten Dateien in diesem Commit zusammengerechnet.
-Dadurch, dass diese Analyse für jeden Commit durchgeführt wird, entsteht auch eine Historie über die Commits.
-
-
-\subsection{Herausforderungen}
-\label{Herausforderungen}
-Um einige der in Abschnitt \ref{Kriterien_guter_Code} geforderten Metriken messen zu können, muss die bisher durchgeführte Analyse erweitert werden.
-Ein zur Messung dieser Metriken geeignetes Werkzeug ist beispielsweise SonarQube\footnote{\url{https://www.sonarqube.org/}}.
-SonarQube bietet mit dem SonarScanner\footnote{\url{https://docs.sonarqube.org/latest/analysis/scan/sonarscanner/}} \acf{CLI} ein Werkzeug für die Kommandozeile, um Projekte zu analysieren.
-Das Ergebnis dieser Analyse wird anschließend an einen SonarQube-Server geschickt und kann dort entweder über die Benutzeroberfläche oder eine \acs{REST}-Schnittstelle eingesehen werden. 
-An dieser Stelle wird SonarQube verwendet, da es zum einen weit verbreitet ist.
-Laut \cite{SC2021} wurden allein in der \glqq as a Service\grqq{}-Version SonarCloud\footnote{\url{https://sonarcloud.io/}}, die ausschließlich für Open-Source-Software genutzt werden kann, bereits über 180.000 Projekte analysiert.
-Dazu kommen noch von Firmen und Privatpersonen bereitgestellte Instanzen, die für Closed-Source-Software benötigt werden.
-Zum anderen wird SonarQube als Standard bei der adesso SE verwendet wird.
-An dieser Stelle orientiert sich diese Arbeit am Vorgehen der adesso SE, da im Rahmen der Masterarbeit, die auf dieser Arbeit aufbauen wird, bei der adesso SE ein Feldversuch zur Evaluierung der in dieser Arbeit vorgenommenen Implementierung durchgeführt werden soll.
-
-An dieser Stelle bestehen aber auch einige Probleme.
-Zum einen hält SonarQube, abgesehen von einer manuell vorzunehmenden Versionierung, nur die aktuellen Analyseergebnisse vor.
-Um Analyseergebnisse von älteren Commits zu erhalten, muss für den jeweiligen Commit entweder eine Version angelegt werden oder das Projekt muss auf diesen Commit gesetzt werden.
-Um an dieser Stelle auch parallele Analysen zu ermöglichen, werden jeweils neue Projekte für die einzelnen Commits angelegt, die über den Commit-Hash eindeutig identifiziert werden.
-
-Eine weitere Herausforderung besteht darin, aus der einzelnen Datei, die in coderadar für die Analyse zur Verfügung steht, den kompletten Projektstand zu bekommen.
-Hierfür muss das komplette Projekt an dem zu analysierenden Commit ausgecheckt werden.
-coderadar bietet hier die Möglichkeit, die Analyse-Plugins zu konfigurieren.
-Hier kann zu Beginn jeder Analyse der entsprechende Commit ausgecheckt werden.
-
-Um nun die SonarQube-Analyse durchzuführen, werden allerdings die kompilierten Dateien benötigt.
-Um das Projekt kompilieren zu können, sind zunächst einige Informationen über die Projektstruktur notwendig.
-Projekte verwenden teilweise Build-Management-Werkzeuge wie Gradle\footnote{\url{https://gradle.org/}} oder Maven\footnote{\url{https://maven.apache.org/}}.
-Durch diese Werkzeuge können Abhängigkeiten, die über die \acf{JRE} hinaus gehen, automatisch aufgelöst werden.
-Können diese Abhängigkeiten nicht aufgelöst werden, kann auch das Projekt nicht kompiliert werden.
-Entsprechend können auch Tests fehlschlagen und die Metriken falsche Werte zurückgeben.
-Um herauszufinden, ob und wenn ja, welches Build-Management-Werkzeug verwendet wird, kann nach bestimmten Dateien im Projektverzeichnis gesucht werden
-Gradle zeichnet sich an dieser Stelle durch eine Datei \textit{build.gradle} aus, bei Maven existiert eine \textit{pom.xml}.
-Ist eine dieser Dateien im Projektverzeichnis vorhanden, können die entsprechenden Befehle zum Kompilieren des jeweiligen Build-Management-Werkzeugs verwendet werden.
-Sind keine dieser Dateien vorhanden, wird der klassische Java-Befehl zum Kompilieren von Dateien verwendet.
-
-An dieser Stelle treten ebenfalls einige Herausforderungen auf.
-Mit der Zeit werden Versionen von Abhängigkeiten, des Build-Management-Werkzeugs oder von Java geändert.
-Damit das Projekt weiterhin zuverlässig kompiliert werden kann, muss auf diese Versionsänderungen reagiert werden können.
-Haben sich Abhängigkeiten so stark verändert, dass die im Build-Management-Werkzeug angegebene Version nicht mehr verfügbar ist, kann das Projekt auch nicht mehr kompiliert werden.
-An der Stelle können dann keine Metriken über SonarQube bezogen werden.
-Generell kann auf neuere Versionen in den Abhängigkeiten nicht reagiert werden, da in den Abhängigkeiten teilweise benötigte Funktionen geändert werden oder wegfallen, sodass die ursprüngliche Funktionalität der Software nicht mehr gegeben ist.
-Darüber hinaus würden solche Änderungen Änderungen in der \textit{build.gradle} oder der \textit{pom.xml} erfordern und somit die Software verändern, was im Rahmen dieses Projekts nicht passieren soll.
-
-Der Anpassung der Version des Build-Management-Werkzeugs kann im Beispiel von Gradle damit begegnet werden, dass ein Gradle Wrapper\footnote{\url{https://docs.gradle.org/current/userguide/gradle_wrapper.html}} verwendet wird.
-Dieser zieht die Versionsnummer für Gradle fest, lädt diese herunter und konfiguriert sie.
-Dadurch muss nicht jede benötigte Gradle-Version manuell heruntergeladen werden.
-Teilweise kann es hier auch passieren, dass die Java-Version, die von Gradle verwendet wird, eine andere ist, als die, die im Projekt verwendet wird.
-Dies führt dazu, dass beispielsweise die Java-Version 7 ausgelesen wird, Gradle aber die Version 8 benötigt.
-Da laut \cite{OB2021} Java 8 Rückwärtskompatibel zu Java 6 und 7 ist, wird an dieser Stelle immer Java 8 verwendet wenn eine dieser drei Versionen ausgelesen wurde.
-
-Eine Änderung in der Java-Version kann in einem Gradle-Projekt darüber erkannt werden, dass sich bestimmte Eigenschaften in der \textit{build.gradle} ändern.
-Hier muss entsprechend eine Version der jeweiligen \acs{JRE} installiert sein, damit das Projekt mit der korrekten Version kompiliert werden kann.
-Um die Java-Version entsprechend zu setzen, müssen die Umgebungsvariablen \textit{$JAVA\_HOME$} und \textit{$PATH$} angepasst werden.
-
-Im Anschluss an das Kompilieren des Projekts wird die SonarQube-Analyse gestartet.
-Das SonarScanner \acs{CLI} stellt die Analyseergebnisse nicht in Form einer Datei zur Verfügung, sondern lädt diese auf einen SonarQube-Server hoch.
-Dieser Server muss neben der Datenbank für coderadar und coderadar selbst deployt werden.
-Die Analyseergebnisse können dann, wie oben bereits erwähnt, über eine \acs{REST}-Schnittstelle abgefragt werden.
-Damit das Anfragen der Analyseergebnisse möglich ist, muss im SonarQube-Server zunächst ein Projekt für diesen Commit angelegt werden.
-Dies ist auch über die \acs{REST}-Schnittstelle möglich und muss zu Beginn einer jeden Analyse gemacht werden.
-Im Anschluss an die Analyse kann das jeweilig konfigurierte Projekt dann wieder entfernt werden, um Ressourcen zu schonen.
-
-Damit nicht für jede Datei, die im zu untersuchenden Commit geändert wurde, eine Anfrage gestellt werden muss, wird zu Beginn eine große Anfrage an den SonarQube-Server gestellt.
-Die Ergebnisse dieser Anfrage werden dann nach dem jeweiligen Dateipfad aufgeschlüsselt gespeichert.
-In der Analyse der jeweiligen Datei wird dann auf diese zwischengespeicherten Daten zugegriffen.
-So muss nicht für jede zu analysierende Datei eine Anfrage via \acs{REST} gestellt werden, und die Analyse einer Datei ist performanter.
-
-
 \chapter{Projektkontext}
 \label{Projektkontext}
 Dieses Kapitel beschäftigt sich mit der Aufarbeitung der Problemstellung.
@@ -755,10 +673,11 @@ Abschließend erfolgt die wissenschaftliche Einordnung der Arbeit in bereits bes
 \section{Problembeschreibung}
 \label{Problembeschreibung}
 Zwei Eigenschaften von Entwicklern sind nach \cite{WCSP1996}, dass sie faul und hochmütig sind.
-Zum einen halten sie ihren eigenen Code oft für qualitativ sehr gut und zum anderen wollen sie wegen ihrer Faulheit bereits geschriebenen Code nicht noch einmal bearbeiten müssen.
+Zum einen halten sie ihren eigenen Code oft für qualitativ sehr gut und zum anderen wollen sie aufgrund ihrer Faulheit bereits geschriebenen Code nicht noch einmal bearbeiten müssen.
 
 Dazu kommt, dass Projekte oft unter Zeitdruck oder mit nur sehr geringem Budget entwickelt werden.
 Nach einer Studie von \cite{KPME2002} wurden die Zeitaufwände für etwa ein drittel der untersuchten Projekte zu gering eingeschätzt, lediglich knapp die Hälfte der untersuchten Projekte hatten einen geringeren zeitlichen Aufwand als zu Beginn geschätzt.
+Entsprechend fällt auch oft die Budgeteinschätzung aus, da die Zeitaufwände der Entwickler und entsprechende Lizenzkosten einen großen Anteil an den Entwicklungskosten haben.
 
 Dies führt dazu, dass oft wenig Zeit dafür bleibt, auf qualitativ hochwertigen Code zu achten.
 Stattdessen wird oft die schnellere, dafür meist aber auch unsauberere Variante bevorzugt.
@@ -782,22 +701,22 @@ coderadar verwendet intern verschiedene Plugins zur Codeanalyse.
 Bisher sind ein Checkstyle\footnote{\url{https://github.com/checkstyle/checkstyletext}}- und ein \acf{LOC}-Plugin implementiert.
 Das Checkstyle-Plugin ist über die Angabe einer Checkstyle-Konfigurationsdatei konfigurierbar.
 Ein Vorteil von Checkstyle an dieser Stelle ist, dass Checkstyle im Gegensatz zu anderen Analysewerkzeugen wie beispielsweise SonarQube\footnote{\url{https://github.com/SonarSource/sonarqube}} dateibasiert arbeitet.
-Dadurch ist es möglich, den Dateiinhalt aus einem Commit zu laden und zu analysieren.
+Dadurch ist es möglich, den Dateiinhalt aus einem Commit zu laden und zu analysieren, ohne das gesamte Projekt berücksichtigen zu müssen.
 
 Die Architektur von coderadar erlaubt es, zusätzlich zu den bereits bestehenden Analyse-Plugins, eigene Plugins zu schreiben.
-Diese können per Anwahl einer Checkbox in der Benutzeroberfläche zu- oder abgewählt werden.
-Damit im Rahmen dieser Arbeit ein Vergleich zwischen den einzelnen Projekten möglich ist, sollen im Rahmen der Fallstudie später die beiden verfügbaren Plugins verwendet werden.
+Diese können per Anwahl einer Checkbox in der Benutzeroberfläche für ein Projekt zu- oder abgewählt werden.
+Damit im Rahmen dieser Arbeit ein Vergleich zwischen den einzelnen Projekten möglich ist, sollen im Rahmen der Fallstudie später alle verfügbaren Plugins verwendet werden.
 
 Neben den Möglichkeiten zu Codeanalyse bietet coderadar eine Nutzerverwaltung.
 Ein Nutzer kann ein Projekt anlegen und analysieren lassen.
 Dazu werden eine GitHub\footnote{\url{https://github.com}}-URL, ein Projektname und, falls gewünscht, ein Start- und ein Enddatum für die Analyse angegeben.
 Im nächsten Schritt können dann die zu verwendenden Analyse-Plugins ausgewählt werden.
-Dafür wird ein Muster für zu analysierende Dateien angegeben.
+Zusätzlich wird ein Muster für zu analysierende Dateien angegeben.
+So können bestimmte Dateien von der Analyse ausgeschlossen werden, beispielsweise ist es nicht sinnvoll, die Testabdeckung innerhalb der Implementierung der Tests zu messen.
 coderadar untersucht dann alle Commits im genannten Zeitraum auf Dateien, die dem angegebenen Muster entsprechen.
 Wird eine entsprechende Datei gefunden, wird sie mit den konfigurierten Analyse-Plugins untersucht, und entstehenden Metriken werden zu dem Commit hinzugefügt.
 Ein Nutzer kann ein erstelltes Projekt auch für andere Nutzer zur Kollaboration freigeben.
 
-% TODO Screenshots in den Anhang
 Nachdem coderadar ein Projekt geclont und analysiert hat, gibt es verschiedene Visualisierungen für die Ergebnisse.
 Zum einen können die Rohdaten der Metriken je Commit angezeigt werden.
 
@@ -806,11 +725,11 @@ Dabei wird für jede Änderung in einem Commit ein \glqq Haus\grqq{} erstellt.
 Das Aussehen eines solchen Hauses hängt dabei von den vier Faktoren Länge, Breite, Höhe und Farbgebung ab.
 Jeder dieser Faktoren lässt sich dabei mit dem Wert einer Metrik belegen.
 Die City-View kann sowohl einen Commit als auch zwei Commits vergleichend anzeigen.
-Bei der vergleichenden Ansicht besteht die Möglichkeit, entweder beide City-Views nebeneinander oder beide Views in einander anzuzeigen.
+Bei der vergleichenden Ansicht besteht die Möglichkeit, entweder beide City-Views nebeneinander oder beide Views ineinander anzuzeigen.
 
 Neben der City-View gibt es auch noch eine \glqq Dependency-Map\grqq{} (vgl. Abbildung \ref{dependency_map}).
 Die Dependency-Map zeigt die Ordnerstruktur des Projektes sowie die Abhängigkeiten der einzelnen Module untereinander an.
-Die einzelnen Unterordner lassen sich dabei noch aufklappen, sodass auch innerhalb eines Unterordners die Abhängigkeiten visualisiert werden.
+Die einzelnen Unterordner lassen sich dabei aufklappen, sodass auch innerhalb eines Unterordners die Abhängigkeiten visualisiert werden.
 Auch hier ist sowohl eine Einzelansicht eines Commits als auch eine vergleichende zweier Commits möglich.
 Änderungen zwischen den zwei Commits werden entsprechend farblich markiert.
 
@@ -826,10 +745,6 @@ So ist das Projekt nicht direkt von dem Nutzer abhängig.
 Löscht der Nutzer also seinen Account oder verlässt das Team, kann das Team mit dem Projekt immer noch weiterarbeiten.
 Ein Nutzer kann dabei auch mehreren Teams angehören.
 
-% TODO diesen Absatz schreiben bei, warum kein Plugin für weitere Analysewerkzeuge entwickelt.
-SonarQube hingegen wird als Konsolenwerkzeug oder Plugin für Buildwerkzeuge wie Gradle\footnote{\url{https://gradle.org/}} oder Maven\footnote{\url{https://maven.apache.org/}} ausgeliefert und kann jeweils nur das ganze Projekt zu einem festen Zeitpunkt untersuchen.
-Somit ist es deutlich schwerer, Änderungen über Commits nachzuvollziehen.
-
 \section{Anforderungen}
 \label{Anforderungen}
 In diesem Abschnitt werden die Anforderungen an die im Rahmen dieser Arbeit durchzuführenden Ergänzungen erarbeitet.
@@ -842,33 +757,39 @@ Die Anforderungen an den Analyseprozess und die anderen Funktionen des Backends 
 
 \paragraph{A.1}
 Der Analyseprozess für die einzelnen Commits muss dahingehend ergänzt werden, dass der ganze Projektstand an diesem Commit analysiert werden kann und nicht nur die geänderten Dateien.
+Dies dient dazu, dass auch Werkzeuge wie SonarQube verwendet werden können, die weitere Metriken bereitstellen.
 
 \paragraph{A.2}
+Der Analyseprozess muss mit verschiedenen Java-Versionen und Build-Management-Werkzeugen umgehen können.
+Speziell sind die Java-Versionen von Java 8 bis Java 11 zu berücksichtigen.
+Des weiteren sollen die Build-Management-Werkzeuge Gradle und Maven berücksichtigt werden.
+
+\paragraph{A.3}
 Das System muss eine Möglichkeit zur Untersuchung des Reifegrades des Projekts zum Zeitpunkt des zu analysierenden Commits bieten.
 Dazu wird die Testabdeckung innerhalb des Projekts bewertet. Dabei sollen sowohl die Anweisungs- als auch die Zweigüberdeckung berücksichtigt werden.
 
-\paragraph{A.3}
-Das System muss eine Möglichkeit zur Untersuchung der Sicherheit des Projekts zum Zeitpunkt des zu analysierenden Commits bieten.
-Dazu wird eine \acs{OWASP}-Top-Ten-Analyse verwendet.
-
 \paragraph{A.4}
+Das System muss eine Möglichkeit zur Untersuchung der Sicherheit des Projekts zum Zeitpunkt des zu analysierenden Commits bieten.
+Hier sollen \acs{OWASP}-Top-Ten, \acs{CWE} und weitere Ursachen für \textit{vulnerabilities} in SonarQube verwendet werden.
+
+\paragraph{A.5}
 Das System muss eine Möglichkeit zur Untersuchung der Wiederverwendbarkeit von Teilen des Projekts zum Zeitpunkt des zu analysierenden Commits bieten.
 Hierzu wird das Projekt auf doppelten Code hin untersucht.
 
-\paragraph{A.5}
+\paragraph{A.6}
 Das System muss eine Möglichkeit zur Untersuchung der Analysierbarkeit des Projekts zum Zeitpunkt des zu analysierenden Commits bieten.
 Hierzu soll die Einhaltung von Stilrichtlinien und Konventionen betrachtet werden.
 
-\paragraph{A.6}
-Das System muss eine Möglichkeit zur Untersuchung der Komplexität von Teilen des Projekts zum Zeitpunkt des zu analysierenden Commits bieten.
-Die Bewertung findet dabei anhand der Komplexitätsmetrik nach \cite{MC1976} statt.
-
 \paragraph{A.7}
+Das System muss eine Möglichkeit zur Untersuchung der Komplexität von Teilen des Projekts zum Zeitpunkt des zu analysierenden Commits bieten.
+Die Bewertung findet dabei unter anderem anhand der Komplexitätsmetrik nach \cite{MC1976} statt.
+
+\paragraph{A.8}
 Das System muss eine Möglichkeit zur Untersuchung auf Wissensmonopole in Teilen des Projekts zum Zeitpunkt des zu analysierenden Commits bieten.
 Dazu wird die Anzahl an Autoren einer Datei zusammen mit der Komplexität nach \cite{MC1976} verwendet.
 
 \paragraph{B.1}
-Das System muss für jeden Nutzer eine Gesamtpunktzahl, ein Level, die Punktzahl im aktuellen Level, eine Anzahl an Coins, die Liste absolvierter Quests und die dem Nutzer zugeordneten Contributors speichern.
+Das System muss für jeden Nutzer eine Gesamtpunktzahl, ein Level, die Punktzahl im aktuellen Level, eine Anzahl an Coins, die Liste erhaltener Badges, die Liste absolvierter Quests und die dem Nutzer zugeordneten Contributors speichern.
 Ein Contributor ist dabei ein identifizierter Git-Account in einem Projekt.
 Einem Nutzer können mehrere Contributors zugeordnet sein, da ein Nutzer zum einen in mehreren Projekten aktiv sein kann und zum anderen mit mehreren Git-Accounts in einem Projekt arbeiten kann.
 
@@ -897,6 +818,10 @@ Zusätzlich muss die Punktzahl im aktuellen Level angepasst werden.
 Wird ein neues Level erreicht, ist die Punktzahl im aktuellen Level die Anzahl erhaltener Punkte, abzüglich der Punkte, die für den Level-aufstieg nötig waren.
 Wird kein neues Level erreicht, werden die erreichten Punkte auf die Punkte im aktuellen Level addiert.
 
+\paragraph{B.7}
+Das System muss für jeden Nutzer eine Liste an Personalisierungen speichern.
+Zu speichern sind ein Farbschema für die Benutzeroberfläche, ein Profilbild, eine Liste anzuzeigender Badges und das aktuelle Ziel des Nutzers.
+
 \paragraph{F.1}
 Das System muss dem Nutzer sein aktuelles Level, seine Punktzahl im aktuellen Level und die Punktzahl, die im aktuellen Level benötigt wird, in der generellen Übersicht anzeigen.
 
@@ -906,7 +831,7 @@ Das System soll eine Übersicht über verschiedene Bestenlisten anzeigen.
 \paragraph{F.3}
 Das System muss für jedes Projekt eine Bestenliste in der Übersicht der Bestenlisten anzeigen.
 Diese Bestenliste wird über die Gesamtpunktzahl der einzelnen Contributors erstellt.
-Ist ein Contributor einem Nutzer zugeordnet, muss auch der Nutzername angezeigt werden.
+Ist ein Contributor einem Nutzer zugeordnet, muss auch dessen Nutzername angezeigt werden.
 
 \paragraph{F.4}
 Das System muss eine Bestenliste über alle Projekte in der Übersicht der Bestenlisten anzeigen.
@@ -922,6 +847,11 @@ In der Bestenliste muss je Nutzer der Name, das Level und die Anzahl an Projekte
 \paragraph{F.6}
 Das System muss in einer gesonderten Ansicht die Quests anzeigen.
 Dabei sollen in einem Abschnitt die noch nicht abgeschlossenen und in einem anderen Abschnitt die bereits abgeschlossenen Quests des Nutzers aufgelistet werden.
+
+\paragraph{F.7}
+Das System muss verschiedene Einstellungsmöglichkeiten für Personalisierungen bieten.
+Diese werden mit steigendem Level des Nutzers freigeschaltet.
+Der Nutzer muss hier ein Farbschema, ein Profilbild, eine Liste an Badges und sein aktuelles Ziel einstellen können.
 
 \section{Wissenschaftliche Einordnung}
 \label{Wissenschaftliche_Einordnung}
@@ -939,11 +869,12 @@ SonarQuest ist dabei sehr stark einem klassischen Rollenspiel nachempfunden und 
 Zum einen müssen regelmäßig neue Quests geschrieben werden.
 Dabei sollten Quests so geschrieben sein, dass ihre Geschichte den Spieler dazu motiviert, die Aufgabe zu erfüllen.
 Laut \cite{SonarQuest} liegt diese Aufgabe jeweils beim Teamleiter.
-Dies kann den Teamleiter aber abhängig von der Anzahl an Wartungsaufgaben, Tiefe und inhaltlicher Schlüssigkeit der Geschichten und dem literarischen Talent den Teamleiter sowohl zeitlich als auch in seinen Fähigkeiten überfordern.
-Zum anderen basiert die Gamification von SonarQuest ausschließlich auf den Ergebnissen der Analyse von SonarQube.
+Dies kann den Teamleiter aber abhängig von der Anzahl an Wartungsaufgaben, Tiefe und inhaltlicher Schlüssigkeit der Hintergrundgeschichten der Aufgaben und dem literarischen Talent den Teamleiter sowohl zeitlich als auch in seinen Fähigkeiten überfordern.
+Zum anderen basiert die Messwerte und damit die vergebenen Belohnungen von SonarQuest ausschließlich auf den Ergebnissen der Analyse von SonarQube.
 SonarQube bietet zwar eine Gesamtheitliche Analyse des Projekts, wodurch beispielsweise doppelter Code auch Klassenübergreifend auffällt, allerdings wird für die Analyse mit SonarQube immer das gesamte Projekt benötigt.
 Es ist dadurch deutlich komplexer, Unterschiede zwischen zwei Commits herauszustellen oder das Projekt an einem früheren Zeitpunkt in der Entwicklungshistorie zu untersuchen.
-Aus diesen Gründen wird in dieser Arbeit SonarQube nicht als Hauptquelle für die Analysedaten verwendet.
+SonarQube soll zwar auch für die Analyse der Commits verwendet werden, allerdings ist ein erheblicher Mehraufwand notwendig, um die Historie der Commits zu berücksichtigen.
+Außerdem sollen neben SonarQube noch weitere Quellen für Messwerte verwendet werden, was in SonarQuest nicht möglich ist.
 Darüber hinaus soll der Aufwand für das regelmäßige Schreiben der Quests wegfallen.
 Stattdessen sollen im Vorfeld einige Quests definiert werden, die die Entwickler dann erfüllen können.
 Eine Geschichte zu den einzelnen Quests soll es nicht geben.
@@ -959,11 +890,12 @@ Nach Abschluss des Versuchs sollte zudem der Entwickler mit der besten Platzieru
 Die Bewertung einer Datei fand dabei auf einer Skala von +10 bis -10 statt.
 
 Als Basis für die Bewertung wurde allerdings lediglich die Vollständigkeit des JavaDoc herangezogen.
-Dies ist allerdings nur ein Aspekt für qualitativ guten Code nach \cite{ISO-25010}, auf Aspekte wie funktionale Vollständigkeit, Sicherheit oder Performanz wird an dieser Stelle nicht eingegangen.
+Dies ist allerdings nur ein Aspekt für qualitativ guten Code nach \cite{ISO-25010}, auf Aspekte wie Analysierbarkeit, Sicherheit oder Zuverlässigkeit wurde an dieser Stelle nicht eingegangen.
 Die Punktzahl eines Nutzers ergab sich dann daraus, ob er mehr zu positiv oder negativ bewerteten Dateien beigetragen hat.
 Zudem weist \cite{Prause2012} selbst die Kritik auf, dass die Bewertungsformel für die Punkte der Teilnehmer undurchsichtig war und somit die Teilnehmer nicht beziehungsweise nur schwer nachvollziehen konnten, wie sie ihre Bewertung verbessern konnten.
 Das Pair Programming wird als weiterer Kritikpunkt aufgeführt, da zum einen nur ein Teilnehmer die Anerkennung für die Arbeit beider Partner bekommt und zum anderen für den eigenen Account Beiträge von anderen Entwicklern eingereicht werden können.
-Im Rahmen dieser Arbeit sollen mehrere Aspekte aus \cite{ISO-25010} verwendet werden. Außerdem soll die Bewertungsformel einsehbar sein, sodass das Ergebnis nachvollziehbar ist. 
+Im Rahmen dieser Arbeit sollen mehrere Aspekte aus \cite{ISO-25010} verwendet werden. Außerdem soll die Bewertungsformel einsehbar und verständlich sein, sodass das Ergebnis nachvollziehbar ist.
+Die Verwendung von Pair Programming soll im Rahmen dieser Arbeit nicht berücksichtigt werden, stattdessen wird davon ausgegangen, dass der Code, der von einem Contributor eingereicht wurde, auch von diesem geschrieben wurde.
 
 Ein weiterer Versuch wurde von \cite{PJ2015} unternommen.
 Ziel dieses Versuchs war es, Gamification einzusetzen, um Stylingrichtlinien durchzusetzen.
@@ -971,28 +903,116 @@ Im Rahmen dieses Versuchs sollten zwei Entwicklerteams jeweils ähnliche Softwar
 Als Basis für die Bewertung der Entwickler diente in diesem Versuch eine Punktzahl, die sich aus den mit Checkstyle gemessenen Verstößen gegen die vorgeschriebenen Stylingrichtlinien ergaben.
 Die Entwickler wurden dabei sowohl einzeln als auch als Team bewertet.
 Der Versuch war in zwei Phasen aufgeteilt, in der ersten Phase bekam Team A Rückmeldung über die Leistung sowohl des Teams als auch der einzelnen Personen, in der zweiten Phase bekam Team B dieses Feedback.
-Ein Ergebnis des Versuchs ist, dass beide Teams in der Zeit, in der sie Feedback bekamen, einen deutlich weniger Verstöße gegen die Stylingrichtlinien zu verzeichnen hatten.
+Ein Ergebnis des Versuchs ist, dass beide Teams in der Zeit, in der sie Feedback bekamen, deutlich weniger Verstöße gegen die Stylingrichtlinien zu verzeichnen hatten.
 Auffällig ist auch, dass die Anzahl an Verstößen bei Team A nach Ende der Feedback-Phase wieder zugenommen hat.
 Auch war für die Bewertung des einzelnen Entwicklers sowie des jeweiligen Entwicklerteams die Anzahl an Verstößen lediglich zu Projektende von Bedeutung.
 Dies führte dazu, dass Team A kurz vor Ende seiner Feedback-Phase viel Arbeit in die Reduktion der Anzahl an Verstößen gesteckt hat.
 
-Im Rahmen dieser Arbeit soll die Code-Qualität über den gesamten Zeitraum beobachtet werden.
-Der Fokus soll nicht auf einer möglichst hohen Code-Qualität sondern auf dem Lernerfolg der Entwickler liegen.
-Daher wird die Code-Qualität kontinuierlich betrachtet und wenn möglich sollen individuelle Hilfestellungen zur Verbesserung der Code-Qualität gegeben werden.
+Im Rahmen dieser Arbeit soll die Code-Qualität über den gesamten Zeitraum beobachtet und bewertet werden.
+Der Fokus soll nicht auf einer möglichst hohen Codequalität sondern auf dem Lernerfolg der Entwickler liegen.
+Daher wird die Codequalität kontinuierlich betrachtet und wenn möglich sollen individuelle Hilfestellungen zur Verbesserung der Codequalität gegeben werden.
 
 \chapter{Entwurf des Lösungsansatzes}
 \label{Entwurf}
-In diesem Kapitel wird ein Lösungsansatz zur nachhaltigen Steigerung der Codequalität entworfen.
-Dazu wird zunächst in Abschnitt \ref{Architektur} die Architektur von coderadar mit der Integration des Lösungsansatzes beschrieben.
+In diesem Kapitel wird ein Lösungsansatz zur Integration von Gamification in coderadar zur nachhaltigen Steigerung der Codequalität entworfen.
+Dazu wird zunächst in Abschnitt \ref{Codeanalyse} vorgestellt, wie die Codeanalyse in coderadar bisher durchgeführt wird und welche Herausforderungen bei der Erweiterung und der Implementierung weiterer Plugins bestehen.
+Danach wird in Abschnitt \ref{Architektur} die Architektur von coderadar mit der Integration des Lösungsansatzes beschrieben.
 In Abschnitt \ref{Metrikmatrix} wird dann auf Basis der Metriken aus \ref{Auswahl_Kriterien} ein Matrix zur Gewichtung der gesammelten Metriken erstellt.
 Anschließend wird in Abschnitt \ref{Gamification_Elemente} der Einsatz von Gamification-Elementen ausgearbeitet.
 
+\section{Codeanalyse}
+\label{Codeanalyse}
+In diesem Abschnitt wird genauer auf die Codeanalyse eingegangen.
+Dazu wird zunächst in Abschnitt \ref{Analyseprozess} der Analyseprozess innerhalb von coderadar beschrieben.
+Anschließend wird in Abschnitt \ref{Herausforderungen} auf besondere Herausforderungen bei der Erweiterung des bisherigen Analyseprozesses eingegangen.
+
+\subsection{Analyseprozess}
+\label{Analyseprozess}
+Die Codeanalyse in coderadar erfolgt jeweils Commit- und Dateiweise.
+Für jeden Commit werden die Dateien geladen, die geändert wurden.
+Diese Dateien werden dann in die konfigurierten Analyse-Plugins gegeben.
+Die Plugins implementieren dabei jeweils eine Analysemethode, die als Parameter den Pfad zur Datei und den Dateiinhalt bekommt.
+Die Analysemethode gibt die Metriken für die Datei mit den jeweils berechneten Werten und den Fundorten für die Makel im Quellcode, die zu Abwertungen geführt haben, zurück.
+Um die Bewertungen für einen Commit zu ermitteln, werden für die Metrikwerte für alle geänderten Dateien in diesem Commit zusammengerechnet.
+Dadurch, dass diese Analyse für jeden Commit durchgeführt wird, entsteht auch eine Historie über die Commits.
+
+\subsection{Herausforderungen}
+\label{Herausforderungen}
+Um einige der in Abschnitt \ref{Kriterien_guter_Code} geforderten Metriken messen zu können, muss die bisher durchgeführte Analyse erweitert werden.
+Ein zur Messung dieser Metriken geeignetes Werkzeug ist SonarQube\footnote{\url{https://www.sonarqube.org/}}.
+SonarQube bietet mit dem SonarScanner\footnote{\url{https://docs.sonarqube.org/latest/analysis/scan/sonarscanner/}} \acf{CLI} ein Werkzeug für die Kommandozeile, um Projekte zu analysieren.
+Das Ergebnis dieser Analyse wird anschließend an einen SonarQube-Server geschickt und kann dort entweder über die Benutzeroberfläche oder eine \acs{REST}-Schnittstelle eingesehen werden. 
+An dieser Stelle wird SonarQube verwendet, da es zum einen weit verbreitet ist.
+Laut \cite{SC2021} wurden allein in der \glqq as a Service\grqq{}-Version SonarCloud\footnote{\url{https://sonarcloud.io/}}, die ausschließlich für Open-Source-Software genutzt werden kann, bereits über 180.000 Projekte analysiert.
+Dazu kommen noch von Firmen und Privatpersonen bereitgestellte Instanzen, die für Closed-Source-Software benötigt werden.
+Zum anderen wird SonarQube als Standard bei der adesso SE verwendet wird.
+An dieser Stelle orientiert sich diese Arbeit am Vorgehen der adesso SE, da im Rahmen der Masterarbeit, die auf dieser Arbeit aufbauen wird, bei der adesso SE ein Feldversuch zur Evaluierung der in dieser Arbeit vorgenommenen Implementierung durchgeführt werden soll.
+
+An dieser Stelle bestehen aber auch einige Probleme.
+Zum einen hält SonarQube, abgesehen von einer manuell vorzunehmenden Versionierung, nur die aktuellen Analyseergebnisse vor.
+Um Analyseergebnisse von älteren Commits zu erhalten, muss für den jeweiligen Commit entweder eine Version angelegt werden oder das Projekt muss auf diesen Commit gesetzt werden.
+Um an dieser Stelle auch parallele Analysen zu ermöglichen, werden jeweils neue Projekte für die einzelnen Commits angelegt, die über den Commit-Hash eindeutig identifiziert werden.
+
+Eine weitere Herausforderung besteht darin, aus der einzelnen Datei, die in coderadar für die Analyse zur Verfügung steht, den kompletten Projektstand zu bekommen.
+Hierfür muss das komplette Projekt an dem zu analysierenden Commit ausgecheckt werden.
+An dieser Stelle muss eine Möglichkeit zur Vor- und Nachbereitung der Analyse der einzelnen Commits gegeben werden.
+Innerhalb der Vorbereitung kann dann das jeweilige Projekt ausgecheckt und analysiert werden, in der Nachbereitung werden reservierte Ressourcen dann wieder freigegeben.
+
+Um nun die SonarQube-Analyse durchzuführen, werden allerdings die kompilierten Dateien benötigt.
+Um das Projekt kompilieren zu können, sind zunächst einige Informationen über die Projektstruktur notwendig.
+Projekte verwenden teilweise Build-Management-Werkzeuge wie Gradle\footnote{\url{https://gradle.org/}} oder Maven\footnote{\url{https://maven.apache.org/}}.
+Durch diese Werkzeuge können Abhängigkeiten, die über die \acf{JRE} hinaus gehen, automatisch aufgelöst werden.
+Können diese Abhängigkeiten nicht aufgelöst werden, kann auch das Projekt nicht kompiliert werden.
+Entsprechend können auch Tests fehlschlagen und die Metriken falsche oder keine Werte zurückgeben.
+Um herauszufinden, ob und wenn ja, welches Build-Management-Werkzeug verwendet wird, kann nach bestimmten Dateien im Projektverzeichnis gesucht werden.
+Gradle zeichnet sich an dieser Stelle durch eine Datei \textit{build.gradle} aus, bei Maven existiert eine \textit{pom.xml}.
+Ist eine dieser Dateien im Projektverzeichnis vorhanden, können die entsprechenden Befehle zum Kompilieren des jeweiligen Build-Management-Werkzeugs verwendet werden.
+Sind keine dieser Dateien vorhanden, wird der klassische Java-Befehl zum Kompilieren von Dateien verwendet.
+
+An dieser Stelle treten ebenfalls einige Herausforderungen auf.
+Mit der Zeit werden Versionen von Abhängigkeiten, des Build-Management-Werkzeugs oder von Java geändert.
+Damit das Projekt weiterhin zuverlässig kompiliert werden kann, muss teilweise auf diese Versionsänderungen reagiert werden können.
+Haben sich Abhängigkeiten so stark verändert, dass die im Build-Management-Werkzeug angegebene Version nicht mehr verfügbar ist, kann das Projekt auch nicht mehr kompiliert werden.
+An der Stelle können dann keine Metriken über SonarQube bezogen werden.
+Generell kann auf neuere Versionen in den Abhängigkeiten nicht reagiert werden, da in den Abhängigkeiten teilweise benötigte Funktionen geändert werden oder wegfallen, sodass die ursprüngliche Funktionalität der Software nicht mehr gegeben ist.
+Darüber hinaus würden solche Änderungen Änderungen in der \textit{build.gradle} oder der \textit{pom.xml} erfordern und somit die Software verändern, was im Rahmen dieses Projekts nicht passieren soll.
+
+Der Anpassung der Version des Build-Management-Werkzeugs kann im Beispiel von Gradle damit begegnet werden, dass ein Gradle Wrapper\footnote{\url{https://docs.gradle.org/current/userguide/gradle_wrapper.html}} verwendet wird.
+Dieser zieht die Versionsnummer für Gradle fest, lädt diese herunter und konfiguriert sie.
+Dadurch muss nicht jede benötigte Gradle-Version manuell heruntergeladen werden.
+Teilweise kann es hier auch passieren, dass die Java-Version, die von Gradle verwendet wird, eine andere ist, als die, die im Projekt verwendet wird.
+Dies führt dazu, dass beispielsweise die Java-Version 7 ausgelesen wird, Gradle aber die Version 8 benötigt.
+Da laut \cite{OB2021} Java 8 Rückwärtskompatibel zu Java 6 und 7 ist, wird an dieser Stelle immer Java 8 verwendet wenn eine dieser drei Versionen ausgelesen wurde.
+
+Eine Änderung in der Java-Version kann in einem Gradle-Projekt darüber erkannt werden, dass sich bestimmte Eigenschaften in der \textit{build.gradle} ändern.
+Hier muss entsprechend eine Version der jeweiligen \acs{JRE} installiert sein, damit das Projekt mit der korrekten Version kompiliert werden kann.
+Um die Java-Version entsprechend zu setzen, müssen die Umgebungsvariablen \textit{$JAVA\_HOME$} und \textit{$PATH$} angepasst werden.
+
+Ein weiteres Problem besteht darin, dass einige Commits fehlerhaft beziehungsweise nicht kompilierbar sind.
+Beispielsweise fehlen bei solchen Commits Abhängigkeiten oder Imports oder das Projekt kann aufgrund von Codefehlern nicht kompiliert werden.
+Ein weiterer Grund können fehlschlagende Tests sein.
+Gradle und Maven führen während des Kompilierens des Projekts die im Projekt konfigurierten Tests durch.
+Dies ist notwendig, damit Aussagen über die Testabdeckung getroffen werden können.
+Die Build-Management-Werkzeuge sind an der Stelle so eingestellt, dass das Fehlschlagen eines Tests auch den Kompilierprozess fehlschlagen lässt.
+Entsprechend können diese Commits auch nicht per SonarQube analysiert werden.
+
+Im Anschluss an das Kompilieren des Projekts wird die SonarQube-Analyse gestartet.
+Das SonarScanner \acs{CLI} stellt die Analyseergebnisse nicht in Form einer Datei zur Verfügung, sondern lädt diese auf einen SonarQube-Server hoch.
+Dieser Server muss neben der Datenbank für coderadar und coderadar selbst deployt werden.
+Die Analyseergebnisse können dann, wie oben bereits erwähnt, über eine \acs{REST}-Schnittstelle abgefragt werden.
+Damit das Anfragen der Analyseergebnisse möglich ist, muss im SonarQube-Server zunächst ein Projekt für diesen Commit angelegt werden.
+Dies ist auch über die \acs{REST}-Schnittstelle möglich und muss zu Beginn einer jeden Analyse gemacht werden.
+Im Anschluss an die Analyse kann das jeweilig konfigurierte Projekt dann wieder entfernt werden, um Ressourcen zu schonen.
+
+Damit nicht für jede Datei, die im zu untersuchenden Commit geändert wurde, eine Anfrage gestellt werden muss, wird zu Beginn eine große Anfrage an den SonarQube-Server gestellt.
+Die Ergebnisse dieser Anfrage werden dann nach dem jeweiligen Dateipfad aufgeschlüsselt gespeichert.
+In der Analyse der jeweiligen Datei wird dann auf diese zwischengespeicherten Daten zugegriffen.
+So muss nicht für jede zu analysierende Datei eine Anfrage via \acs{REST} gestellt werden, und die Analyse einer Datei ist performanter.
+
 \section{Architektur}
 \label{Architektur}
-
-% TODO Codeanalyse nach hier verschieben? Mit Marius besprechen.
 Um die weiteren geforderten Metriken erfassen zu können, werden weitere Maßnahmen zu Codeanalyse benötigt.
-Dies geschieht in coderadar durch die Ergänzung eines weiteren Analyse-Plugins.
+Dies geschieht in coderadar durch die Ergänzung weiterer Analyse-Plugins.
 Dazu wird ein neues Untermodul im Modul \textit{coderadar-plugins} angelegt.
 Zentraler Aspekt dieses Moduls ist die Klasse \textit{SonarScannerSourceCodeFileAnalyzerPlugin}, welches das Interface \textit{SourceCodeFileAnalyzerPlugin} implementiert.
 In coderadar wird via Java Reflection über alle Klassen iteriert, die das \textit{SourceCodeFileAnalyzerPlugin}-Interface implementieren.
@@ -1000,18 +1020,20 @@ Für jede Klasse wird dann die \textit{analyze()}-Methode aufgerufen.
 Um die Metriken von SonarQube zu bekommen, wird hier entsprechend ein neues Modul geschrieben, welches eine entsprechende Analyse durchführt.
 
 Darüber hinaus muss jede Analyse vor- und nachbereitet werden.
-Zur Vorbereitung gehört das Anlegen des SonarQube-Projekts, das Checkout des zu analysierenden Commits sowie die Analyse ansich.
-Zur Nachbereitung gehört das Entfernen des SonarQube-Projekts sowie die Punkteberechnung auf Basis der Metrikwerte und der noch zu erarbeitenden Metrikmatrix.
-Die Berechneten Punkte müssen dann dem Autor des Commits gutgeschrieben und sein Level muss angepasst werden.
+Zur Vorbereitung gehört das Anlegen des SonarQube-Projekts, der Checkout des zu analysierenden Commits sowie die Analyse an sich.
+Zur Nachbereitung gehört das Entfernen des SonarQube-Projekts.
 
 Die Vor- und Nachbereitung ist jeweils ein Prozess, der von der Dateianalyse getrennt zu betrachten ist, da er nicht je Datei, sondern je Commit durchgeführt werden soll.
-Aus diesem Grund wird die Vorbereitung innerhalb der Konfiguration des \textit{SonarScannerSourceCodeFileAnalyzerPlugin} durchgeführt.
+Aus diesem Grund wird die Vor- und Nachbereitung in eigens dafür zu erstellende Methoden ausgelagert.
 Um aus Sicht des \textit{coderadar-core}-Moduls eine Unabhängigkeit zu den einzelnen Plugins herzustellen, wird an dieser Stelle in der \textit{coderadar-plugin-api} ein neues Interface \textit{WrappedAnalyzingProcess} eingeführt.
 Dieses Interface schreibt jeweils eine Methode zur Vor- und Nachbereitung der Analyse vor, \textit{prepareAnalysis()} und \textit{postprocessAnalysis()}.
 Im Analyseprozess wird dann zunächst über alle Implementierungen des \textit{WrappedAnalyzingProcess} iteriert und für jede Instanz wird die Methode \textit{prepareAnalysis()} aufgerufen.
 Anschließend findet die Analyse des Commits, gefolgt von dem Aufruf der Methode \textit{postprocessAnalysis()} für alle Implementierungen des \textit{WrappedAnalyzingProcess}-Interface.
 
-Des weiteren müssen gemäß den Anforderungen aus \ref{Anforderungen} Anpassungen in der Benutzerschnittstelle im Modul \textit{coderadar-ui} vorgenommen werden.
+Des weiteren müssen die von den einzelnen Analyse-Plugins zurückgegebenen Metrikwerte mit Hilfe einer noch zu erarbeitenden Metrikmatrix in eine absolute Punktzahl umgerechnet werden.
+Diese Punktzahl muss dann dem Autor des Commits gutgeschrieben und sein Level angepasst werden.
+
+Außerdem müssen gemäß den Anforderungen aus \ref{Anforderungen} Anpassungen in der Benutzerschnittstelle im Modul \textit{coderadar-ui} vorgenommen werden.
 Um die benötigten Daten zu speichern und bereitzustellen, müssen entsprechende Anpassungen in der \acs{REST}-Schnittstelle und dem Datenbankadapter, \textit{coderadar-rest} beziehungsweise \textit{coderadar-graph}, vorgenommen werden.
 Für die im Rahmen dieser Arbeit implementierten Erweiterungen müssen darüber hinaus Tests geschrieben werden.
 Diese teilen sich auf in Unit-Tests, die im jeweiligen Modul, und Integrationstests, welche im Modul \textit{coderadar-test} implementiert werden.
@@ -1038,48 +1060,80 @@ Eine weitere Aufgabe der Metrikmatrix ist die Ausbalancierung der Punkte, die ei
 Es darf nicht möglich sein, durch das wiederholte Ausführen bestimmter, trivialer Aktionen übermäßig viele Punkte zu erhalten, da sonst die Vergleichbarkeit zu anderen Autoren und Projektteams nicht mehr gegeben ist.
 Diese Balancierung wird ebenfalls über die Gewichtung vorgenommen.
 
-Im Folgenden ist diese Metrikmatrix in Tabellenform dargestellt:
+Im Folgenden ist diese Metrikmatrix in Tabellenform dargestellt: \ref{metric_matrix}
 
-\begin{table}[!htb]
-	\label{metric_matrix}
-	\begin{minipage}{.33\linewidth}
-		\centering
-		\begin{tabular}{|c|c|}
-			\hline
-			Metrik & Gewichtung  \\ \hline
-			Test & Test \\ \hline
-			Test & Test \\ \hline
-		\end{tabular}
-	\end{minipage}%
-	\begin{minipage}{.33\linewidth}
-		\centering
-		\begin{tabular}{|c|c|}
-			\hline
-			Metrik & Gewichtung  \\ \hline
-			Test & Test \\ \hline
-			Test & Test \\ \hline
-		\end{tabular}
-	\end{minipage}%
-	\begin{minipage}{.33\linewidth}
-		\centering
-		\begin{tabular}{|c|c|}
-			\hline
-			Metrik & Gewichtung  \\ \hline
-			Test & Test \\ \hline
-			Test & Test \\ \hline
-		\end{tabular}
-	\end{minipage} 
+\label{metric_matrix}
+\begin{longtable}{|c|c|}
+	\hline
+	Metrik & Gewichtung  \\ \hline
+	coderadar:size:eloc:java & x \\ \hline
+	coderadar:size:sloc:java & x \\ \hline
+	coderadar:size:cloc:java & x \\ \hline
+	coderadar:size:loc:java & x \\ \hline
+	CustomImportOrderCheck & x \\ \hline
+	TodoCommentCheck & x \\ \hline
+	UncommentedMainCheck & x \\ \hline
+	NeedBracesCheck & x \\ \hline
+	DeclarationOrderCheck & x \\ \hline
+	ExplicitInitializationCheck & x \\ \hline
+	FinalLocalVariableCheck & x \\ \hline
+	HiddenFieldCheck & x \\ \hline
+	AbstractClassNameCheck & x \\ \hline
+	AvoidStarImportCheck & x \\ \hline
+	AvoidStaticImportCheck & x \\ \hline
+	ClassDataAbstractionCouplingCheck & x \\ \hline
+	ClassFanOutComplexityCheck & x \\ \hline
+	CyclomaticComplexityCheck & x \\ \hline
+	FinalClassCheck & x \\ \hline
+	HideUtilityClassConstructorCheck & x \\ \hline
+	IllegalCatchCheck & x \\ \hline
+	ImportOrderCheck & x \\ \hline
+	JavadocStyleCheck & x \\ \hline
+	LineLengthCheck & x \\ \hline
+	MagicNumberCheck & x \\ \hline
+	MethodCountCheck & x \\ \hline
+	MultipleStringLiteralsCheck & x \\ \hline
+	NewlineAtEndOfFileCheck & x \\ \hline
+	OuterTypeFilenameCheck & x \\ \hline
+	OverloadMethodsDeclarationOrderCheck & x \\ \hline
+	PackageDeclarationCheck & x \\ \hline
+	ParameterAssignmentCheck & x \\ \hline
+	RedundantModifierCheck & x \\ \hline
+	RegexpMultilineCheck & x \\ \hline
+	StaticVariableNameCheck & x \\ \hline
+	SummaryJavadocCheck & x \\ \hline
+	TrailingCommentCheck & x \\ \hline
+	UpperEllCheck & x \\ \hline
+	VariableDeclarationUsageDistanceCheck & x \\ \hline
+	VisibilityModifierCheck & x \\ \hline
+	WhitespaceAroundCheck & x \\ \hline
+	WriteTagCheck & x \\ \hline
+	sonarscanner:test\_success\_density & x \\ \hline
+	sonarscanner:uncovered\_lines & x \\ \hline
+	sonarscanner:cognitive\_complexity & x \\ \hline
+	sonarscanner:coverage & x \\ \hline
+	sonarscanner:line\_coverage & x \\ \hline
+	sonarscanner:sqale\_rating & x \\ \hline
+	sonarscanner:vulnerabilities & x \\ \hline
+	sonarscanner:public\_undocumented\_api & x \\ \hline
+	sonarscanner:effort\_to\_reach\_maintainability\_rating\_a & x \\ \hline
+	sonarscanner:duplicated\_lines\_density & x \\ \hline
+	sonarscanner:code\_smells & x \\ \hline
+	sonarscanner:bugs & x \\ \hline
+	sonarscanner:reliability\_rating & x \\ \hline
+	sonarscanner:violations & x \\ \hline
+	sonarscanner:lines\_to\_cover & x \\ \hline
 	\caption{Metrikmatrix mit der Gewichtung der einzelnen Metriken}
-\end{table}
+\end{longtable}
 
 Anhand der in Tabelle \ref{metric_matrix} dargestellten Gewichtsverteilung über die Metriken wird nach der Analyse die Anzahl an Punkten berechnet, die der Autor des Commits bekommt.
-Anhand der erhaltenen Punkte wird dann das aktuelle Level des Autors bei Bedarf angepasst.
+Auf Basis der erhaltenen Punkte wird dann das aktuelle Level des Autors bei Bedarf angepasst.
 
 \section{Gamification-Elemente}
 \label{Gamification_Elemente}
-Um den Punkte- und Levelstand der einzelnen Autoren aber auch der jeweiligen Projektteams darzustellen, werden verschiedene Gamification-Elemente benötigt.
+Um den Punkte- und Levelstand der einzelnen Autoren aber auch der jeweiligen Projektteams darzustellen, werden verschiedene Gamification-Elemente verwendet.
 Im folgenden werden auf Basis der bisherigen Benutzerschnittstelle Prototypen für die Erweiterungen erstellt.
-Bei der Konzeptionierung der Prototypen wird besonders auf die beabsichtigte Wirkung der jeweiligen Elemente eingegangen.
+Bei der Konzeptionierung der Prototypen wird besonders auf die beabsichtigte Wirkung der jeweiligen Gamification-Elemente eingegangen.
 
 \subsection{Punkte}
 \label{coderadar_Punkte}

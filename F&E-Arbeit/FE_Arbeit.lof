@@ -1,15 +1,15 @@
-\select@language {ngerman}
+\babel@toc {ngerman}{}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Die verschiedenen Arten des Spielens nach \cite {DD2011}.}}{6}{figure.2.1}
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Die verschiedenen Arten des Spielens nach \cite {DD2011}.}}{6}{figure.2.1}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Die Struktur der Komponenten in coderadar nach den Erweiterungen aus dieser Arbeit.}}{38}{figure.4.1}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Die Struktur der Komponenten in coderadar nach den Erweiterungen aus dieser Arbeit.}}{38}{figure.4.1}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {7.1}{\ignorespaces Ein Beispiel f\IeC {\"u}r die City-View.}}{45}{figure.7.1}
-\contentsline {figure}{\numberline {7.2}{\ignorespaces Ein Beispiel f\IeC {\"u}r die Dependency-Map.}}{46}{figure.7.2}
-\contentsline {figure}{\numberline {7.3}{\ignorespaces Die Baumansicht der Commits in coderadar.}}{47}{figure.7.3}
+\contentsline {figure}{\numberline {7.1}{\ignorespaces Ein Beispiel für die City-View.}}{45}{figure.7.1}%
+\contentsline {figure}{\numberline {7.2}{\ignorespaces Ein Beispiel für die Dependency-Map.}}{46}{figure.7.2}%
+\contentsline {figure}{\numberline {7.3}{\ignorespaces Die Baumansicht der Commits in coderadar.}}{47}{figure.7.3}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }

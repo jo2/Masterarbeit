@@ -1,86 +1,86 @@
-\select@language {ngerman}
-\contentsline {chapter}{\numberline {1}Einleitung}{1}{chapter.1}
-\contentsline {section}{\numberline {1.1}Motivation}{1}{section.1.1}
-\contentsline {section}{\numberline {1.2}Zielsetzung}{2}{section.1.2}
-\contentsline {section}{\numberline {1.3}Vorgehensweise}{3}{section.1.3}
-\contentsline {chapter}{\numberline {2}Technische Grundlagen}{5}{chapter.2}
-\contentsline {section}{\numberline {2.1}Gamification}{5}{section.2.1}
-\contentsline {subsection}{\numberline {2.1.1}Definition und Einordnung}{5}{subsection.2.1.1}
-\contentsline {subsection}{\numberline {2.1.2}Spielermotivation}{7}{subsection.2.1.2}
-\contentsline {paragraph}{\nonumberline Bed\IeC {\"u}rfnisse des Spielers}{7}{section*.3}
-\contentsline {paragraph}{\nonumberline Positive und negative Eindr\IeC {\"u}cke}{7}{section*.4}
-\contentsline {paragraph}{\nonumberline Erf\IeC {\"u}llung von Erwartungen}{7}{section*.5}
-\contentsline {paragraph}{\nonumberline Selbstverwirklichung}{8}{section*.6}
-\contentsline {paragraph}{\nonumberline Nutzerinteressen}{8}{section*.7}
-\contentsline {paragraph}{\nonumberline Emotionales Empfinden}{8}{section*.8}
-\contentsline {subsection}{\numberline {2.1.3}Gamification-Elemente}{8}{subsection.2.1.3}
-\contentsline {paragraph}{\nonumberline Punkte}{9}{section*.9}
-\contentsline {paragraph}{\nonumberline Badges}{9}{section*.10}
-\contentsline {paragraph}{\nonumberline Fortschrittsbalken}{9}{section*.11}
-\contentsline {paragraph}{\nonumberline Leistungsdiagramme}{9}{section*.12}
-\contentsline {paragraph}{\nonumberline Quests}{9}{section*.13}
-\contentsline {paragraph}{\nonumberline Avatare und Profile}{10}{section*.14}
-\contentsline {paragraph}{\nonumberline Leaderboards}{10}{section*.15}
-\contentsline {section}{\numberline {2.2}Kriterien f\IeC {\"u}r qualitativ hochwertigen Code}{10}{section.2.2}
-\contentsline {subsection}{\numberline {2.2.1}Funktionale Vollst\IeC {\"a}ndigkeit}{10}{subsection.2.2.1}
-\contentsline {subsection}{\numberline {2.2.2}Nutzbarkeit}{11}{subsection.2.2.2}
-\contentsline {subsection}{\numberline {2.2.3}Performanz}{11}{subsection.2.2.3}
-\contentsline {subsection}{\numberline {2.2.4}Kompatibilit\IeC {\"a}t}{11}{subsection.2.2.4}
-\contentsline {subsection}{\numberline {2.2.5}Zuverl\IeC {\"a}ssigkeit}{12}{subsection.2.2.5}
-\contentsline {subsection}{\numberline {2.2.6}Sicherheit}{13}{subsection.2.2.6}
-\contentsline {subsection}{\numberline {2.2.7}Wartbarkeit}{14}{subsection.2.2.7}
-\contentsline {subsection}{\numberline {2.2.8}Portierbarkeit}{15}{subsection.2.2.8}
-\contentsline {subsection}{\numberline {2.2.9}Auswahl der Qualit\IeC {\"a}tskriterien}{16}{subsection.2.2.9}
-\contentsline {paragraph}{\nonumberline Zuverl\IeC {\"a}ssigkeit}{16}{section*.19}
-\contentsline {paragraph}{\nonumberline Sicherheitsschwachstellen}{17}{section*.20}
-\contentsline {paragraph}{\nonumberline Wiederverwendbarkeit}{18}{section*.22}
-\contentsline {paragraph}{\nonumberline Analysierbarkeit}{19}{section*.23}
-\contentsline {paragraph}{\nonumberline Komplexit\IeC {\"a}t}{19}{section*.24}
-\contentsline {paragraph}{\nonumberline Wissensmonopole}{20}{section*.25}
-\contentsline {chapter}{\numberline {3}Projektkontext}{22}{chapter.3}
-\contentsline {section}{\numberline {3.1}Problembeschreibung}{22}{section.3.1}
-\contentsline {section}{\numberline {3.2}Kontext coderadar}{23}{section.3.2}
-\contentsline {section}{\numberline {3.3}Anforderungen}{25}{section.3.3}
-\contentsline {paragraph}{\nonumberline A.1}{25}{section*.27}
-\contentsline {paragraph}{\nonumberline A.2}{26}{section*.28}
-\contentsline {paragraph}{\nonumberline A.3}{26}{section*.29}
-\contentsline {paragraph}{\nonumberline A.4}{26}{section*.30}
-\contentsline {paragraph}{\nonumberline A.5}{26}{section*.31}
-\contentsline {paragraph}{\nonumberline A.6}{26}{section*.32}
-\contentsline {paragraph}{\nonumberline A.7}{26}{section*.33}
-\contentsline {paragraph}{\nonumberline A.8}{26}{section*.34}
-\contentsline {paragraph}{\nonumberline B.1}{27}{section*.35}
-\contentsline {paragraph}{\nonumberline B.2}{27}{section*.36}
-\contentsline {paragraph}{\nonumberline B.3}{27}{section*.37}
-\contentsline {paragraph}{\nonumberline B.4}{27}{section*.38}
-\contentsline {paragraph}{\nonumberline B.5}{27}{section*.39}
-\contentsline {paragraph}{\nonumberline B.6}{27}{section*.40}
-\contentsline {paragraph}{\nonumberline B.7}{28}{section*.41}
-\contentsline {paragraph}{\nonumberline F.1}{28}{section*.42}
-\contentsline {paragraph}{\nonumberline F.2}{28}{section*.43}
-\contentsline {paragraph}{\nonumberline F.3}{28}{section*.44}
-\contentsline {paragraph}{\nonumberline F.4}{28}{section*.45}
-\contentsline {paragraph}{\nonumberline F.5}{28}{section*.46}
-\contentsline {paragraph}{\nonumberline F.6}{29}{section*.47}
-\contentsline {paragraph}{\nonumberline F.7}{29}{section*.48}
-\contentsline {section}{\numberline {3.4}Wissenschaftliche Einordnung}{29}{section.3.4}
-\contentsline {chapter}{\numberline {4}Entwurf des L\IeC {\"o}sungsansatzes}{32}{chapter.4}
-\contentsline {section}{\numberline {4.1}Codeanalyse}{32}{section.4.1}
-\contentsline {subsection}{\numberline {4.1.1}Analyseprozess}{32}{subsection.4.1.1}
-\contentsline {subsection}{\numberline {4.1.2}Herausforderungen}{33}{subsection.4.1.2}
-\contentsline {section}{\numberline {4.2}Architektur}{36}{section.4.2}
-\contentsline {section}{\numberline {4.3}Metrikmatrix}{38}{section.4.3}
-\contentsline {section}{\numberline {4.4}Gamification-Elemente}{41}{section.4.4}
-\contentsline {subsection}{\numberline {4.4.1}Punkte}{41}{subsection.4.4.1}
-\contentsline {subsection}{\numberline {4.4.2}Level}{41}{subsection.4.4.2}
-\contentsline {chapter}{\numberline {5}Umsetzung}{43}{chapter.5}
-\contentsline {section}{\numberline {5.1}Programmierung}{43}{section.5.1}
-\contentsline {chapter}{\numberline {6}Abschluss}{44}{chapter.6}
-\contentsline {section}{\numberline {6.1}Verifizierung der Anforderungen}{44}{section.6.1}
-\contentsline {section}{\numberline {6.2}Fazit}{44}{section.6.2}
-\contentsline {chapter}{\nonumberline Anhang}{45}{chapter*.51}
-\contentsline {chapter}{Abk\IeC {\"u}rzungsverzeichnis}{48}{section*.52}
-\contentsline {chapter}{Abbildungsverzeichnis}{49}{section*.54}
-\contentsline {chapter}{Tabellenverzeichnis}{50}{section*.55}
-\contentsline {chapter}{\nonumberline Quellcodeverzeichnis}{51}{chapter*.56}
-\contentsline {chapter}{\nonumberline Literaturverzeichnis}{52}{chapter*.57}
+\babel@toc {ngerman}{}
+\contentsline {chapter}{\numberline {1}Einleitung}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Motivation}{1}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Zielsetzung}{2}{section.1.2}%
+\contentsline {section}{\numberline {1.3}Vorgehensweise}{3}{section.1.3}%
+\contentsline {chapter}{\numberline {2}Technische Grundlagen}{5}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Gamification}{5}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1}Definition und Einordnung}{5}{subsection.2.1.1}%
+\contentsline {subsection}{\numberline {2.1.2}Spielermotivation}{7}{subsection.2.1.2}%
+\contentsline {paragraph}{\nonumberline Bedürfnisse des Spielers}{7}{paragraph*.4}%
+\contentsline {paragraph}{\nonumberline Positive und negative Eindrücke}{7}{paragraph*.6}%
+\contentsline {paragraph}{\nonumberline Erfüllung von Erwartungen}{7}{paragraph*.8}%
+\contentsline {paragraph}{\nonumberline Selbstverwirklichung}{8}{paragraph*.10}%
+\contentsline {paragraph}{\nonumberline Nutzerinteressen}{8}{paragraph*.12}%
+\contentsline {paragraph}{\nonumberline Emotionales Empfinden}{8}{paragraph*.14}%
+\contentsline {subsection}{\numberline {2.1.3}Gamification-Elemente}{8}{subsection.2.1.3}%
+\contentsline {paragraph}{\nonumberline Punkte}{9}{paragraph*.16}%
+\contentsline {paragraph}{\nonumberline Badges}{9}{paragraph*.18}%
+\contentsline {paragraph}{\nonumberline Fortschrittsbalken}{9}{paragraph*.20}%
+\contentsline {paragraph}{\nonumberline Leistungsdiagramme}{9}{paragraph*.22}%
+\contentsline {paragraph}{\nonumberline Quests}{9}{paragraph*.24}%
+\contentsline {paragraph}{\nonumberline Avatare und Profile}{10}{paragraph*.26}%
+\contentsline {paragraph}{\nonumberline Leaderboards}{10}{paragraph*.28}%
+\contentsline {section}{\numberline {2.2}Kriterien für qualitativ hochwertigen Code}{10}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}Funktionale Vollständigkeit}{10}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}Nutzbarkeit}{11}{subsection.2.2.2}%
+\contentsline {subsection}{\numberline {2.2.3}Performanz}{11}{subsection.2.2.3}%
+\contentsline {subsection}{\numberline {2.2.4}Kompatibilität}{11}{subsection.2.2.4}%
+\contentsline {subsection}{\numberline {2.2.5}Zuverlässigkeit}{12}{subsection.2.2.5}%
+\contentsline {subsection}{\numberline {2.2.6}Sicherheit}{13}{subsection.2.2.6}%
+\contentsline {subsection}{\numberline {2.2.7}Wartbarkeit}{14}{subsection.2.2.7}%
+\contentsline {subsection}{\numberline {2.2.8}Portierbarkeit}{15}{subsection.2.2.8}%
+\contentsline {subsection}{\numberline {2.2.9}Auswahl der Qualitätskriterien}{16}{subsection.2.2.9}%
+\contentsline {paragraph}{\nonumberline Zuverlässigkeit}{16}{paragraph*.33}%
+\contentsline {paragraph}{\nonumberline Sicherheitsschwachstellen}{17}{paragraph*.35}%
+\contentsline {paragraph}{\nonumberline Wiederverwendbarkeit}{18}{paragraph*.38}%
+\contentsline {paragraph}{\nonumberline Analysierbarkeit}{19}{paragraph*.40}%
+\contentsline {paragraph}{\nonumberline Komplexität}{19}{paragraph*.42}%
+\contentsline {paragraph}{\nonumberline Wissensmonopole}{20}{paragraph*.44}%
+\contentsline {chapter}{\numberline {3}Projektkontext}{22}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Problembeschreibung}{22}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Kontext coderadar}{23}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Anforderungen}{25}{section.3.3}%
+\contentsline {paragraph}{\nonumberline A.1}{25}{paragraph*.47}%
+\contentsline {paragraph}{\nonumberline A.2}{26}{paragraph*.49}%
+\contentsline {paragraph}{\nonumberline A.3}{26}{paragraph*.51}%
+\contentsline {paragraph}{\nonumberline A.4}{26}{paragraph*.53}%
+\contentsline {paragraph}{\nonumberline A.5}{26}{paragraph*.55}%
+\contentsline {paragraph}{\nonumberline A.6}{26}{paragraph*.57}%
+\contentsline {paragraph}{\nonumberline A.7}{26}{paragraph*.59}%
+\contentsline {paragraph}{\nonumberline A.8}{26}{paragraph*.61}%
+\contentsline {paragraph}{\nonumberline B.1}{27}{paragraph*.63}%
+\contentsline {paragraph}{\nonumberline B.2}{27}{paragraph*.65}%
+\contentsline {paragraph}{\nonumberline B.3}{27}{paragraph*.67}%
+\contentsline {paragraph}{\nonumberline B.4}{27}{paragraph*.69}%
+\contentsline {paragraph}{\nonumberline B.5}{27}{paragraph*.71}%
+\contentsline {paragraph}{\nonumberline B.6}{27}{paragraph*.73}%
+\contentsline {paragraph}{\nonumberline B.7}{28}{paragraph*.75}%
+\contentsline {paragraph}{\nonumberline F.1}{28}{paragraph*.77}%
+\contentsline {paragraph}{\nonumberline F.2}{28}{paragraph*.79}%
+\contentsline {paragraph}{\nonumberline F.3}{28}{paragraph*.81}%
+\contentsline {paragraph}{\nonumberline F.4}{28}{paragraph*.83}%
+\contentsline {paragraph}{\nonumberline F.5}{28}{paragraph*.85}%
+\contentsline {paragraph}{\nonumberline F.6}{29}{paragraph*.87}%
+\contentsline {paragraph}{\nonumberline F.7}{29}{paragraph*.89}%
+\contentsline {section}{\numberline {3.4}Wissenschaftliche Einordnung}{29}{section.3.4}%
+\contentsline {chapter}{\numberline {4}Entwurf des Lösungsansatzes}{32}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Codeanalyse}{32}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}Analyseprozess}{32}{subsection.4.1.1}%
+\contentsline {subsection}{\numberline {4.1.2}Herausforderungen}{33}{subsection.4.1.2}%
+\contentsline {section}{\numberline {4.2}Architektur}{36}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Metrikmatrix}{38}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Gamification-Elemente}{41}{section.4.4}%
+\contentsline {subsection}{\numberline {4.4.1}Punkte}{41}{subsection.4.4.1}%
+\contentsline {subsection}{\numberline {4.4.2}Level}{41}{subsection.4.4.2}%
+\contentsline {chapter}{\numberline {5}Umsetzung}{43}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Programmierung}{43}{section.5.1}%
+\contentsline {chapter}{\numberline {6}Abschluss}{44}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Verifizierung der Anforderungen}{44}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Fazit}{44}{section.6.2}%
+\contentsline {chapter}{\nonumberline Anhang}{45}{chapter*.92}%
+\contentsline {chapter}{Abkürzungsverzeichnis}{48}{section*.93}%
+\contentsline {chapter}{Abbildungsverzeichnis}{49}{section*.95}%
+\contentsline {chapter}{Tabellenverzeichnis}{50}{section*.96}%
+\contentsline {chapter}{\nonumberline Quellcodeverzeichnis}{51}{chapter*.97}%
+\contentsline {chapter}{\nonumberline Literaturverzeichnis}{52}{chapter*.98}%

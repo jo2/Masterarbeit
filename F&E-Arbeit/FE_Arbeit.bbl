@@ -35,6 +35,12 @@
 \newblock \url{https://checkstyle.sourceforge.io/checks.html}, 2021. --
 \newblock [Online; Zugriff am 30.06.2021 20:21]
 
+\bibitem[Dav13]{Davis2013}
+\textsc{Davis}, Martin:
+\newblock \emph{Computability and Unsolvability -}.
+\newblock 2013. --
+\newblock ISBN 978--0--486--15106--9
+
 \bibitem[DDKN11]{DD2011}
 \textsc{Deterding}, Sebastian ; \textsc{Dixon}, Dan ; \textsc{Khaled}, Rilla  ;
   \textsc{Nacke}, Lennart:

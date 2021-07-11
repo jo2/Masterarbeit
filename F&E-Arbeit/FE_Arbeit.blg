@@ -5,10 +5,14 @@ Repeated entry---line 79 of file bib.bib
  : @inproceedings{PJ2015
  :                      ,
 I'm skipping whatever remains of this entry
+"{" immediately follows a field name---line 206 of file bib.bib
+ :  publisher
+ :           {Courier Corporation}
+I'm skipping whatever remains of this entry
 Warning--to sort, need author or key in SonarQuest
 Warning--empty author and editor in ISO-25010
 Warning--empty author and editor in ISO-25010
 Warning--empty number in ISO-25010
 Warning--empty note in ISO-25010
 Warning--empty booktitle in PJ2015
-(There was 1 error message)
+(There were 2 error messages)

@@ -224,7 +224,7 @@ Wenn insgesamt die Entwicklungskosten reduziert werden sollen, stellt dieser Ums
 Denn der Wartungsaufwand im Übrigen ist vielfach kaum zu verringern, weil sich die Anforderungen an die Software im Laufe der Zeit ändern, weil auftretende Probleme behoben werden müssen oder weil Abhängigkeiten auf andere Software, Frameworks oder Komponenten angepasst werden müssen.
 Bereits durch das Erfüllen gewisser Qualitätsstandards lässt sich jedoch der für das Verstehen des Codes notwendige Aufwand reduzieren.
 
-Qualitativ hochwertige Software zeichnet sich nach \cite{ISO-25010} dadurch aus, dass sie stabil ist und gut gewartet, analysiert, erlernt und verändert werden kann.
+Qualitativ hochwertige Software zeichnet sich nach der \acf{ISO} 25010 dadurch aus, dass sie stabil ist und gut gewartet, analysiert, erlernt und verändert werden kann (vgl. \cite{ISO-25010}).
 Software, die diese Anforderungen erfüllt, beinhaltet Code, der bestimmten Richtlinien entspricht.
 Zu diesen Richtlinien gehört beispielsweise, dass Code auf einer Ebene einheitlich eingerückt wird, dass öffnende geschweifte Klammern in der gleichen Zeile stehen wie der Code, der die Klammer erfordert, dass Variablennamen sprechend sind und nicht nur aus einem Buchstaben bestehen oder dass Parameter auf ihre Gültigkeit überprüft werden, bevor mit ihnen gearbeitet wird.
 
@@ -251,58 +251,57 @@ Dazu werden zunächst Analysemechanismen zur Bewertung des Codes ausgewählt.
 Anschließend werden Gamification-Elemente ausgewählt und in coderadar implementiert.
 Mit einer Balancierungsmatrix wird dann die Bewertung des Codes gewichtet und in eine absolute Punktzahl umgerechnet.
 Auf dieser Punktzahl basieren dann Levels, Leader Boards und ähnliches.
-Ein Feldversuch zur Feststellung, in wie weit die implementierten Maßnahmen die Softwarequalität nachhaltig verbessern können, soll im Rahmen der F\&E-Arbeit nicht stattfinden.
+Ein Feldversuch zur Feststellung, in wie weit die implementierten Maßnahmen die Softwarequalität nachhaltig verbessern, soll im Rahmen der F\&E-Arbeit nicht stattfinden.
 Dies geschieht erst im Rahmen der Masterthesis.
 		
 \section{Vorgehensweise}
 \label{Vorgehensweise}
-Zunächst werden in Kapitel \ref{Technische_Grundlagen} die technischen Grundlagen für diese Arbeit vorgestellt.
+Zunächst werden in Kapitel \ref{Technische_Grundlagen} die Grundlagen für diese Arbeit vorgestellt.
 Dazu gehört zunächst die Definition von Gamification im Rahmen dieser Arbeit in Abschnitt \ref{Gamification}.
 Im Anschluss daran wird in Abschnitt \ref{Kriterien_guter_Code} beschrieben, was qualitativ gute Software genau ausmacht.
 Dazu wird ausgeführt, welche Qualitätsmetriken es für Software gibt und wie ihre Werte zu verstehen sind.
 
-In Kapitel \ref{Projektkontext} wird dann die Problemstellung analysiert.
+In Kapitel \ref{Projektkontext} wird dann die Problemstellung (vgl. Abschnitt \ref{Motivation}) analysiert.
 Dazu wird zunächst in Abschnitt \ref{Problembeschreibung} das grundlegende Problem beschrieben.
-Dieses Problem wird anschließend in Abschnitt \ref{Kontext} in den bestehenden Kontext eingeordnet.
+Dieses Problem wird in Abschnitt \ref{Kontext} in den bestehenden Kontext des Codeanalysewerkzeugs coderadar eingeordnet.
 Auf Basis dieser Ergebnisse werden dann Anforderungen an eine Software herausgearbeitet, die im Rahmen dieser Arbeit implementiert werden und die beschriebenen Probleme lösen soll.
-Abschließend erfolgt dann die wissenschaftliche Einordnung der Arbeit in Abschnitt \ref{Wissenschaftliche_Einordnung}.
+Abschließend erfolgt die wissenschaftliche Einordnung der Arbeit in Abschnitt \ref{Wissenschaftliche_Einordnung}.
 
-Anschließend erfolgt in Kapitel \ref{Entwurf} der Entwurf eines Lösungsansatzes für das oben beschriebene Problem.
-Dazu wird zunächst in Abschnitt \ref{Codeanalyse} vorgestellt, wie der Code analysiert werden kann.
+Der Entwurf eines Lösungsansatzes für das oben beschriebene Problem erfolgt in Kapitel \ref{Entwurf}.
+Dazu wird zunächst in Abschnitt \ref{Codeanalyse} vorgestellt, wie Code in coderadar analysiert werden kann.
 Ein besonderes Augenmerk wird dabei auf mögliche Herausforderungen während der Analyse gelegt.
-Anschließend wird in Abschnitt \ref{Architektur} auf Basis der bestehenden coderadar-Architektur eine sinnvolle Möglichkeit zur Ergänzung der Analyse und Gamification erarbeitet.
-Danach wird in Abschnitt \ref{Metrikmatrix} eine Matrix erarbeitet, in der erläutert wird, in welchem Umfang welche Metrik in die Berechnung eines Scores für die Güte der Software einfließt.
-Des Weiteren wird in Abschnitt \ref{Gamification_Elemente} erarbeitet, wie welche Gamification-Elemente im User-Interface verwendet werden können, um den berechneten Score darzustellen und Motivation zur Verbesserung dieses Scores zu liefern.
+Anschließend werden in Abschnitt \ref{Architektur} auf Basis der bestehenden coderadar-Architektur sinnvolle Möglichkeiten zur Ergänzung der Analyse und der Einarbeitung von Gamification-Elementen erarbeitet.
+Danach wird in Abschnitt \ref{Metrikmatrix} eine Matrix erstellt, in der festgelegt wird, in welchem Umfang welche Metrik in die Berechnung eines Scores für die Güte der Software einfließen soll.
+Anschließend wird in Abschnitt \ref{Gamification_Elemente} erarbeitet, wie welche Gamification-Elemente im User-Interface verwendet werden können, um den berechneten Score darzustellen und Motivation zur Verbesserung dieses Scores zu liefern.
 
 Kapitel \ref{Umsetzung} beschäftigt sich dann mit der programmatischen Umsetzung des beschriebenen Lösungsansatzes. 
 
 Abschließend werden in Kapitel \ref{Abschluss} die Ergebnisse dieser Arbeit zusammengefasst.
-Dazu wird zunächst in Abschnitt \ref{Verifizierung_Anforderungen} die Umsetzung der gestellten Anforderungen verifiziert.
+Dazu wird zunächst in Abschnitt \ref{Verifizierung_Anforderungen} die Umsetzung der gestellten Anforderungen überprüft.
 Anschließend wird in Abschnitt \ref{Fazit} ein Fazit aus der Implementierung gezogen.
-Zum Schluss wird ein Ausblick auf die weitere Arbeit mit der erarbeiteten Gamification in coderadar gegeben.
+Zum Schluss wird ein Ausblick auf die weitere Arbeit mit den implementierten Gamification-Elementen in coderadar gegeben.
 
-\chapter{Technische Grundlagen}
+\chapter{Grundlagen}
 \label{Technische_Grundlagen}
 Dieses Kapitel geht auf die technischen Grundlagen der Arbeit ein.
 Dazu gehört zunächst die Erläuterung von Gamification und Gamification-Elementen in Abschnitt \ref{Gamification}.
-Danach werden in Abschnitt \ref{Kriterien_guter_Code} grundlegende Kriterien für qualitativ hochwertige Software aufgestellt.
+Danach werden in Abschnitt \ref{Kriterien_guter_Code} grundlegende Kriterien für qualitativ hochwertige Software vorgestellt.
+Dabei als Basis dienen dabei die Kriterien für Softwarequalität aus der \acs{ISO} 25010 (vgl. \cite{ISO-25010}).
+Aus diesen Kriterien werden die ausgewählt, die durch coderadar gemessen werden können. 
 
 \section{Gamification}
 \label{Gamification}
 In diesem Abschnitt wird der Begriff Gamification erläutert.
-Dazu geschieht zunächst in Abschnitt \ref{Definition} eine Definition des Begriffs sowie eine Einordnung der Gamification in die Formen des Spielens nach \cite{DD2011}.
-Anschließend wird in Abschnitt \ref{Spielermotivation} vorgestellt, wie Motivation erreicht beziehungsweise gesteigert werden kann.
-In Abschnitt \ref{Elemente} werden dann einige Gamification-Elemente vorgestellt.
-Im Laufe der Arbeit wird dann ausgearbeitet welche Elemente verwendet werden und welchen Zweck sie erfüllen sollen.
+Dazu erfolgt zunächst in Abschnitt \ref{Definition} eine Definition des Begriffs sowie eine Einordnung der Gamification in die Formen des Spielens nach \cite{DD2011}.
+Anschließend wird in Abschnitt \ref{Spielermotivation} beschrieben, wie Motivation erreicht beziehungsweise gesteigert werden kann.
+In Abschnitt \ref{Elemente} werden dann einige Gamification-Elemente vorgestellt und es wird ausgearbeitet, welche dieser Elemente im Rahmen dieser Arbeit verwendet werden sollen..
 
 \subsection{Definition und Einordnung}
 \label{Definition}
 Nach \cite{SH2014} ist Gamification die Nutzung der Motivationskraft von Spielen in anderen Bereichen, die nicht der Unterhaltung dienen.
-Um dies zu bewerkstelligen werden Elemente aus dem Gamedesign verwendet.
+Um dies zu bewerkstelligen, werden Elemente aus dem Gamedesign verwendet.
 Zu diesen Elementen gehören beispielsweise Punktestände, Level, Bestenlisten, Fortschrittsanzeigen oder Aufgaben beziehungsweise Herausforderungen (vgl. Abschnitt \ref{Elemente}).
 Durch die Ausrichtung dieser Elemente an einem übergeordneten Ziel kann die Motivation der Spieler auf das Erfüllen dieses Ziels gerichtet werden (vgl. Abschnitt \ref{Spielermotivation}).
-Im Rahmen dieser Arbeit besteht dieses Ziel darin, möglichst qualitativ hochwertigen Code zu produzieren.
-Entsprechend würde ein Spieler, der qualitativ hochwertigeren Code einreicht, mehr Punkte bekommen und somit auch schneller im Level aufsteigen.
 
 \begin{figure}[htb]
 	\begin{center}
@@ -312,51 +311,56 @@ Entsprechend würde ein Spieler, der qualitativ hochwertigeren Code einreicht, m
 	\end{center}
 \end{figure}
 
-Der Begriff Gamification ist von dem Wort \glqq Gaming \grqq{} abgeleitet.
+Der Begriff Gamification ist von dem Wort \glqq Gaming\grqq{} abgeleitet.
 Gaming bezieht sich dabei auf ein seriöses Spielen.
-Dies steht dabei dem \glqq Playing \grqq{} gegenüber (vgl. Abbildung \ref{gamification_einordnung}).
-Playing beschreibt nach \cite{Wa2003} ein Spielen in einer offenen Welt, die Oft nur durch die Kreativität der Spieler beschränkt ist.
+Dies steht dabei dem \glqq Playing\grqq{} gegenüber (vgl. Abbildung \ref{gamification_einordnung}).
+Playing beschreibt nach \cite{Wa2003} ein Spielen in einer offenen Welt, die oft nur durch die Kreativität der Spieler beschränkt ist.
 Der Aufbau der Spielwelt, beispielsweise mit Spielzeugen wie Lego, ist dabei ein zentraler Aspekt.
-Gaming unterscheidet sich\cite{DD2011} von Playing dadurch, dass das Gaming einem Regelwerk unterliegt, welches die Teilnehmer beim Erreichen eines gesetzten Ziels einschränkt und somit eine Herausforderung darstellt.
+Gaming unterscheidet sich nach \cite{DD2011} von Playing dadurch, dass das Gaming einem Regelwerk unterliegt, welches die Teilnehmer beim Erreichen eines gesetzten Ziels einschränkt, was somit eine Herausforderung darstellt.
 Am Beispiel Schach verdeutlicht, liegt das Ziel darin, den gegnerischen König zu schlagen, ohne dass der eigene König geschlagen wird.
 Einschränkend gilt hierbei, dass die Spieler immer abwechselnd ziehen und die Figuren in ihrer Beweglichkeit eingeschränkt sind.
 Zusätzlich gibt es teilweise noch eine zeitliche Einschränkung, sodass für alle Züge zusammen in Summe nur eine gewisse Zeit zur Verfügung steht.
 
 Gamification ist die Übertragung von Elementen aus dem Gaming in Bereiche, die nicht mit dem Spielen oder der Unterhaltung generell verwandt sind.
-Am Beispiel Joggen verdeutlicht bedeutet das, dass als Ziel eine vorher festgelegte Distanz pro Woche definiert wird.
-Die Möglichkeiten, dieses Ziel zu erreichen, werden dadurch eingeschränkt, dass zum Erreichen nur eine festgelegte Zeit zur Verfügung steht und der Spieler gegebenenfalls die zu erreichende Distanz nicht in einem Mal zurücklegen kann und von daher mehrere Läufe aufsummieren muss.
+Gamification beim Joggen wäre beispielsweise, dass als Ziel eine vorher festgelegte Distanz von 20 km in einer Woche zurückgelegt werden soll.
+Die Erreichbarkeit dieses Ziels ist dadurch eingeschränkt, dass nur eine Woche für das Zurücklegen der 20 km zur Verfügung steht und der Spieler gegebenenfalls diese Strecke nicht in einem Mal zurücklegen kann, sodass er beispielsweise zwei Läufe mit jeweils 10 km aufsummieren muss.
+
+Im Rahmen dieser Arbeit besteht dieses Ziel darin, möglichst qualitativ hochwertigen Code zu produzieren.
+Entsprechend würde ein Spieler, der qualitativ hochwertigeren Code einreicht, mehr Punkte bekommen und somit auch schneller im Level aufsteigen.
+Die Spieler sind dabei unter anderem durch die Projektlaufzeit und das zur Verfügung stehende Budget für einzelne Teilaufgaben eingeschränkt.
 
 \subsection{Spielermotivation}
 \label{Spielermotivation}
 Motivation ist laut \cite{SH2014} ein psychologischer Prozess, der ein zielgerichtetes Handeln initiieren oder verstärken kann.
 Für die Effektivität von Gamification ist entscheidend, dass beim Spieler Motivation generiert wird, das gesetzte Ziel zu erreichen.
-Dazu kann das Fördern von Motivation aus verschiedenen Perspektiven betrachtet werden, entsprechend gibt es verschiedene Arten, auf die Motivation gefördert werden kann.
+Dazu kann das Fördern von Motivation aus verschiedenen Perspektiven betrachtet werden, entsprechend gibt es verschiedene Arten, die Motivation zu fördern.
 
 \paragraph{Bedürfnisse des Spielers}
 Spieler haben laut \cite{SH2014} verschiedene Bedürfnisse, die sie erfüllen wollen.
 Diese sind dabei abhängig von der Ausprägung unterschiedlicher Charakterzüge eines Spielers.
-Generell gibt es das Bedürfnis nach Erfolg, Einfluss und Statussymbolen und nach Zusammengehörigkeit.
-Dadurch, dass einem Spieler ein Erfolg oder eine Gruppenzugehörigkeit in Aussicht gestellt wird, hat der Spieler nun die Möglichkeit diese Bedürfnisse zu erfüllen und er wird versuchen, die notwendigen Anforderungen zu erfüllen.
+Hier werden das Bedürfnis nach Erfolg, Einfluss und Statussymbolen und das Bedürfnis nach Zusammengehörigkeit betrachtet.
+Dadurch, dass einem Spieler ein Erfolg oder eine Gruppenzugehörigkeit in Aussicht gestellt wird, hat der Spieler die Möglichkeit, dieses Bedürfnis zu befriedigen, und er wird versuchen, die notwendigen Anforderungen zu erfüllen.
 
 \paragraph{Positive und negative Eindrücke}
 Aus der Betrachtung der verhaltensorientierten Perspektive geht laut \cite{SH2014} hervor, dass positive und negative Eindrücke oder Erfahrungen zukünftiges Verhalten beeinflussen.
 Entsprechend kann durch positives und negatives Feedback oder Belohnungen und Bestrafungen zukünftiges Verhalten gesteuert werden.
 
 \paragraph{Erfüllung von Erwartungen}
-Laut \cite{SH2014} ist Motivation aus der kognitiven Perspektive abhängig von den gestellten Erwartungen.
-Diese Erwartungen können allgemeingültig sein und beispielsweise anhand des Alters oder der Fähigkeiten oder individuell durch den Spieler festgelegt werden.
+Laut \cite{SH2014} ist Motivation aus der kognitiven Perspektive abhängig von den an den Spieler gestellten Erwartungen.
+Diese Erwartungen können allgemeingültig sein und beispielsweise durch das Alter oder die erwarteten Fähigkeiten bestimmt sein, oder es sind die der Spieler an sich selbst hat.
 Motivation wird dabei durch die Erfüllung beziehungsweise das Bedürfnis nach Erfüllung dieser Erwartungen generiert.
 
 \paragraph{Selbstverwirklichung}
 Selbstverwirklichung ergibt sich nach \cite{SH2014} aus den Bedürfnissen nach Autonomie, Kompetenz und sozialer Verbundenheit.
 Die Erfüllung dieser Bedürfnisse fördert laut \cite{SH2014} die intrinsische Motivation des Spielers.
 
-\paragraph{Nutzerinteressen}
+\paragraph{Nutzerinteressen und Flow}
 Die Interessensperspektive berücksichtigt laut \cite{SH2014} individuelle Vorlieben und inhaltliche Aspekte.
 Motivation ergibt sich demnach aus der Beziehung des Spielers zu der Aufgabe oder dem Kontext.
-Idealerweise kann dies laut \cite{SH2014} zu einem vollständigen Eintauchen in die Aufgabe führen, dem sogenannten \glqq Flow \grqq{}.
+Idealerweise kann dies laut \cite{SH2014} zu einem vollständigen Eintauchen in die Aufgabe führen, dem sogenannten \glqq Flow\grqq{}.
 \cite{Zi2011} erklärt Flow als einen Zustand, in dem der Anspruch einer Aufgabe den Fähigkeiten des Spielers exakt entspricht.
-Übersteigen die Fähigkeiten den Anspruch der Aufgabe, langweilt sich der Spieler und er ist weniger motiviert. Übersteigt der Anspruch die Fähigkeiten hingegen, gerät der Spieler unter Leistungsdruck und er sorgt sich um die Erfüllung der Aufgabe, was laut \cite{As2000} bis hin zu Angstzuständen führen kann.
+Übersteigen die Fähigkeiten den Anspruch der Aufgabe, langweilt sich der Spieler und er ist weniger motiviert.
+Übersteigt der Anspruch hingegen die Fähigkeiten, gerät der Spieler unter Leistungsdruck und er sorgt sich um die Erfüllung der Aufgabe, was laut \cite{As2000} bis hin zu Angstzuständen führen kann.
 Auch dadurch sinkt die Motivation des Spielers.
 Das Erreichen der Flow-Zone, in der die Fähigkeiten des Spielers den Ansprüchen der Aufgabe entsprechen, erfordert demnach eine genaue Abstimmung dieser beiden Aspekte.
 
@@ -367,9 +371,9 @@ Demnach lässt sich Motivation durch die Verminderung negativer Emotionen wie An
 
 \subsection{Gamification-Elemente}
 \label{Elemente}
-Um in einem Spiel die Motivation des Spielers zu steigern, ist wichtig, dass er ein Feedback zu seinem aktuellen Fortschritt bekommt.
-Am Beispiel Schach geschieht dies die Stellung der Figuren und somit die Feldhoheit.
-Am Beispiel der Gamification von Joggen könnte dies ein Abbild der Gesamtdistanz und ein entsprechender Positionsmarker mit der aktuell zurückgelegten Distanz sein.
+Um in einem Spiel die Motivation des Spielers zu steigern, ist es wichtig, dass er ein Feedback zu seinem aktuellen Fortschritt bekommt.
+Am Beispiel Schach geschieht dies durch die Stellung der Figuren und somit die Feldhoheit.
+Am Beispiel der Gamification beim Joggen könnte dies ein Abbild der Gesamtdistanz und ein entsprechender Positionsmarker mit der aktuell zurückgelegten Distanz sein.
 Wie oben beschrieben, werden für diese Darstellung Elemente aus dem Gamedesign verwendet.
 Im Folgenden werden einige Elemente beispielhaft vorgestellt und ihr Nutzen erläutert.
 
@@ -382,57 +386,63 @@ Dieses Feedback kann durch das Erhalten von Punkten positiv beziehungsweise durc
 Badges oder Auszeichnungen sind Statussymbole innerhalb der Gamification.
 Sie erfüllen das Bedürfnis des Spielers nach Erfolg und Anerkennung (vgl. \cite{SH2014}).
 Darüber hinaus fungieren sie laut \cite{SH2014} als eine Form der Gruppenidentifikation, da sie gemeinsame Erfahrungen kommunizieren.
-Für Spieler, die ein bestimmtes Badge noch nicht erreicht haben, können sie außerdem als Ziel fungieren, dessen Belohnung dann das Erhalten dieses Badge ist.
+Für Spieler, die ein bestimmtes Badge noch nicht erreicht haben, können sie außerdem als Ziel fungieren, dessen Belohnung dann das Erhalten dieses Badges ist.
 
 \paragraph{Fortschrittsbalken}
 Fortschrittsbalken veranschaulichen einen Fortschritt hinsichtlich eines Ziels.
-Sie gelten dabei individuell für einen Spieler und zeigen die Erreichbarkeit des jeweiligen Ziels.
+Sie gelten dabei individuell für einen Spieler und zeigen an, wie weit der Spieler von der Erfüllung des Ziels entfernt ist.
 
 \paragraph{Leistungsdiagramme}
 Leistungsdiagramme setzten einen individuellen Score in Relation zu anderen Scores.
 Diese anderen Scores können von anderen Spielern oder anderen Zeitpunkten stammen.
 Stammen sie von anderen Spielern, zeigt das Diagramm, wie der Spieler sich im Vergleich zu anderen Spielern im Bezug auf ein Ziel hin entwickelt.
-Betrachtet das Diagramm hingegen unterschiedliche Zeitpunkte des selben Spielers, liegt der Fokus auf der Verbesserung der Fähigkeiten des Spielers und fördert das Meistern dieser (vgl. \cite{SH2014}). 
+Betrachtet das Diagramm hingegen unterschiedliche Zeitpunkte desselben Spielers, liegt der Fokus auf der Verbesserung der Fähigkeiten des Spielers und fördert das Verbessern dieser (vgl. \cite{SH2014}). 
 
 \paragraph{Quests}
 Quests sind laut \cite{SH2014} kleine Aufgaben oder Herausforderungen mit einem klar definierten Ziel.
-Der Fortschritt auf dieses Ziel hin muss dabei transparent sein, sodass es für den Spieler ersichtlich ist, welche Konsequenzen sein Aktionen im Bezug auf das Erreichen des Ziels haben.
+Der Fortschritt auf dieses Ziel hin muss dabei transparent sein, sodass es für den Spieler ersichtlich ist, welche Konsequenzen seine Aktionen im Bezug auf das Erreichen des Ziels haben.
 Das Erreichen dieses Ziels ist dabei immer mit einer Belohnung verknüpft.
 
 \paragraph{Avatare und Profile}
-Avatare beziehungsweise Profile und die Entwicklung dieser repräsentieren den Spieler.
-Spieler können eine Verbundenheit zu ihren Avataren entwickeln, sodass ein Fortschritt des Avatars einen persönlichen Fortschritt bedeutet (vgl. \cite{SH2014}).
+Avatare beziehungsweise Profile und deren Entwicklung repräsentieren den Spieler.
+Spieler können eine Verbundenheit zu ihren Avataren aufbauen, sodass ein Fortschritt des Avatars einen persönlichen Fortschritt bedeutet (vgl. \cite{SH2014}).
 
 \paragraph{Leaderboards}
-Leaderboards oder Bestenlisten stellen den Erfolg der Spieler an der Spitze dar.
+Leaderboards oder Bestenlisten stellen die Einordnung eines Spielers im Vergleich zu den besten Spielern dar.
 Spieler, die nicht an der Spitze stehen, könnten allerdings demotiviert werden, da ihre schlechteren Leistungen veröffentlicht werden (vgl. \cite{SH2014}).
 Dies führt dazu, dass der Einsatz von Leaderboards kritisch zu sehen ist.
 Durch die Verwendung von Team-Leaderboards können diese negativen Effekte allerdings etwas reduziert werden, da sie den Fokus auf die Teamleistung legen.
-Zum einen wird dadurch kein einzelner Spieler \glqq bloßgestellt \grqq{} und zum anderen hat das Team ein gemeinsames Ziel auf das es hinarbeiten kann, wodurch sich laut \cite{SH2014} die Verbundenheit im Team erhöht. 
+Zum einen wird dadurch kein einzelner Spieler \glqq bloßgestellt\grqq{} und zum anderen hat das Team ein gemeinsames Ziel, auf das es hinarbeiten kann, wodurch sich laut \cite{SH2014} die Verbundenheit im Team erhöht. 
 
 \section{Kriterien für qualitativ hochwertigen Code}
 \label{Kriterien_guter_Code}
 Ein zentraler Aspekt dieser Arbeit ist die Messung von Codequalität.
 Dazu muss zunächst definiert werden, was im Rahmen dieser Arbeit unter qualitativ hochwertigem Code verstanden wird.
-Laut \cite{ISO-25010} sind das die im folgenden aufgelisteten Aspekte.
-Einige dieser Aspekte lassen sich jedoch nicht ohne Kenntnis über den Projektkontext oder ohne die Ausführung des Programms im laufenden Betrieb bewerten.
+Dies geschieht auf Basis der Kriterien für Softwarequalität aus \acs{ISO} 25010 (vgl. \cite{ISO-25010})
+Im Rahmen der Codeanalyse mit coderadar sind allerdings nicht alle dieser Kriterien zur Bewertung des Codes geeignet.
+coderadar analysiert Java\footnote{\url{https://java.com/de/}}-Code anhand der in der Versionsverwaltung vorliegenden \textit{.java}-Dateien.
+Zusätzlich kann aus dem vorliegenden Quellcode der Binärcode, die \textit{.class}-Dateien, generiert werden.
+Eine Analyse des Programms im laufenden Betrieb ist hier nicht möglich, da dafür zum einen viel Rechenleistung benötigt werden könnte und zum anderen Ausführungsumgebungen wie Docker gegebenenfalls nicht zur Verfügung stehen.
+Darüber hinaus ist es auf Grund des Halteproblems nicht möglich, vorauszusagen, wie lange die Ausführung des Programms dauert, sodass eine zeiteffiziente Analyse eventuell nicht möglich ist (vgl. \cite{Davis2013}).
+Entsprechend findet in diesem Abschnitt eine Eignungsprüfung der jeweiligen Kriterien statt.
+In Abschnitt \ref{Auswahl_Kriterien} wird dann die Liste an Kriterien, die im Rahmen dieser Arbeit verwendet werden, zusammen mit den Metriken, die zur Messung verwendet werden, vorgestellt.
 
 \subsection{Funktionale Vollständigkeit}
 Die funktionale Vollständigkeit beispielsweise ist immer von den Anforderungen innerhalb des Projekts abhängig.
-Ohne Kenntnisse über diese Anforderungen lassen sich auch keine Aussagen über den Erfüllungsgrad dieser Anforderungen und somit über die funktionale Vollständigkeit treffen.
+Ohne Kenntnis dieser Anforderungen lassen sich auch keine Aussagen über den Erfüllungsgrad der Anforderungen und somit über die funktionale Vollständigkeit treffen.
 Darüber hinaus ist die Überprüfung von Semantik innerhalb der Software nur sehr schwer möglich, da dafür Intelligenz notwendig ist, die ein Computerprogramm nicht liefern kann.
-Des weiteren ist es nicht möglich, zu prüfen, ob ein Programm fehlerfrei ist, es lässt sich lediglich validieren, dass ein Programm für eine gegebene Liste an Eingaben die gewünschten Ausgaben erzeugt (vgl. \cite{Di1972}).
+Des Weiteren ist es nicht möglich automatisiert zu prüfen, ob ein Programm fehlerfrei ist, es lässt sich lediglich validieren, dass ein Programm für eine gegebene Liste an Eingaben die gewünschten Ausgaben erzeugt (vgl. \cite{Di1972}).
 Entsprechend wird in dieser Arbeit die funktionale Vollständigkeit als Kriterium für die Codequalität nicht berücksichtigt.
 
 \subsection{Nutzbarkeit}
 Die Aspekte Nutzbarkeit, Erlernbarkeit und Barrierefreiheit beziehen sich auf die Benutzeroberfläche des Programms.
-Da eine in Java\footnote{\url{https://java.com/de/}} geschriebene Benutzeroberfläche nur in einigen Anwendungen vorhanden ist, können hier nur schwer gerechte Bewertungen vorgenommen werden, da viele Projekte nicht in diesem Aspekt bewertet werden können.
+Da eine in Java geschriebene Benutzeroberfläche nur in einigen Anwendungen vorhanden ist, können hier nur schwer gerechte Bewertungen vorgenommen werden, da viele Projekte nicht in diesem Aspekt bewertet werden können.
 Die Bewertung von Projekten, die für die Benutzeroberfläche nicht Java verwenden oder keine Benutzeroberfläche haben, wäre verzerrt, da ein Ausgleich für die in diesem Kriterium vergebenen Punkte geschaffen werden müsste.
 Daher wird im Rahmen dieser Arbeit der Aspekt der Nutzbarkeit vernachlässigt.
 
 \subsection{Performanz}
 Auch ist es schwer, die Performanz und den Ressourcenverbrauch einer Funktion zu ermitteln, ohne den semantischen Hintergrund zu kennen oder die Funktion auszuführen.
-Einige Aspekte des Ressourcenverbrauchs, beispielsweise Netzwerklast oder Speicherverbrauch, lassen sich nur schwer voraussagen und müssen im laufenden Betrieb gemessen werden.
+Der Ressourcenverbrauch in Form der Netzwerklast oder des Speicherverbrauchs lässt sich nur schwer voraussagen und müsste im laufenden Betrieb gemessen werden.
 Daher wird dieser Aspekt im Rahmen dieser Arbeit vernachlässigt.
 
 \subsection{Kompatibilität}
@@ -487,24 +497,24 @@ Dadurch können potentielle Sicherheitslücken innerhalb des Programms aufgedeck
 Neben der \acs{OWASP}-Top-Ten gibt es weitere Indizes für Sicherheitslücken oder Problemstellen in Software, die ebenfalls verwendet werden können.
 
 \subsection{Wartbarkeit}
-Die Wartbarkeit beschreibt laut \cite{ISO-25010} die Effektivität und Effizienz mit der Modifikationen oder Korrekturen umsetzen lassen.
+Die Wartbarkeit beschreibt laut \cite{ISO-25010} die Effektivität und Effizienz, mit der sich Modifikationen oder Korrekturen umsetzen lassen.
 Dazu gehört unter anderem die Auftrennung des Programms in Module und die entsprechende Wiederverwendbarkeit dieser Module.
 Da die Auftrennung des Programms in einzelne Module entlang der semantischen Grenzen geschieht, ist dieser Aspekt nur schwer zu analysieren.
 Durch das Zählen von Passagen mit doppeltem Code kann allerdings eine Aussage über die Wiederverwendbarkeit von Funktionen und Modulen getroffen werden.
 
 Ein weiterer Bereich ist die Analysierbarkeit und Modifizierbarkeit.
-Diese Aspekte beschreiben den Grad zu dem Änderungen einen Einfluss auf die Korrektheit des Programms haben beziehungsweise voraussichtlich haben werden.
+Diese Aspekte beschreiben den Grad, zu dem Änderungen einen Einfluss auf die Korrektheit des Programms haben beziehungsweise voraussichtlich haben werden.
 Um entsprechende Aussagen tätigen zu können, ist es wichtig, die einzelnen Programmteile mit ihren Funktionen und eventuellen Seiteneffekten zu verstehen.
-Hierbei hilft wie oben beschrieben die Einhaltung von Stilrichtlinien und Konventionen, welche innerhalb einer statischen Codeanalyse sehr gut gemessen werden kann.
+Hierbei hilft, wie oben beschrieben, die Einhaltung von Stilrichtlinien und Konventionen, die innerhalb einer statischen Codeanalyse sehr gut gemessen werden kann.
 
-Ein weiterer Aspekt in der Analysierbarkeit ist das Wissen um den Code.
+Zur Analysierbarkeit gehört außerdem das Wissen um den Code.
 Je komplexer der Code ist, desto schwerer wird es, ihn zu verstehen.
-Die Komplexität lässt sich dabei innerhalb einer statischen Codeanalyse mit beispielsweise der McCabe-Metrik messen (vgl. \cite{MC1976}).
+Die Komplexität lässt sich dabei innerhalb einer statischen Codeanalyse beispielsweise mit der McCabe-Metrik messen (vgl. \cite{MC1976}).
 
 Auch die Verteilung von Wissen um den Code innerhalb des Entwicklungsteams gehört zur Analysierbarkeit.
 Je weniger Teammitglieder sich in einem Teil des Codes auskennen, desto geringer ist das Verständnis des Codes.
 Wenn es soweit kommt, dass sich nur noch ein Teammitglied in einem Teil des Codes auskennt, besteht ein Wissensmonopol.
-Sollte es dazu kommen, dass dieses Teammitglied nun beispielsweise auf Grund von Krankheit oder Urlaub nicht erreichbar ist, müssen sich die anderen Teammitglieder erneut einarbeiten, was sich negativ auf die Analysierbarkeit auswirkt.
+Sollte es dazu kommen, dass dieses Teammitglied beispielsweise auf Grund von Krankheit oder Urlaub nicht erreichbar ist, müssen sich die anderen Teammitglieder erneut einarbeiten, was sich negativ auf die Analysierbarkeit auswirkt.
 
 \subsection{Portierbarkeit}
 Die Portierbarkeit beschreibt, wie gut sich ein Programm von einem System auf ein anderes transferieren lässt.
@@ -513,7 +523,7 @@ Da es sich bei dem Code, den coderadar analysieren kann, um Java-Code handelt, s
 Für Unterschiede in Betriebssystemen wie unterschiedliche Separatoren in Dateipfaden bietet Java ebenfalls Lösungen.
 Die verbaute Hardware spielt an der Stelle für das Programm lediglich leistungstechnisch eine Rolle, da die Laufzeitumgebung von Java die Hardwarestruktur entsprechend abstrahiert.
 
-Ein weiter Aspekt in der Portierbarkeit ist die Installierbarkeit.
+Ein weiterer Aspekt in der Portierbarkeit ist die Installierbarkeit.
 Sie beschreibt den Grad der Effektivität und Effizienz, mit dem das Programm installiert beziehungsweise deinstalliert werden kann.
 Dies ist immer vom Programm selber und seinen Abhängigkeiten abhängig.
 Es gibt verschiedene Möglichkeiten, ein Java-Programm auszuliefern.
@@ -524,7 +534,7 @@ Alternativ kann das Java-Archiv auf einen Web-Applikationsserver deployt werden,
 Die Installierbarkeit ergibt sich somit nicht nur aus dem Programm selbst, sondern auch aus den jeweiligen Abhängigkeiten und der Auslieferungsform.
 Entsprechend ist es nur schwer möglich, Aussagen über die Installierbarkeit zu treffen.
 
-Die Austauschbarkeit des Programms beschreibt den Grad zu dem das Programm ein anderes Programm, welches dem selben Zweck dient, in der selben Umgebung ersetzen kann.
+Die Austauschbarkeit des Programms beschreibt den Grad, zu dem das Programm ein anderes Programm, welches demselben Zweck dient, in derselben Umgebung ersetzen kann.
 Um hierzu eine Aussage treffen zu können, wird Kenntnis über das zu ersetzende Programm benötigt.
 Daher wird dieser Aspekt im Rahmen dieser Arbeit vernachlässigt.
 
@@ -532,7 +542,7 @@ Daher wird dieser Aspekt im Rahmen dieser Arbeit vernachlässigt.
 \label{Auswahl_Kriterien}
 Wie oben beschrieben, eignen sich nicht alle Aspekte aus \cite{ISO-25010} zur Bewertung der Codequalität innerhalb der Codeanalyse.
 In diesem Abschnitt werden die Aspekte vorgestellt, die im Rahmen dieser Arbeit als Kriterien für qualitativ hochwertige Software verwendet werden sollen.
-Die im folgenden aufgelisteten Metriken stammen aus \cite{Ch2021} und \cite{So2021}.
+Die im Folgenden aufgelisteten Metriken stammen aus \cite{Ch2021} und \cite{So2021}.
 
 \paragraph{Zuverlässigkeit}
 Die Zuverlässigkeit des Programms wird im Rahmen dieser Arbeit unter anderem anhand der Testabdeckung gemessen.
@@ -540,14 +550,14 @@ Der oben beschriebene Fall, dass einige Tests die Funktionsweise des zu testende
 Es wird davon ausgegangen, dass die geschriebenen Tests zur Überprüfung der Funktionsweise geeignet sind.
 Die gefundenen Bugs und Code-Smells und der entsprechend geschätzte Aufwand zur Behebung dieser fließen ebenfalls in die Bewertung der Zuverlässigkeit mit ein.
 
-Metriken, die für die Messung der Zuverlässigkeit verwendet werden, sind folgenden:
+Die Metriken, die für die Messung der Zuverlässigkeit verwendet werden, sind folgende:
 \begin{itemize}
 	\item $test\_success\_density$\\
 	Die $test\_success\_density$ gibt den Anteil erfolgreicher Tests in einer Software an.
 	Je mehr Tests fehlschlagen, desto unzuverlässiger ist der Code.
 	\item $uncovered\_lines$\\
 	$uncovered\_lines$ gibt an, wie viele Programmzeilen nicht im Rahmen von Tests ausgeführt werden.
-	Sollte diese Zeilen einen Fehler beinhalten, kann dieser nicht durch Tests gefunden werden.
+	Sollten diese Zeilen einen Fehler beinhalten, kann dieser nicht durch Tests gefunden werden.
 	\item $line\_coverage$\\
 	Die $line\_coverage$ beschreibt den Anteil an Zeilen, die durch Tests abgedeckt sind.
 	\item $coverage$\\
@@ -556,14 +566,14 @@ Metriken, die für die Messung der Zuverlässigkeit verwendet werden, sind folge
 	\item $code\_smells$\\
 	$code\_smells$ sind potentielle Problemstellen im Code.
 	An diesen Stellen ist der Code verwirrend oder schwer zu verstehen und zu warten.
-	Sie müssen nicht zwangsweise zu Fehlern führen, sind aber Stellen, auf die der Entwickler besonderes Augenmerk richten sollte, da sie zu unvorhergesehenem verhalten führen können.
+	Diese Problemstellen müssen nicht zwangsweise zu Fehlern führen, sind aber Stellen, auf die der Entwickler ein besonderes Augenmerk richten sollte, da sie zu unvorhergesehenem Verhalten führen können.
 	\item $bugs$\\
 	$bugs$ sind Fehler im Programmcode, die einer direkten Behebung bedürfen.
 	Diese Fehler führen dazu, dass das Programm abstürzt oder falsche Aktionen ausführt.
 	\item $reliability\_rating$\\
 	Das $reliability\_rating$ bezieht sich auf die Anzahl und die Schwere der gefundenen Probleme.
 	Die Schwere geht dabei von \textit{BLOCKER}, ein Problem welches sofort behoben werden muss, da es zum Absturz des Systems führen kann, bis \textit{MINOR}, was Qualitätsmängel beschreibt, die die Entwicklerproduktivität beeinflussen.
-	Zu ersterem gehören unter anderem Speicherlecks, zu letzterem gehören beispielsweise zu lange Zielen, die das Lesen des Codes erschweren.
+	Zu ersterem gehören unter anderem Speicherlecks, zu letzterem gehören beispielsweise zu lange Zeilen, die das Lesen des Codes erschweren.
 	\item $violations$\\
 	In den $violations$ werden alle Arten von Problemstellen unabhängig von ihrer Schwere zusammengefasst.
 	\item $lines\_to\_cover$\\
@@ -638,7 +648,7 @@ Neben der McCabe-Metrik werden auch noch andere Komplexitätsmetriken verwendet.
 Um die Komplexität zu messen, gibt es mehrere Möglichkeiten:
 
 \begin{itemize}
-	\item $ognitive\_complexity$
+	\item $cognitive\_complexity$
 	\item $BooleanExpressionComplexity$\\
 	Die $BooleanExpressionComplexity$ bezieht sich auf die Komplexität boolescher Ausdrücke.
 	Durch Verschachtlungen von Negationen, Und- und Oder-Ausdrücken können diese teils sehr komplex werden.
@@ -676,25 +686,26 @@ Zwei Eigenschaften von Entwicklern sind nach \cite{WCSP1996}, dass sie faul und 
 Zum einen halten sie ihren eigenen Code oft für qualitativ sehr gut und zum anderen wollen sie aufgrund ihrer Faulheit bereits geschriebenen Code nicht noch einmal bearbeiten müssen.
 
 Dazu kommt, dass Projekte oft unter Zeitdruck oder mit nur sehr geringem Budget entwickelt werden.
-Nach einer Studie von \cite{KPME2002} wurden die Zeitaufwände für etwa ein drittel der untersuchten Projekte zu gering eingeschätzt, lediglich knapp die Hälfte der untersuchten Projekte hatten einen geringeren zeitlichen Aufwand als zu Beginn geschätzt.
-Entsprechend fällt auch oft die Budgeteinschätzung aus, da die Zeitaufwände der Entwickler und entsprechende Lizenzkosten einen großen Anteil an den Entwicklungskosten haben.
+Nach einer Studie von \cite{KPME2002} wurden die Zeitaufwände für etwa ein Drittel der untersuchten Projekte zu gering eingeschätzt, lediglich knapp die Hälfte der untersuchten Projekte hatten einen geringeren zeitlichen Aufwand als zu Beginn geschätzt.
+Entsprechend fällt auch oft die Budgeteinschätzung aus, da die Zeitaufwände der Entwickler und entsprechende Lizenzkosten einen großen Anteil an den Entwicklungskosten ausmachen.
 
-Dies führt dazu, dass oft wenig Zeit dafür bleibt, auf qualitativ hochwertigen Code zu achten.
+Dies führt dazu, dass oft wenig Zeit dafür bleibt, darauf zu achten, dass der geschriebene Code qualitativ hochwertig ist.
 Stattdessen wird oft die schnellere, dafür meist aber auch unsauberere Variante bevorzugt.
-Dazu gehört, dass keine Dokumentation, beispielsweise über JavaDoc, erstellt wird, dass mehrere fachlich nicht zusammengehörende Funktionalitäten in einer Klasse implementiert werden oder das einheitliche Stylingrichtlinien außer acht gelassen werden. 
+Dazu gehört, dass keine Dokumentation, beispielsweise über JavaDoc, erstellt wird, dass mehrere fachlich nicht zusammengehörende Funktionalitäten in einer Klasse implementiert werden oder dass einheitliche Stylingrichtlinien außer acht gelassen werden. 
 
 Wie bereits in Abschnitt \ref{Motivation} erwähnt, steigt dadurch der Aufwand, der zum Verstehen der Software notwendig ist.
-Somit steigen auch die Kosten, für die entsprechende Projektphase.
+Somit steigt auch der Aufwand für Teams, die mit der Wartung der Software betraut sind, da die Einarbeitungszeit in die Software höher ist.
+Somit steigen auch die Kosten für die entsprechende Projektphase.
 
 Mit der Hilfe von Analysewerkzeugen wie beispielsweise coderadar (vgl. \ref{Kontext}) ist es möglich, entsprechende unsaubere Varianten zu finden.
-Die Herausforderung an dieser Stelle ist, wie Eingangs beschrieben, Entwickler dazu zu bringen, direkt qualitativ hochwertigen Code zu schreiben.
-Dies dauert zwar erfahrungsgemäß etwas länger, spart dann aber den Aufwand, den Code ein weiteres Mal bearbeiten zu müssen, sodass im Endeffekt Zeit gespart wird.
+Die Herausforderung an dieser Stelle ist, wie eingangs beschrieben, Entwickler dazu zu bringen, direkt qualitativ hochwertigen Code zu schreiben.
+Dies dauert zwar erfahrungsgemäß etwas länger, spart dann aber den Aufwand, den Code ein weiteres Mal bearbeiten zu müssen, um die Qualität des Codes zu steigern, sodass im Endeffekt Zeit gespart wird.
 
 \section{Kontext coderadar}
 \label{Kontext}
 coderadar ist ein Analysewerkzeug für Java-Code.
 Es dient dazu, automatisiert Codeanalysen auf dem Versionskontrollsystem durchzuführen.
-Die Ergebnisse dieser Codeanalysen werden in Form von Metriken festgehalten, die dem Entwicklungsteam bereit gestellt werden.
+Die Ergebnisse dieser Codeanalysen werden in Form von Metriken festgehalten, die dem Entwicklungsteam bereitgestellt werden.
 Darüber hinaus ermöglicht coderadar eine Ansicht der Metriken je Commit, sodass frühere Projektversionen betrachtet werden können.
 
 coderadar verwendet intern verschiedene Plugins zur Codeanalyse.
@@ -703,31 +714,31 @@ Das Checkstyle-Plugin ist über die Angabe einer Checkstyle-Konfigurationsdatei 
 Ein Vorteil von Checkstyle an dieser Stelle ist, dass Checkstyle im Gegensatz zu anderen Analysewerkzeugen wie beispielsweise SonarQube\footnote{\url{https://github.com/SonarSource/sonarqube}} dateibasiert arbeitet.
 Dadurch ist es möglich, den Dateiinhalt aus einem Commit zu laden und zu analysieren, ohne das gesamte Projekt berücksichtigen zu müssen.
 
-Die Architektur von coderadar erlaubt es, zusätzlich zu den bereits bestehenden Analyse-Plugins, eigene Plugins zu schreiben.
+Die Architektur von coderadar erlaubt es, zusätzlich zu den bereits bestehenden Analyse-Plugins eigene Plugins zu schreiben.
 Diese können per Anwahl einer Checkbox in der Benutzeroberfläche für ein Projekt zu- oder abgewählt werden.
 Damit im Rahmen dieser Arbeit ein Vergleich zwischen den einzelnen Projekten möglich ist, sollen im Rahmen der Fallstudie später alle verfügbaren Plugins verwendet werden.
 
-Neben den Möglichkeiten zu Codeanalyse bietet coderadar eine Nutzerverwaltung.
+Neben den Möglichkeiten zur Codeanalyse bietet coderadar eine Nutzerverwaltung.
 Ein Nutzer kann ein Projekt anlegen und analysieren lassen.
 Dazu werden eine GitHub\footnote{\url{https://github.com}}-URL, ein Projektname und, falls gewünscht, ein Start- und ein Enddatum für die Analyse angegeben.
 Im nächsten Schritt können dann die zu verwendenden Analyse-Plugins ausgewählt werden.
 Zusätzlich wird ein Muster für zu analysierende Dateien angegeben.
 So können bestimmte Dateien von der Analyse ausgeschlossen werden, beispielsweise ist es nicht sinnvoll, die Testabdeckung innerhalb der Implementierung der Tests zu messen.
 coderadar untersucht dann alle Commits im genannten Zeitraum auf Dateien, die dem angegebenen Muster entsprechen.
-Wird eine entsprechende Datei gefunden, wird sie mit den konfigurierten Analyse-Plugins untersucht, und entstehenden Metriken werden zu dem Commit hinzugefügt.
+Wird eine entsprechende Datei gefunden, wird sie mit den konfigurierten Analyse-Plugins untersucht, und die gemessenen Metrikwerte werden zu den Metrikwerten des Commits hinzugefügt.
 Ein Nutzer kann ein erstelltes Projekt auch für andere Nutzer zur Kollaboration freigeben.
 
 Nachdem coderadar ein Projekt geclont und analysiert hat, gibt es verschiedene Visualisierungen für die Ergebnisse.
 Zum einen können die Rohdaten der Metriken je Commit angezeigt werden.
 
-Darüber hinaus können die Ergebnisse in einer \glqq City-View\grqq{} angezeigt zu lassen (vgl. Abbildung \ref{city_view}).
+Darüber hinaus können die Metrikwerte eines Commits in einer \glqq City-View\grqq{} angezeigt werden (vgl. Abbildung \ref{city_view}).
 Dabei wird für jede Änderung in einem Commit ein \glqq Haus\grqq{} erstellt.
 Das Aussehen eines solchen Hauses hängt dabei von den vier Faktoren Länge, Breite, Höhe und Farbgebung ab.
 Jeder dieser Faktoren lässt sich dabei mit dem Wert einer Metrik belegen.
 Die City-View kann sowohl einen Commit als auch zwei Commits vergleichend anzeigen.
 Bei der vergleichenden Ansicht besteht die Möglichkeit, entweder beide City-Views nebeneinander oder beide Views ineinander anzuzeigen.
 
-Neben der City-View gibt es auch noch eine \glqq Dependency-Map\grqq{} (vgl. Abbildung \ref{dependency_map}).
+Neben der City-View gibt es auch eine \glqq Dependency-Map\grqq{} (vgl. Abbildung \ref{dependency_map}).
 Die Dependency-Map zeigt die Ordnerstruktur des Projektes sowie die Abhängigkeiten der einzelnen Module untereinander an.
 Die einzelnen Unterordner lassen sich dabei aufklappen, sodass auch innerhalb eines Unterordners die Abhängigkeiten visualisiert werden.
 Auch hier ist sowohl eine Einzelansicht eines Commits als auch eine vergleichende zweier Commits möglich.
@@ -762,7 +773,7 @@ Dies dient dazu, dass auch Werkzeuge wie SonarQube verwendet werden können, die
 \paragraph{A.2}
 Der Analyseprozess muss mit verschiedenen Java-Versionen und Build-Management-Werkzeugen umgehen können.
 Speziell sind die Java-Versionen von Java 8 bis Java 11 zu berücksichtigen.
-Des weiteren sollen die Build-Management-Werkzeuge Gradle und Maven berücksichtigt werden.
+Des Weiteren sollen die Build-Management-Werkzeuge Gradle und Maven berücksichtigt werden.
 
 \paragraph{A.3}
 Das System muss eine Möglichkeit zur Untersuchung des Reifegrades des Projekts zum Zeitpunkt des zu analysierenden Commits bieten.
@@ -843,6 +854,7 @@ In dieser Bestenliste muss jeweils der Projektname und die Punktzahl angezeigt w
 Das System muss eine Bestenliste über alle Nutzer in der Übersicht der Bestenlisten anzeigen.
 Dazu wird jeweils die Gesamtpunktzahl des Nutzers, geteilt durch seine Anzahl an Projekten verwendet.
 In der Bestenliste muss je Nutzer der Name, das Level und die Anzahl an Projekten dargestellt werden.
+Zusätzlich werden noch, wenn verfügbar, der Titel und die Badges des Nutzers angezeigt.
 
 \paragraph{F.6}
 Das System muss in einer gesonderten Ansicht die Quests anzeigen.
@@ -861,7 +873,7 @@ SonarQuest nutzt Analyseergebnisse von SonarQube\footnote{\url{https://www.sonar
 Jeder Nutzer wird durch einen Avatar repräsentiert.
 Wie in herkömmlichen Rollenspielen kann ein Nutzer seinen Avatar mit Artefakten ausstatten und der Avatar kann eigene Fähigkeiten ausbilden.
 SonarQuest wird dabei immer von einem Gamemaster begleitet, der zu den definierten Wartungsaufgaben jeweils eine Geschichte erstellt.
-Daraus resultiert dann jeweils eine Quests, die von einem Spieler angenommen werden kann.
+Daraus resultiert dann jeweils eine Quest, die von einem Spieler angenommen werden kann.
 Für das Erfüllen einer Quest und damit einer Wartungsaufgabe bekommt ein Nutzer Gold und Erfahrungspunkte als Belohnung. 
 Neben der normalen Belohnung für eine Quest kann der Gamemaster auch Sonderaufgaben und Boni verteilen, um Aspekte wie Teamwork oder Termineinhaltung besonders zu belohnen.\cite{SonarQuest}
 
@@ -870,8 +882,8 @@ Zum einen müssen regelmäßig neue Quests geschrieben werden.
 Dabei sollten Quests so geschrieben sein, dass ihre Geschichte den Spieler dazu motiviert, die Aufgabe zu erfüllen.
 Laut \cite{SonarQuest} liegt diese Aufgabe jeweils beim Teamleiter.
 Dies kann den Teamleiter aber abhängig von der Anzahl an Wartungsaufgaben, Tiefe und inhaltlicher Schlüssigkeit der Hintergrundgeschichten der Aufgaben und dem literarischen Talent den Teamleiter sowohl zeitlich als auch in seinen Fähigkeiten überfordern.
-Zum anderen basiert die Messwerte und damit die vergebenen Belohnungen von SonarQuest ausschließlich auf den Ergebnissen der Analyse von SonarQube.
-SonarQube bietet zwar eine Gesamtheitliche Analyse des Projekts, wodurch beispielsweise doppelter Code auch Klassenübergreifend auffällt, allerdings wird für die Analyse mit SonarQube immer das gesamte Projekt benötigt.
+Zum anderen basieren die Messwerte und damit die vergebenen Belohnungen von SonarQuest ausschließlich auf den Ergebnissen der Analyse von SonarQube.
+SonarQube bietet zwar eine gesamtheitliche Analyse des Projekts, wodurch beispielsweise doppelter Code auch Klassenübergreifend auffällt, allerdings wird für die Analyse mit SonarQube immer das gesamte Projekt benötigt.
 Es ist dadurch deutlich komplexer, Unterschiede zwischen zwei Commits herauszustellen oder das Projekt an einem früheren Zeitpunkt in der Entwicklungshistorie zu untersuchen.
 SonarQube soll zwar auch für die Analyse der Commits verwendet werden, allerdings ist ein erheblicher Mehraufwand notwendig, um die Historie der Commits zu berücksichtigen.
 Außerdem sollen neben SonarQube noch weitere Quellen für Messwerte verwendet werden, was in SonarQuest nicht möglich ist.
@@ -1030,7 +1042,7 @@ Dieses Interface schreibt jeweils eine Methode zur Vor- und Nachbereitung der An
 Im Analyseprozess wird dann zunächst über alle Implementierungen des \textit{WrappedAnalyzingProcess} iteriert und für jede Instanz wird die Methode \textit{prepareAnalysis()} aufgerufen.
 Anschließend findet die Analyse des Commits, gefolgt von dem Aufruf der Methode \textit{postprocessAnalysis()} für alle Implementierungen des \textit{WrappedAnalyzingProcess}-Interface.
 
-Des weiteren müssen die von den einzelnen Analyse-Plugins zurückgegebenen Metrikwerte mit Hilfe einer noch zu erarbeitenden Metrikmatrix in eine absolute Punktzahl umgerechnet werden.
+Des Weiteren müssen die von den einzelnen Analyse-Plugins zurückgegebenen Metrikwerte mit Hilfe einer noch zu erarbeitenden Metrikmatrix in eine absolute Punktzahl umgerechnet werden.
 Diese Punktzahl muss dann dem Autor des Commits gutgeschrieben und sein Level angepasst werden.
 
 Außerdem müssen gemäß den Anforderungen aus \ref{Anforderungen} Anpassungen in der Benutzerschnittstelle im Modul \textit{coderadar-ui} vorgenommen werden.
@@ -1135,6 +1147,15 @@ Um den Punkte- und Levelstand der einzelnen Autoren aber auch der jeweiligen Pro
 Im folgenden werden auf Basis der bisherigen Benutzerschnittstelle Prototypen für die Erweiterungen erstellt.
 Bei der Konzeptionierung der Prototypen wird besonders auf die beabsichtigte Wirkung der jeweiligen Gamification-Elemente eingegangen.
 
+Die in diesem Abschnitt aufgeführten Quests, Badges und Zusatzfunktionen sind jeweils Beispiele.
+Die Programmierung muss hier so gestaltet werden, dass Ergänzungen ohne großen Aufwand vorgenommen werden können.
+
+Zusätzlich muss im Rahmen der auf diese Arbeit folgenden Masterarbeit noch eine Balancierung der Punkte erarbeitet werden.
+Diese Balancierung soll dafür sorgen, dass die erhaltenen Punkte in einem angemessenen Verhältnis zu den für die einzelnen Level benötigten Punkten stehen.
+Ebenso soll die Balancierung eine angemessene Verteilung von Coins ermöglichen.
+Diese Balancierung wird nicht im Rahmen dieser Arbeit vorgenommen, da der Fokus in dieser Arbeit lediglich auf der Implementierung der Gamification-Elemente in coderadar liegt.
+Die Balancierung muss auf den durchzuführenden Feldversuch angepasst werden, damit die Nutzer innerhalb des Versuchszeitraums einen angemessenen Fortschritt erreichen können, es aber auch genug \glqq Spielinhalt\grqq{} für den Feldversuch gibt.
+
 \subsection{Punkte}
 \label{coderadar_Punkte}
 Ein Autor erhält wie bereits erwähnt für das Einreichen eines Commits Punkte.
@@ -1142,6 +1163,7 @@ Dadurch ist es möglich, positive Handlungen beziehungsweise qualitativ hochwert
 Die Anzahl an Punkten ermöglicht überdies einen einfachen Vergleich zwischen verschiedenen Autoren oder zwischen verschiedenen Zeitpunkten der Betrachtung des Profils eines Autors.
 Die Punkte dienen somit auch als Basis für einige der anderen Gamification-Elemente, auf die im Laufe dieses Abschnitts eingegangen wird.
 Der Nutzer bekommt seinen aktuellen Punktestand in Form eines Fortschrittsbalken zum nächsten Level angezeigt.
+Dieser Fortschrittsbalken wird in der Benutzerschnittstelle wie in Abbildung \ref{mock_level} am unteren Bildschirmrand angezeigt.
 
 \subsection{Level}
 \label{coderadar_Level}
@@ -1154,11 +1176,93 @@ An dieser Stelle sind folgende Funktionen mit dem entsprechend benötigten Level
 	\begin{tabular}{|p{12cm}|p{1cm}|}
 		\hline
 		Zusatzfunktion & Level \\ \hline
+		Einen Titel zum Anzeigenamen hinzufügen & x \\ \hline
 		Der Fortschrittsbalken für das Level kann alternativ auch den Fortschritt auf ein anderes Ziel hin darstellen & x \\ \hline
 		Das Farbschema der Benutzeroberfläche kann angepasst werden & x \\ \hline
 		Die Auswahl an Badges, die anderen Nutzern angezeigt werden, kann personalisiert werden & x \\ \hline
 	\end{tabular}
 \end{center}
+
+Das Level wird in der Benutzeroberfläche neben dem Nutzernamen angezeigt und ist somit jederzeit präsent.
+Abbildung \ref{mock_level} zeigt die Startseite der coderadar-Benutzeroberfläche.
+Oben rechts neben dem Anzeigenamen des Nutzers wird das Level angezeigt.
+Am unteren Bildschirmrand ist der Fortschrittsbalken, der den Punktestand im aktuellen Level darstellt.
+
+\subsection{Badges}
+\label{coderadar_Badges}
+Badges werden innerhalb von coderadar als Statussymbol genutzt.
+Sie zeigen an, dass der Inhaber des jeweiligen Badge eine bestimmte Leistung erbracht hat, die mit dem Badge gewürdigt wurde.
+Nachfolgend sind die zu implementierenden Badges aufgelistet.
+Einige der Badges haben dabei mehrere Abstufungen, die visuell durch eine unterschiedliche Farbgebung in bronze, silber und gold repräsentiert werden.
+
+\begin{center}
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		Titel & Beschreibung & Ziel & Ziel 2 & Ziel 3 \\ \hline
+		Bug hunter & Bestimmte Anzahl an Bugs gefixt & 10 & 25 & 100 \\ \hline
+		Security & Vulnerabilities gefixt & 10 & 25 & 100 \\ \hline
+		Test-Experte & Anzahl an Zeilen, die von Tests gedeckt sind & 1000 & 2500 & 10000 \\ \hline
+		Code maniac & Zeilen Code geschrieben & 10000 & 25000 & 100000 \\ \hline
+		Clean coder & Zeilen Code ohne Verletzung von Stilrichtlinien & 1000 & 2500 & 10000 \\ \hline
+		holistic & TODOs gefixt & 2 & 5 & 10 \\ \hline
+		commentator & Public API Kommentare hinzugefügt & 10 & 25 & 100 \\ \hline
+		Quest solver & Quests abgeschlossen & 2 & 5 & 10 \\ \hline
+		Maniac & Maximallevel erreicht & 1 & - & - \\ \hline
+		x & Werktage in folge eingeloggt & 5 & 15 & 40 \\ \hline
+	\end{tabular}
+\end{center}
+
+Abbildung \ref{mock_badge_list} zeigt eine Seite, in der der Nutzer sehen kann, welche Badges es gibt und wie sein Fortschritt bei den Badges ist, die er noch nicht erreicht hat.
+Hat der Nutzer das entsprechende Level erreicht, kann er in dieser Ansicht auch auswählen, welche Badges anderen Nutzern angezeigt werden sollen.
+Dies geschieht über die Checkbox neben dem jeweiligen Badge.
+Hat der Nutzer das erforderliche Level noch nicht erreicht, ist diese Checkbox deaktiviert.
+
+Abbildung \ref{mock_leaderboards_global} zeigt, wie die Badges anderen Nutzern in den Bestenlisten angezeigt werden.
+
+\subsection{Bestenlisten}
+\label{coderadar_Bestenlisten}
+Die nutzerbezogenen Bestenlisten in coderadar zeigen gemäß Anforderung F.5 neben dem Nutzernamen auch die erreichten Badges und den Titel des Nutzers.
+Zum einen gibt es eine globale Bestenliste über alle Nutzer.
+Der Nutzer sieht hier sowohl die 10 besten, als auch die 10 Nutzer um ihn herum.
+Der Prototyp dieser Ansicht ist in Abbildung \ref{mock_leaderboards_global} dargestellt.
+
+Zusätzlich gibt es gemäß Anforderung F.4 eine projektbezogene Bestenliste, die die Summe der Leistungen der einzelnen Contributors des jeweiligen Projekts anzeigt.
+Abbildung \ref{mock_leaderboards_projects} zeigt eine solche projektbezogene Bestenliste.
+Die Bestenliste geht dabei nicht auf die einzelnen Contributors ein sondern zeigt das Teamergebnis.
+Für Nutzer, die nicht dem Projektteam angehören, ist es so nicht möglich, Rückschlüsse auf die Leistungen der einzelnen Nutzer zu ziehen.
+
+\subsection{Avatar- und Profilentwicklung}
+\label{coderadar_Profil}
+Der Nutzer hat in coderadar die Möglichkeit, sich sein Profil anzeigen zu lassen.
+In dieser Darstellung werden dem Nutzer sein aktueller Level- und Punktestand angezeigt (vgl. Abbildung \ref{mock_profile}).
+Darüber hinaus werden die vom Nutzer abgeschlossenen Quest und die erhaltenen Badges dargestellt.
+Außerdem kann sich der Nutzer seine Coins anzeigen und auszahlen lassen.
+
+\subsection{Coins}
+\label{coderadar_Coins}
+Der Nutzer erhält für das Lösen von Quests und das erreichen bestimmter Level Coins.
+Die Coins sollen später in reale Belohnungen umgetauscht werden können.
+In wie weit dies möglich ist muss aber noch im Rahmen der an diese Arbeit folgenden Masterarbeit geklärt werden.
+Im Rahmen des noch durchzuführenden Feldversuchs wäre hier beispielsweise eine Integration mit dem adesso Shop oder ein Amazon-Gutschein denkbar.
+
+\subsection{Quests}
+\label{coderadar_Quests}
+Für den Feldversuch sollen verschiedene Quests zur Verfügung stehen.
+Für das Lösen einer Quest wird der Nutzer mit Punkten und Coins belohnt.
+Nachfolgend sind die geplanten Quests mit den Titeln, Beschreibungen und Belohnungen aufgelistet.
+Die hier aufgeführte Beschreibung ist sehr kurz gehalten und muss in der eigentlichen Implementierung noch erweitert werden.
+
+\begin{center}
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		Titel & Beschreibung & Punkte & Coins & Ab Level \\ \hline
+		
+	\end{tabular}
+\end{center}
+
+Die Quests werden dabei ab einem bestimmten Level freigeschaltet. 
+Sobald der Nutzer das benötigte Level erreicht hat, wird die Quest in der Liste der verfügbaren Quests angezeigt (vgl. Abbildung \ref{mock_quest_overview}).
+Die genaueren Informationen zu den jeweiligen Quests können auf einer Detailseite angezeigt werden (vgl. Abbildung \ref{mock_quest}).
 
 \chapter{Umsetzung}
 \label{Umsetzung}
@@ -1206,19 +1310,76 @@ An dieser Stelle sind folgende Funktionen mit dem entsprechend benötigten Level
 	\end{center}
 \end{figure}
 
+\begin{figure}[htb]
+	\begin{center}
+		\includegraphics[width=\linewidth]{images/mock_level}
+		\caption{Der Prototyp der Darstellung des Level des Nutzers.}
+		\label{mock_level}
+	\end{center}
+\end{figure}
+
+\begin{figure}[htb]
+	\begin{center}
+		\includegraphics[width=\linewidth]{images/mock_badge_list}
+		\caption{Der Prototyp der Übersicht über die Badges.}
+		\label{mock_badge_list}
+	\end{center}
+\end{figure}
+
+\begin{figure}[htb]
+	\begin{center}
+		\includegraphics[width=\linewidth]{images/mock_leaderboards_global}
+		\caption{Der Prototyp der Bestenliste über alle Nutzer.}
+		\label{mock_leaderboards_global}
+	\end{center}
+\end{figure}
+
+\begin{figure}[htb]
+	\begin{center}
+		\includegraphics[width=\linewidth]{images/mock_leaderboards_projects}
+		\caption{Der Prototyp der Bestenliste über alle Projekte.}
+		\label{mock_leaderboards_projects}
+	\end{center}
+\end{figure}
+
+\begin{figure}[htb]
+	\begin{center}
+		\includegraphics[width=\linewidth]{images/mock_profile}
+		\caption{Der Prototyp der Darstellung des Profils des Nutzers.}
+		\label{mock_profile}
+	\end{center}
+\end{figure}
+
+\begin{figure}[htb]
+	\begin{center}
+		\includegraphics[width=\linewidth]{images/mock_quest_list}
+		\caption{Der Prototyp der Darstellung der Übersicht über die Quests.}
+		\label{mock_quest_overview}
+	\end{center}
+\end{figure}
+
+\begin{figure}[htb]
+	\begin{center}
+		\includegraphics[width=\linewidth]{images/mock_quest}
+		\caption{Der Prototyp der Darstellung einer Quest.}
+		\label{mock_quest}
+	\end{center}
+\end{figure}
+
 %___________________________________________________________________________________________________
 
 % Abkürzungsverzeichnis ins Inhaltsverzeichnis aufnehmen und mit Inhalt füllen
 \cleardoublepage\phantomsection\addcontentsline{toc}{chapter}{Abkürzungsverzeichnis}
 \chapter*{Abkürzungsverzeichnis}
 \begin{acronym}
-	\acro{REST}{Representational State Transfer} % 439
-	\acro{SOAP}{Simple Object Access Protocol} % 439
-	\acro{OWASP}{Open Web Application Security Project} % 480
-	\acro{CWE}{Common Weakness Enumeration} % 572
-	\acro{CLI}{Command Line Interface} % 685		
-	\acro{JRE}{Java Runtime Environment} % 706
-	\acro{LOC}{Lines of Code} % 769
+	\acro{ISO}{International Organization for Standardization} % 227
+	\acro{REST}{Representational State Transfer} % 453
+	\acro{SOAP}{Simple Object Access Protocol} % 453
+	\acro{OWASP}{Open Web Application Security Project} % 494
+	\acro{CWE}{Common Weakness Enumeration} % 587
+	\acro{LOC}{Lines of Code} % 712
+	\acro{CLI}{Command Line Interface} % 955		
+	\acro{JRE}{Java Runtime Environment} % 976
 \end{acronym}
 
 \newpage{}
